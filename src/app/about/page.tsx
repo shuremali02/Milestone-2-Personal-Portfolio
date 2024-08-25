@@ -7,6 +7,7 @@ import { useEffect } from "react";
 
 
 export default function About() {
+    // Initialize AOS animations when the component mounts
   useEffect(() => { AOS.init() }, [])
   return (
     <div className='bg-black py-8 text-text2'> 
