@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -30,4 +31,23 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
+} */
+html {
+    scroll-behavior: smooth;
+  }
+  @keyframes auto-scroll {
+    0% {
+      transform: translateX(100%); /* Start from off the right side */
+    }
+    50% {
+      transform: translateX(-100%); /* Move off the left side */
+    }
+    100% {
+      transform: translateX(100%); /* Return to the original position */
+    }
+  }
+  
+  .animate-auto-scroll {
+    animation: auto-scroll 100s linear infinite;
+  }
+  
