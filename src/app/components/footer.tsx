@@ -79,7 +79,7 @@ export default function Footer() {
             <FaGithub />
           </Link>
           <Link
-            href="//" // Placeholder link
+            href="https://www.facebook.com/syed.shuremali?mibextid=ZbWKwL" // Placeholder link
             aria-label="Facebook"
             className="text-white hover:text-emerald-200"
           >
