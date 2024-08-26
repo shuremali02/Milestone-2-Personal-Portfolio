@@ -49,7 +49,7 @@ export default function About() {
                 <br />
               </p>
               <p className="text-emerald-300">
-                I&#39;m a front-end developer passionate about webDeveloper user-friendly web interfaces. Over the past 2.5 years, I&#39;ve been learning and refining my skills in front-end technologies through various hands-on projects. I have a foundational understanding of Wordpress, having completed a Dit course in the field.
+                I&#39;m a front-end developer with a passion for creating intuitive and user-friendly web interfaces. Over the past 2.5 years, I&#39;ve been dedicated to mastering front-end technologies through various hands-on projects. I also have a foundational understanding of WordPress, having completed a DIT course in the field..
               </p>
 
             </div>

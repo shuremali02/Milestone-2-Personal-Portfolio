@@ -26,7 +26,7 @@ export default function Portfolio() {
       img: "/navebar.png",
       title: "Navigation Bar",
       description: "Simple Navigation bar with buttons build with nextjs & react useState Hooks and styled with Tailwind",
-      route: "https://github.com/shuremali02/Next.js-Navigation-Bar",
+      route: "https://counter-nextjs.netlify.app/",
     },
     {
       img: "/Milestone1.png",
