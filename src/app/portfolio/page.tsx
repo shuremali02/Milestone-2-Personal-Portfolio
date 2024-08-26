@@ -1,21 +1,21 @@
 import Card from '../components/cards';
-// Adjust the path as needed
 
 export default function Portfolio() {
   const project = [
     {
-            img: "/cal.png",
-            title: "Calculator.ts",
-            description: "A device that performs arithmetic operations on numbers.",
-            route: "https://github.com/shuremali02/CLI-calculator",
-          },
-          {
-                  img: "/Atm.png",
-                  title: "ATM.ts",
-                  description: "The ATM System is the project which is used to access their bank accounts in order to make cash withdrawals",
-                  route: "https://github.com/shuremali02/ATM-project"
-            
-                },
+      img: "/cal.png",
+      title: "Calculator.ts",
+      description: "A device that performs arithmetic operations on numbers.",
+      route: "https://github.com/shuremali02/CLI-calculator",
+    },
+    {
+      img: "/Atm.png",
+      title: "ATM.ts",
+      description: "The ATM System is the project which is used to access their bank accounts in order to make cash withdrawals",
+      route: "https://github.com/shuremali02/ATM-project"
+
+    },
+
     {
       img: "/count.png",
       title: "Counter",
@@ -23,12 +23,19 @@ export default function Portfolio() {
       route: "https://github.com/shuremali02/Next.js-React.js-Counter.git",
     },
     {
-      img: "/Atm.png",
-      title: "ATM.ts",
-      description: "The ATM System is a project that allows users to access their bank accounts to make cash withdrawals",
-      route: "https://github.com/shuremali02/ATM-project",
+      img: "/navebar.png",
+      title: "Navigation Bar",
+      description: "Simple Navigation bar with buttons build with nextjs & react useState Hooks and styled with Tailwind",
+      route: "https://github.com/shuremali02/Next.js-Navigation-Bar",
     },
-    // Add more projects as needed
+    {
+      img: "/Milestone1.png",
+      title: "Hello-World",
+      description: "Simple Hello World Application build with nextjs and styled with Tailwind",
+      route: "https://next-js-milestone-1-achieved.netlify.app/",
+    },
+
+
   ];
 
   return (

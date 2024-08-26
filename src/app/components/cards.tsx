@@ -14,7 +14,7 @@ interface Props {
     route: string;
 }
 
-export default function Card({ prop }: { prop: Props }){
+export default function Card({ prop }: { prop: Props }) {
     useEffect(() => {
         AOS.init();
     }, []);
@@ -31,7 +31,7 @@ export default function Card({ prop }: { prop: Props }){
                 <p className="text-emerald-200"><GoDotFill /></p>
                 <p className="text-bg"><GoDotFill /></p>
             </div>
-            
+
             {/* Project Image */}
             <Image
                 src={prop.img}
@@ -40,13 +40,13 @@ export default function Card({ prop }: { prop: Props }){
                 width={1440}
                 className="w-full h-[65%] rounded-2xl transition-transform hover:scale-95"
             />
-            
+
             {/* Project Details and Link */}
             <Link href={prop.route} className="group block">
                 <div className="pl-5 pt-2 flex items-center justify-between">
                     <div className="space-y-2">
                         <h1 className="text-2xl text-text2 font-bold">{prop.title}</h1>
-                        
+
                         {/* Responsive Description */}
                         <p className="text-text2 text-sm sm:text-base lg:text-lg line-clamp-2 sm:line-clamp-3 lg:line-clamp-4">
                             {prop.description}

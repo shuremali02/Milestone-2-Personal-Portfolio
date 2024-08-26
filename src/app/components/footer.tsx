@@ -10,16 +10,16 @@ export default function Footer() {
 
       <div className='max-w-7xl mx-auto px-4 lg:px-8 space-y-6'>
         {/* Main content container with responsive padding and spacing */}
-        
+
         <div className='bg-emerald-600 py-6 px-10 text-text2 font-medium border-y-2 border-opacity-5 border-neutral-400'>
           {/* Top section with background color, padding, text color, and border */}
-          
+
           <div className='text-center'>
             {/* Centered text section */}
-            
+
             <div className="text-lg">
               {/* Text section with large font size */}
-              
+
               <p className="hidden md:block text-emerald-200">
                 {/* Email contact for larger screens */}
                 Interested in connecting? Send me a message at: {" "}
@@ -34,10 +34,10 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        
+
         <div className="text-emerald-300 text-md grid grid-cols-1 md:grid-cols-3 lg:flex lg:justify-center lg:space-x-6">
           {/* Navigation links with responsive grid and flex layout */}
-          
+
           <Link href="/about" className="hover:scale-95 text-center">
             About
           </Link>
@@ -48,10 +48,10 @@ export default function Footer() {
             Contact
           </Link>
         </div>
-        
+
         <div className="flex justify-center">
           {/* Centered profile image */}
-          
+
           <Image
             src="/dp.jpg"            // Path to the image
             alt="Footer Image"       // Alt text for accessibility
@@ -60,10 +60,10 @@ export default function Footer() {
             className="rounded-full h-auto"
           />
         </div>
-        
+
         <div className="flex justify-center space-x-6 text-2xl lg:text-3xl">
           {/* Social media icons container with spacing and responsive size */}
-          
+
           <Link
             href="//linkedin.com/in/syed-shurem-ali-5a55852a0"
             aria-label="LinkedIn"
@@ -86,10 +86,10 @@ export default function Footer() {
             <FaFacebook />
           </Link>
         </div>
-        
+
         <div className="text-sm text-center text-emerald-300 font-medium">
           {/* Copyright and rights reserved text */}
-          
+
           All rights reserved. &copy; Copyright{" "}
           <Link href="/">
             Syed Shurem Ali
