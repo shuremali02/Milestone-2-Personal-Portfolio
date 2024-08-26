@@ -38,13 +38,13 @@ export default function Footer() {
         <div className="text-emerald-300 text-md grid grid-cols-1 md:grid-cols-3 lg:flex lg:justify-center lg:space-x-6">
           {/* Navigation links with responsive grid and flex layout */}
           
-          <Link href="/about" className="hover:scale-95">
+          <Link href="/about" className="hover:scale-95 text-center">
             About
           </Link>
-          <Link href="/portfolio" className="hover:scale-95">
+          <Link href="/portfolio" className="hover:scale-95 text-center">
             Project
           </Link>
-          <Link href="/contact" className="hover:scale-95">
+          <Link href="/contact" className="hover:scale-95 text-center">
             Contact
           </Link>
         </div>
