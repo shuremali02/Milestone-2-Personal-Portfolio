@@ -41,7 +41,7 @@ export default function Footer() {
           <Link href="/about" className="hover:scale-95">
             About
           </Link>
-          <Link href="/project" className="hover:scale-95">
+          <Link href="/portfolio" className="hover:scale-95">
             Project
           </Link>
           <Link href="/contact" className="hover:scale-95">
