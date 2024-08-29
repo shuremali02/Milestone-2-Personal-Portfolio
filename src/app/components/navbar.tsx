@@ -7,11 +7,11 @@ export default function Navbar() {
   const [Open, setOpen] = useState(false);
 
   return (
-    <header className="bg-black top-0 z-10 sticky w-full transition-transform shadow-xl text-emerald-400 py-3 px-5 flex items-center justify-between">
+    <header className="bg-black top-0 z-10 sticky w-full shadow-xl text-emerald-400 py-3 px-5 flex items-center justify-between">
 
       {/* Logo Section */}
       <Link href="/">
-        <div className='flex items-center space-x-4 text-emerald-300'>
+        <div className='flex items-center space-x-4 text-emerald-300  animate-bounce '>
           <h1 className='text-3xl font-bold italic font-serif'>
             SSA
           </h1>
@@ -21,9 +21,9 @@ export default function Navbar() {
       {/* Centered Navigation for larger screens */}
       <nav className="hidden md:flex flex-1 justify-center">
         <ul className='flex space-x-14 text-emerald-600'>
-          <li><Link className='hover:text-neutral-400 hover:underline underline-offset-2' href="/about">About</Link></li>
-          <li><Link className='hover:text-neutral-400 hover:underline underline-offset-2' href="/portfolio">Projects</Link></li>
-          <li><Link className='hover:text-neutral-400 hover:underline underline-offset-2' href="/contact">Contact Us</Link></li>
+          <li><Link className='hover:text-emerald-300 hover:underline underline-offset-2' href="/about">About</Link></li>
+          <li><Link className='hover:text-emerald-300 hover:underline underline-offset-2' href="/portfolio">Projects</Link></li>
+          <li><Link className='hover:text-emerald-300 hover:underline underline-offset-2' href="/contact">Contact Us</Link></li>
         </ul>
       </nav>
 

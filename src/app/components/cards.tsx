@@ -21,8 +21,8 @@ export default function Card({ prop }: { prop: Props }) {
 
     return (
         <div
-            className="bg-neutral-800 w-full h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] border-1 rounded-lg p-2"
-            data-aos="fade-down"
+            className="bg-emerald-800 w-full h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] border-1 rounded-lg p-2"
+            data-aos="fade-up"
             data-aos-easing="ease-out-cubic"
             data-aos-duration="1500"
         >

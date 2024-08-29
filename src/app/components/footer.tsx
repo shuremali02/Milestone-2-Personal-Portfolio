@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaFacebook, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -11,7 +11,7 @@ export default function Footer() {
       <div className='max-w-7xl mx-auto px-4 lg:px-8 space-y-6'>
         {/* Main content container with responsive padding and spacing */}
 
-        <div className='bg-emerald-600 py-6 px-10 text-text2 font-medium border-y-2 border-opacity-5 border-neutral-400'>
+        <div className='bg-emerald-800 py-6 px-10 text-emerald-300 font-medium border-y-2 border-opacity-5 border-neutral-400'>
           {/* Top section with background color, padding, text color, and border */}
 
           <div className='text-center'>
@@ -24,7 +24,7 @@ export default function Footer() {
                 {/* Email contact for larger screens */}
                 Interested in connecting? Send me a message at: {" "}
                 <button className="bg-white text-emerald-300 py-3 px-7 rounded-md">
-                  shuremsyed41@gmail.com
+                📧 shuremsyed41@gmail.com 
                 </button>
               </p>
               <button className="bg-black text-emerald-300 py-3 px-7 rounded-md md:hidden">
@@ -67,7 +67,7 @@ export default function Footer() {
           <Link
             href="//linkedin.com/in/syed-shurem-ali-5a55852a0"
             aria-label="LinkedIn"
-            className="text-white hover:text-emerald-200"
+            className="text-blue-500 hover:text-emerald-200"
           >
             <FaLinkedin />
           </Link>
@@ -81,9 +81,16 @@ export default function Footer() {
           <Link
             href="https://www.facebook.com/syed.shuremali?mibextid=ZbWKwL" // Placeholder link
             aria-label="Facebook"
-            className="text-white hover:text-emerald-200"
+            className="text-blue-800 hover:text-emerald-200"
           >
             <FaFacebook />
+          </Link>
+          <Link
+            href="//linkedin.com/in/syed-shurem-ali-5a55852a0"
+            aria-label="Instagram"
+            className="text-pink-600 hover:text-emerald-200"
+          >
+            <FaInstagram />
           </Link>
         </div>
 

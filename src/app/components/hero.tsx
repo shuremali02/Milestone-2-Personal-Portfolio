@@ -42,7 +42,7 @@ export default function Hero() {
           clients worldwide.
         </p>
       </div>{" "}
-      <div className="flex items-center justify-center pt-7"><button className="bg-black text-emerald-500 hover:text-neutral-300 py-3 px-7 rounded-full relative"> Shuremsyed41@gmail.com</button></div>
+      <div className="flex items-center justify-center pt-7"><button className="bg-black text-emerald-500 hover:text-neutral-300 py-3 px-7 rounded-full relative"> 📧Shuremsyed41@gmail.com</button></div>
 
     </div>
   )

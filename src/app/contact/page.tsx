@@ -6,7 +6,7 @@ export default function Contact() {
   return (
     <section className="bg-black py-8 text-emerald-300">
       <div>
-        <h1 className="flex justify-center pt-8 pb-15 text-5xl font-bold font-i tracking-widest text-text2 underline ">
+        <h1 className="flex justify-center pt-8 pb-15 text-5xl font-bold font-i tracking-widest text-emerald-300 underline decoration-emerald-700  hover:animate-pulse">
           Contact Me
         </h1>
         <br />
@@ -26,7 +26,7 @@ export default function Contact() {
             </Link> */}
               <Link href='mailto:shuremsyed41@gmail.com'>
                 <button className="bg-stone-950 border-neutral-200 border-y-1 rounded-l-full rounded-r-full text-lg flex items-center justify-center font-bold text-text2 py-4 px-14">
-                  <p>Get in Touch</p>
+                  <p className='underline decoration-emerald-700'>Get in Touch</p>
                 </button>
               </Link>
             </div>

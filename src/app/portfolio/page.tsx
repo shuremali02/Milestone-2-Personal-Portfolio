@@ -40,7 +40,7 @@ export default function Portfolio() {
 
   return (
     <div className="bg-black py-8 text-emerald-300">
-      <h1 className="flex items-center justify-center pt-8 text-5xl font-bold tracking-widest underline text-emerald-500">
+      <h1 className="flex items-center justify-center pt-8 text-5xl font-bold tracking-widest underline text-emerald-300 decoration-emerald-700  hover:animate-pulse">
         Featured Projects
       </h1>
 
