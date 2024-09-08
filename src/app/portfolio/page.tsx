@@ -34,6 +34,12 @@ export default function Portfolio() {
       description: "Simple Hello World Application build with nextjs and styled with Tailwind",
       route: "https://next-js-milestone-1-achieved.netlify.app/",
     },
+    {
+      img: "/Capture.PNG",
+      title: "Static Resume",
+      description: "Static Resume use for html,css and typescript",
+      route: "https://hackathon-static-resume-builder.netlify.app",
+    },
 
 
   ];
