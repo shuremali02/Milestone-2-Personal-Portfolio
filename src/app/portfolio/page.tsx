@@ -3,6 +3,29 @@ import Card from '../components/cards';
 export default function Portfolio() {
   const project = [
     {
+      img: "/travelBlog.jpg",
+      title: "Travelling-Website- ",
+      description: "A modern travel blog built with Next.js, React, and Tailwind CSS, The site features responsive design, dynamic components, and smooth navigation for an engaging travel journey.",
+      route: "https://travelblog-assignment.netlify.app/",
+    
+    },
+    {
+      img: "/BlogPost.jpg",
+      title: "Blogpost",
+      description: "This is My BlogPost-web ",
+      route: "https://blogpost101.netlify.app/",
+    
+    },
+    {
+      img: "/image.png",
+      title: "Dynamic Resume Builder",
+      description: "Dynamic Resume Builder use to Generate your Resume and save as PDF ",
+      route: "https://resume-builder-milestone-5.netlify.app/",
+    
+    },
+
+    {
+
       img: "/cal.png",
       title: "Calculator.ts",
       description: "A device that performs arithmetic operations on numbers.",
@@ -34,28 +57,9 @@ export default function Portfolio() {
       description: "Simple Hello World Application build with nextjs and styled with Tailwind",
       route: "https://next-js-milestone-1-achieved.netlify.app/",
     },
-    {
-      img: "/image.png",
-      title: "Dynamic Resume Builder",
-      description: "Dynamic Resume Builder use to Generate your Resume and save as PDF ",
-      route: "https://resume-builder-milestone-5.netlify.app/",
     
-    },
-    {
-      img: "/BlogPost.jpg",
-      title: "Blogpost",
-      description: "This is My BlogPost-web ",
-      route: "https://blogpost101.netlify.app/",
     
-    },
-    {
-      img: "/travelBlog.jpg",
-      title: "Travelling-Website- ",
-      description: "A modern travel blog built with Next.js, React, and Tailwind CSS, The site features responsive design, dynamic components, and smooth navigation for an engaging travel journey.",
-      route: "https://travelblog-assignment.netlify.app/",
-    
-    },
-
+   
 
 
   ];
