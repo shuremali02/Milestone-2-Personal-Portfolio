@@ -17,12 +17,34 @@ export default function Portfolio() {
     
     },
     {
-      img: "/image.png",
+      img: "/hacka img.jpg",
       title: "Dynamic Resume Builder",
       description: "Dynamic Resume Builder use to Generate your Resume and save as PDF ",
       route: "https://resume-builder-milestone-5.netlify.app/",
     
     },
+    {
+      img: "/assign 6 pic.jpg",
+      title: "Figma design-to-code–Pixel Perfect—Landing Page",
+      description: "Used modern front-end technologies (e.g., HTML, CSS,typescript,shadcn ui ) for creating a clean and accessible interfac",
+      route: "https://shurem-class-9to12-assignment-6.netlify.app/",
+    
+    },
+    {
+      img: "/3 assignment.jpg",
+      title: "Green -Groups—Landing Page ",
+      description: "fully responsive design ",
+      route: "https://shurem-class-assignment-3.netlify.app/",
+    
+    },
+    {
+      img: "/assign 2.jpg",
+      title: "Brandbuzz—Landing Page ",
+      description: "fully responsive design ",
+      route: "https://class-assignment-2-shuremali.netlify.app/",
+    
+    },
+
 
     {
 
