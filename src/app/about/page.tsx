@@ -11,7 +11,9 @@ export default function About() {
   useEffect(() => { AOS.init() }, [])
   return (
     <div className='bg-black py-8 text-text2'>
+      {/* AboutSection */}
       <div>
+
         <h1 className="flex justify-center pt-8 pb-16 text-5xl font-bold tracking-widest text-emerald-300 underline decoration-emerald-700  hover:animate-pulse">
           About Me
         </h1>
