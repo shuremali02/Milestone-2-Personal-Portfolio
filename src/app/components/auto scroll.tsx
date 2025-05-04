@@ -10,12 +10,12 @@ export default function TechStack() {
   return (
     <div className="overflow-hidden w-full">
       <div>
-        <h1 className="flex justify-center pt-24 pb-16 text-5xl font-bold tracking-widest underline text-emerald-300 decoration-emerald-700  hover:animate-pulse">
+        <h1 className="flex justify-center pt-24 pb-16 text-5xl font-bold tracking-widest underline text-primary decoration-primaryHover  hover:animate-pulse">
           Tech Stack
         </h1>
       </div>
-      <div className="flex justify-center items-center bg-emerald-800 py-6">
-        <div className="flex space-x-32 text-5xl text-neutral-500 animate-auto-scroll whitespace-nowrap">
+      <div className="flex justify-center items-center bg-primary py-6">
+        <div className="flex space-x-32 text-5xl text-textMuted animate-auto-scroll whitespace-nowrap">
           <p className="text-blue-600  hover:animate-ping">
             <FaCss3Alt size={60} />
           </p>

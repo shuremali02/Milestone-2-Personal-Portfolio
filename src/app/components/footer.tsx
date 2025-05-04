@@ -5,100 +5,84 @@ import { FaFacebook, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-black py-8 text-text2">
-      {/* Footer container with background color, padding, and text color */}
+    <footer className="bg-background py-8 text-textMuted">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 space-y-6">
 
-      <div className='max-w-7xl mx-auto px-4 lg:px-8 space-y-6'>
-        {/* Main content container with responsive padding and spacing */}
-
-        <div className='bg-emerald-800 py-6 px-10 text-emerald-300 font-medium border-y-2 border-opacity-5 border-neutral-400'>
-          {/* Top section with background color, padding, text color, and border */}
-
-          <div className='text-center'>
-            {/* Centered text section */}
-
-            <div className="text-lg">
-              {/* Text section with large font size */}
-
-              <p className="hidden md:block text-emerald-200">
-                {/* Email contact for larger screens */}
-                Interested in connecting? Send me a message at: {" "}
-                <button className="bg-white text-emerald-300 py-3 px-7 rounded-md">
-                📧 shuremsyed41@gmail.com 
-                </button>
-              </p>
-              <button className="bg-black text-emerald-300 py-3 px-7 rounded-md md:hidden">
-                {/* Email contact for smaller screens */}
-                Shuremsyed41@gmail.com
+        {/* Contact Banner */}
+        <div className="bg-surface py-6 px-10 text-primary font-medium border-y border-border">
+          <div className="text-center text-lg">
+            <p className="hidden md:block text-primary">
+              Interested in connecting? Send me a message at:{" "}
+              <button className="bg-white text-primary py-3 px-7 rounded-md shadow-md hover:bg-primary hover:text-background transition-all">
+                📧 shuremsyed41@gmail.com
               </button>
-            </div>
+            </p>
+            <button className="bg-background text-primary py-3 px-7 rounded-md md:hidden border border-border hover:bg-primary hover:text-background transition-all">
+              📧 shuremsyed41@gmail.com
+            </button>
           </div>
         </div>
 
-        <div className="text-emerald-300 text-md grid grid-cols-1 md:grid-cols-3 lg:flex lg:justify-center lg:space-x-6">
-          {/* Navigation links with responsive grid and flex layout */}
-
-          <Link href="/about" className="hover:scale-95 text-center">
+        {/* Navigation Links */}
+        <div className="text-primary text-md grid grid-cols-1 md:grid-cols-3 lg:flex lg:justify-center lg:space-x-6">
+          <Link href="/about" className="hover:underline text-center hover:text-primaryHover transition">
             About
           </Link>
-          <Link href="/portfolio" className="hover:scale-95 text-center">
+          <Link href="/portfolio" className="hover:underline text-center hover:text-primaryHover transition">
             Project
           </Link>
-          <Link href="/contact" className="hover:scale-95 text-center">
+          <Link href="/contact" className="hover:underline text-center hover:text-primaryHover transition">
             Contact
           </Link>
         </div>
 
+        {/* Profile Image */}
         <div className="flex justify-center">
-          {/* Centered profile image */}
-
           <Image
-            src="/dp.jpg"            // Path to the image
-            alt="Footer Image"       // Alt text for accessibility
-            width={80}               // Adjusted width for better visibility on larger screens
-            height={80}              // Adjusted height to maintain aspect ratio
-            className="rounded-full h-auto"
+            src="/dp.jpg"
+            alt="Footer Image"
+            width={80}
+            height={80}
+            className="rounded-full border border-border shadow-md"
           />
         </div>
 
-        <div className="flex justify-center space-x-6 text-2xl lg:text-3xl">
-          {/* Social media icons container with spacing and responsive size */}
-
+        {/* Social Icons */}
+        <div className="flex justify-center space-x-6 text-2xl lg:text-3xl text-primary">
           <Link
             href="//linkedin.com/in/syed-shurem-ali-5a55852a0"
             aria-label="LinkedIn"
-            className="text-blue-500 hover:text-emerald-200"
+            className="hover:text-primaryHover transition"
           >
             <FaLinkedin />
           </Link>
           <Link
             href="https://github.com/shuremali02"
             aria-label="GitHub"
-            className="text-white hover:text-emerald-200"
+            className="hover:text-primaryHover transition"
           >
             <FaGithub />
           </Link>
           <Link
-            href="https://www.facebook.com/syed.shuremali?mibextid=ZbWKwL" // Placeholder link
+            href="https://www.facebook.com/syed.shuremali?mibextid=ZbWKwL"
             aria-label="Facebook"
-            className="text-blue-800 hover:text-emerald-200"
+            className="hover:text-primaryHover transition"
           >
             <FaFacebook />
           </Link>
           <Link
             href="//linkedin.com/in/syed-shurem-ali-5a55852a0"
             aria-label="Instagram"
-            className="text-pink-600 hover:text-emerald-200"
+            className="hover:text-primaryHover transition"
           >
             <FaInstagram />
           </Link>
         </div>
 
-        <div className="text-sm text-center text-emerald-300 font-medium">
-          {/* Copyright and rights reserved text */}
-
+        {/* Copyright */}
+        <div className="text-sm text-center text-textMuted font-medium">
           All rights reserved. &copy; Copyright{" "}
-          <Link href="/">
+          <Link href="/" className="hover:text-primaryHover transition">
             Syed Shurem Ali
           </Link>{" "}
           2024

@@ -1,39 +1,32 @@
 import React from 'react'
 import Link from 'next/link';
 
-
 export default function Contact() {
   return (
-    <section className="bg-black py-8 text-emerald-300">
+    <section className="bg-background py-8 text-textMuted">
       <div>
-        <h1 className="flex justify-center pt-8 pb-15 text-5xl font-bold font-i tracking-widest text-emerald-300 underline decoration-emerald-700  hover:animate-pulse">
+        <h1 className="flex justify-center pt-8 pb-15 text-5xl font-bold tracking-widest text-primary underline decoration-primaryHover hover:animate-pulse">
           Contact Me
         </h1>
         <br />
 
         <div className="flex items-center justify-center">
           <div
-            className="h-[200px] w-full md:w-[480px] border-emerald-400 bg-emerald-600 rounded-3xl hover:animate-pulse hover:bg-gradient-to-br from-button1 to-button2"
+            className="h-[200px] w-full md:w-[480px] border-primary bg-primaryHover rounded-3xl hover:animate-pulse hover:bg-gradient-to-br from-button1 to-button2"
             data-aos="flip-up"
             data-aos-easing="ease-out-cubic"
             data-aos-duration="1500"
           >
             <div className="flex justify-center items-center pt-16 hover:animate-pulse rounded-3xl">
-              {/* <Link  href='mailto:shuremsyed41@gmail.com'>
-            <button className="bg-emerald-300 border-neutral-200 border-y-1 rounded-l-full rounded-r-full text-lg flex items-center justify-center font-bold text-text2 py-4 px-14">
-          <p >Get in Touch</p>
-            </button> 
-            </Link> */}
               <Link href='mailto:shuremsyed41@gmail.com'>
-                <button className="bg-stone-950 border-neutral-200 border-y-1 rounded-l-full rounded-r-full text-lg flex items-center justify-center font-bold text-text2 py-4 px-14">
-                  <p className='underline decoration-emerald-700'>Get in Touch</p>
+                <button className="bg-surface border-neutral-200 border-y-1 rounded-l-full rounded-r-full text-lg flex items-center justify-center font-bold text-textMuted py-4 px-14">
+                  <p className='underline decoration-primaryHover'>Get in Touch</p>
                 </button>
               </Link>
             </div>
           </div>
         </div>
       </div>
-
     </section>
   );
 }

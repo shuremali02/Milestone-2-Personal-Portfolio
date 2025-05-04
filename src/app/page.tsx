@@ -5,32 +5,27 @@ import Contact from './contact/page'
 import "./globals.css"
 import Portfolio from './portfolio/page'
 
-
-
 export default function Main() {
   return (
-    <div className="bg-black min-h-screen w-auto md:w-full">
- <div>
-      <Hero />
+    <div className="bg-background min-h-screen w-auto md:w-full">
+      <div>
+        <Hero />
       </div>
-      
-<div className="pt-20" id="project">
-       
-       <Portfolio />
-       </div>
 
+      <div className="pt-20" id="project">
+        <Portfolio />
+      </div>
 
-      <div  className="pt-20" id="about">
+      <div className="pt-20" id="about">
         <About />
         <div className="pt-20">
-      <Auto />
+          <Auto />
+        </div>
       </div>
-      </div>
-     
+
       <div className="pt-20" id="contact">
-      <Contact />
+        <Contact />
       </div>
-    
     </div>
   )
 }
