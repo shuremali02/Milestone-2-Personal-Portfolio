@@ -27,7 +27,7 @@ export default function About() {
             >
               <div className="flex justify-center items-center pt-16">
                 <Image
-                  src={"/dp.jpg"}
+                  src={"https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746405297/dp_ygwx33.jpg"}
                   alt="Profile Picture"
                   width={150}
                   height={0}
