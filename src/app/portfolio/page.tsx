@@ -4,7 +4,7 @@ export default function Portfolio() {
   const project = [
     {
       img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403842/SXN_BY_NASH_neolg6.png",
-      title: "SXN-By-Nash_marletplace ",
+      title: "SXN-By-Nash_Marketplace ",
       description: "SxN by NASH  is an e-commerce platform featuring a curated selection of perfumes and watches, designed with a sleek, modern interface. It offers features like flash sales, wishlist management, and a countdown timer for exclusive offers, enhancing the shopping experience..",
       route: "https://marketplace-hackathon-03-q2-finale.vercel.app/",
     },
