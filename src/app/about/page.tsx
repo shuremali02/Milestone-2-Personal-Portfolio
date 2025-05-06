@@ -9,7 +9,7 @@ export default function About() {
   useEffect(() => { AOS.init() }, [])
   
   return (
-    <div className='bg-background py-8 text-textMuted'>
+    <div className='bg-background py-8 text-textMuted '>
       {/* AboutSection */}
       <div>
         <h1 className="flex justify-center pt-8 pb-16 text-5xl font-bold tracking-widest text-primary underline decoration-primaryHover hover:animate-pulse">
