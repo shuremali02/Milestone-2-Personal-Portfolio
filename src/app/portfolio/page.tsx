@@ -1,6 +1,10 @@
-import Card from '../components/cards';
+"use client";
+import { useState } from "react";
+import Card from "../components/cards";
 
 export default function Portfolio() {
+  const [showAll, setShowAll] = useState(false);
+
   const project = [
     {
       img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403842/SXN_BY_NASH_neolg6.png",
@@ -94,6 +98,8 @@ export default function Portfolio() {
     },
   ];
 
+  const visibleProjects = showAll ? project : project.slice(0, 6);
+
   return (
     <div className="bg-background py-8 text-textMuted">
       <h1 className="flex items-center justify-center pt-8 text-5xl font-bold tracking-widest underline text-primary decoration-primaryHover hover:animate-pulse">
@@ -101,9 +107,19 @@ export default function Portfolio() {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 p-6">
-        {project.map((projects, index) => (
+        {visibleProjects.map((projects, index) => (
           <Card key={index} prop={projects} />
         ))}
+      </div>
+
+      {/* Toggle Button */}
+      <div className="flex justify-center mt-6">
+        <button
+          onClick={() => setShowAll(!showAll)}
+          className="px-6 py-2 rounded-full bg-primary text-white hover:bg-primaryHover transition duration-300"
+        >
+          {showAll ? "View Less" : "View More"}
+        </button>
       </div>
     </div>
   );
