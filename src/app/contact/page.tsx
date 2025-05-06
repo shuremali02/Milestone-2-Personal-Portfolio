@@ -18,9 +18,19 @@ export default function Contact() {
             data-aos-duration="1500"
           >
             <div className="flex justify-center items-center pt-16 hover:animate-pulse rounded-3xl">
+              {/* Get in Touch Button */}
               <Link href='mailto:shuremsyed41@gmail.com'>
-                <button className="bg-surface border-neutral-200 border-y-1 rounded-l-full rounded-r-full text-lg flex items-center justify-center font-bold text-textMuted py-4 px-14">
+                <button className="bg-surface border-neutral-200 border-y-1 rounded-full text-lg flex items-center justify-center font-semibold text-textMuted py-4 px-14 transition-all duration-300 ease-in-out transform hover:bg-primary hover:text-white hover:scale-105">
                   <p className='underline decoration-primaryHover'>Get in Touch</p>
+                </button>
+              </Link>
+            </div>
+
+            {/* Resume Button (Professional Look) */}
+            <div className="flex justify-center items-center pt-8 hover:animate-pulse rounded-3xl">
+              <Link href="https://docs.google.com/document/d/1TODtI3Vlb6YxTWCps0OVeUUz9We3kYlviq6Kwfl_p8E/edit?tab=t.0#heading=h.rfgvkg2ifhfd" target="_blank">
+                <button className="bg-surface border border-primary text-primary rounded-full text-lg flex items-center justify-center font-semibold py-4 px-14 transition-all duration-300 ease-in-out transform hover:bg-primary hover:text-white hover:scale-105">
+                  <p className='underline decoration-primaryHover'>View Resume</p>
                 </button>
               </Link>
             </div>
