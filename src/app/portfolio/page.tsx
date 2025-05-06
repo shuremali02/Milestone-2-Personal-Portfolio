@@ -116,7 +116,7 @@ export default function Portfolio() {
       <div className="flex justify-center mt-6">
         <button
           onClick={() => setShowAll(!showAll)}
-          className="px-6 py-2 rounded-full bg-primary text-white hover:bg-primaryHover transition duration-300"
+          className="px-6 py-2 rounded-full  underline decoration-primaryHover bg-surface border border-primary text-textMuted hover:bg-primary hover:text-textMain hover:scale-105 transition duration-300"
         >
           {showAll ? "View Less" : "View More"}
         </button>
