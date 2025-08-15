@@ -21,9 +21,9 @@ export default function Hero() {
       {/* Profile Image */}
       <div className="flex justify-center pt-7">
         <Image
-          src={"https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746405297/dp_ygwx33.jpg"}
-          width={70}
-          height={70}
+          src={"https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg"}
+          width={150}
+          height={150}
           alt="Syed Shurem Ali"
           className="rounded-full border border-border shadow-md"
         />

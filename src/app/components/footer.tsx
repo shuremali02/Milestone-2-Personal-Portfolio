@@ -39,10 +39,10 @@ export default function Footer() {
         {/* Profile Image */}
         <div className="flex justify-center">
           <Image
-            src="/dp.jpg"
+            src="https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg"
             alt="Footer Image"
-            width={80}
-            height={80}
+            width={130}
+            height={130}
             className="rounded-full border border-border shadow-md"
           />
         </div>

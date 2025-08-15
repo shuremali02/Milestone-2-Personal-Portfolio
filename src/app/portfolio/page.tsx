@@ -19,6 +19,18 @@ export default function Portfolio() {
       route: "https://opensea-clone-fawn.vercel.app/",
     },
     {
+      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755284159/chatbot_with_chainlit_zaycz2.png",
+      title: "Simple Chatbot with Auth, Chainlit & Gemini",
+      description: "An AI-powered chatbot built using Chainlit and Google's Gemini model, featuring secure user authentication. Designed for a smooth conversational experience with a clean, modern interface.",
+      route: "https://github.com/shuremali02/Simple_Chatbot__With_Auth_Chainlit_And_Gemini",
+    },
+    {
+      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755285617/crypto_fvrzqw.png",
+      title: "Crypto Market Conversational Chatbot",
+      description: "Streamlit-based AI chatbot built using OpenAI’s `agents` SDK and CoinGecko API. Offers real-time insights like total cryptocurrencies, market cap, Bitcoin dominance, and live price summaries—delivered via a clean conversational UI.",
+      route: "https://github.com/shuremali02/Crypto_Currency_Agent_Open_Ai_SDK"
+    },
+    {
       img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403840/Watchhub_ad0qgk.jpg",
       title: "Watch-Hub ",
       description: "Watch Hub  A modern e-commerce frontend platform for premium watches, built with Next.js. Features include a stylish layout, responsive design, and smooth product browsing experience.",

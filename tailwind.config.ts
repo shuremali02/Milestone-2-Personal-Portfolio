@@ -10,15 +10,16 @@ const config: Config = {
 theme: {
   extend: {
     colors: {
-      background: '#0D0D0D',
-      surface: '#1A1A1A',
-      primary: '#00BFA6',
-      primaryHover: '#00D4A7',
-      textMain: '#FFFFFF',
-      textMuted: '#B0B0B0',
-      border: '#2E2E2E',
+      background: '#0B0F14',       // Deep navy-black for premium feel
+      surface: '#161B22',          // Dark blue-gray for card backgrounds
+      primary: '#00A38C',          // Muted teal, less neon, more refined
+      primaryHover: '#14B8A6',     // Slightly brighter teal for hover
+      textMain: '#F5F7FA',         // Off-white for softer readability
+      textMuted: '#94A3B8',        // Cool gray-blue for subtle text
+      border: '#2D3748',           // Softer neutral border
     },
-    fontFamily: {
+    
+      fontFamily: {
       sans: ['Poppins', 'sans-serif'],
     },
   }

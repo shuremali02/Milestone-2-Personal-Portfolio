@@ -27,10 +27,10 @@ export default function About() {
             >
               <div className="flex justify-center items-center pt-16">
                 <Image
-                  src={"https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746405297/dp_ygwx33.jpg"}
+                  src={"https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg"}
                   alt="Profile Picture"
-                  width={150}
-                  height={0}
+                  width={200}
+                  height={200}
                   className="rounded-full shadow-lg h-auto"
                 />
               </div>
