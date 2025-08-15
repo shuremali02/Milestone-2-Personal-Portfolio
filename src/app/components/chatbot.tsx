@@ -8,6 +8,7 @@ export default function Chatbot() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   const sendMessage = async () => {
@@ -46,17 +47,28 @@ export default function Chatbot() {
     <div>
       {/* Floating Chat Icon */}
       {!open && (
-        <button
-          onClick={() => setOpen(true)}
-          className="fixed bottom-5 right-5 bg-primary text-white p-4 rounded-full shadow-lg hover:bg-primary/80 transition"
+        <div
+          className="fixed bottom-5 right-5 flex flex-col items-center"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
         >
-          <BiMessageDetail size={24} />
-        </button>
+          {hovered && (
+            <div className="mb-2 px-3 py-1 rounded-lg bg-primary text-white text-sm shadow-lg transition-opacity">
+              Ask a question
+            </div>
+          )}
+          <button
+            onClick={() => setOpen(true)}
+            className="bg-primary text-white p-4 rounded-full shadow-lg hover:bg-primary/80 transition transform hover:scale-110"
+          >
+            <BiMessageDetail size={24} />
+          </button>
+        </div>
       )}
 
       {/* Chatbox */}
       {open && (
-        <div className="fixed bottom-5 right-5 w-80 bg-surface border border-border rounded-lg shadow-xl flex flex-col">
+        <div className="fixed bottom-5 right-5 w-80 bg-surface border border-border rounded-lg shadow-xl flex flex-col animate-slide-up">
           {/* Header */}
           <div className="bg-primary text-white p-3 flex justify-between items-center rounded-t-lg">
             <span className="font-semibold">AI Chatbot</span>
