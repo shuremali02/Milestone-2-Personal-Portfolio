@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
+import ChatBot from "./components/chatbot";
+
 export const metadata: Metadata = {
   title: "Porfolio",
   description: "Porfolio app for Project",
@@ -20,8 +22,8 @@ export default function RootLayout({
         <Navbar />
       
           {children}
-      
-
+        <ChatBot />
+       
         <Footer />
       </body>
     </html>

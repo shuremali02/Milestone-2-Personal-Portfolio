@@ -1,40 +1,32 @@
-import About from './about/page'
-import Hero from './components/hero'
-import Auto from "./components/auto scroll"
-import Contact from './contact/page'
-import "./globals.css"
-import Portfolio from './portfolio/page'
-import ChatBot from "./components/chatbot"
+import About from "./about/page";
+import Hero from "./components/hero";
+import Auto from "./components/auto scroll";
+import Contact from "./contact/page";
+import "./globals.css";
+import Portfolio from "./portfolio/page";
+
 
 export default function Main() {
   return (
-<div className="bg-background min-h-screen w-full overflow-x-hidden">
-<div>
+    <div className="bg-background min-h-screen w-full overflow-x-hidden">
+      <div>
         <Hero />
       </div>
 
       <div className="pt-20" id="project">
         <Portfolio />
       </div>
- 
+
       <div className="pt-20" id="about">
         <About />
         <div className="pt-20">
           <Auto />
-        </div> 
-        
-
-        
-            <div>
-              <ChatBot />
-            </div>
-        
-
-        </div> 
+        </div>
+      </div>
 
       <div className="pt-20" id="contact">
         <Contact />
-      </div> 
+      </div>
     </div>
-  )
+  );
 }

@@ -15,7 +15,8 @@ export default function Chatbot() {
     if (!input.trim()) return;
 
     const userMsg = { role: "user", content: input };
-    setMessages((prev) => [...prev, userMsg]);
+    const updatedMessages = [...messages, userMsg];
+    setMessages(updatedMessages);
     setInput("");
     setLoading(true);
 
@@ -23,7 +24,7 @@ export default function Chatbot() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMsg.content }),
+        body: JSON.stringify({ messages: updatedMessages }), // ✅ full history send
       });
 
       const data = await res.json();
@@ -82,7 +83,9 @@ export default function Chatbot() {
             {messages.map((msg, i) => (
               <div
                 key={i}
-                className={`mb-2 ${msg.role === "user" ? "text-primary" : "text-textMuted"}`}
+                className={`mb-2 ${
+                  msg.role === "user" ? "text-primary" : "text-textMuted"
+                }`}
               >
                 <strong>{msg.role === "user" ? "You: " : "Bot: "}</strong>
                 {msg.content}

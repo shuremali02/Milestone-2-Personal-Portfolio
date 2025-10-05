@@ -27,6 +27,12 @@ I am passionate about creating modern, responsive, and user-friendly interfaces.
 
 
 export const project = [
+  {
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1759697057/roommatcher_qtnhiv.png",
+    title: "Room Matcher AI",
+    description: "AI-powered roommate matcher with multi-agent orchestration and live trace visualization, built during Innovista Indus Hackathon.",
+    route: "https://room-matcher-ai-rosy.vercel.app/",
+  },
     {
       img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403842/SXN_BY_NASH_neolg6.png",
       title: "SXN-By-Nash_Marketplace ",

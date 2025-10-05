@@ -28,7 +28,7 @@ export default function Contact() {
 
             {/* Resume Button (Professional Look) */}
             <div className="flex justify-center items-center pt-8 hover:animate-pulse rounded-3xl">
-              <Link href="https://docs.google.com/document/d/1TODtI3Vlb6YxTWCps0OVeUUz9We3kYlviq6Kwfl_p8E/edit?tab=t.0#heading=h.rfgvkg2ifhfd" target="_blank">
+              <Link href="https://docs.google.com/document/d/19yPE2EWRe6PUPX9WkA1m3r6wkthM2jRL/edit?usp=sharing&ouid=107599650906310040146&rtpof=true&sd=true" target="_blank">
                 <button className="bg-surface border border-primary text-textMuted rounded-full text-lg flex items-center justify-center font-semibold py-4 px-14 transition-all duration-300 ease-in-out transform hover:bg-primary hover:text-textMain hover:scale-105">
                   <p className='underline decoration-primaryHover'>View Resume</p>
                 </button>
