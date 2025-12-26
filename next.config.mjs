@@ -4,7 +4,10 @@ const nextConfig = {
         domains:[
             "res.cloudinary.com",
             "pixelplex.io",
-            "www.singlegrain.com"
+            "www.singlegrain.com",
+            "randomuser.me",
+            "via.placeholder.com",
+            "api.dicebear.com"
         ]
     },
 };

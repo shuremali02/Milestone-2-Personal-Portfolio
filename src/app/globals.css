@@ -2,52 +2,126 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* Theme CSS Variables */
+:root {
+  /* Dark theme (default) */
+  --background: #0B0F14;
+  --surface: #161B22;
+  --primary: #00A38C;
+  --primary-hover: #14B8A6;
+  --accent: #3B82F6;
+  --text-main: #F5F7FA;
+  --text-muted: #94A3B8;
+  --border: #2D3748;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Light theme */
+:root.light {
+  --background: #F8FAFC;
+  --surface: #FFFFFF;
+  --primary: #00897B;
+  --primary-hover: #00A38C;
+  --accent: #2563EB;
+  --text-main: #1E293B;
+  --text-muted: #64748B;
+  --border: #E2E8F0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--background);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Auto scroll animation */
+@keyframes auto-scroll {
+  0% {
+    transform: translateX(0);
   }
-} */
-html {
-    scroll-behavior: smooth;
+  100% {
+    transform: translateX(-50%);
   }
-  @keyframes auto-scroll {
-    0% {
-      transform: translateX(100%); /* Start from off the right side */
-    }
-    50% {
-      transform: translateX(-100%); /* Move off the left side */
-    }
-    100% {
-      transform: translateX(100%); /* Return to the original position */
-    }
+}
+
+.animate-auto-scroll {
+  animation: auto-scroll 30s linear infinite;
+}
+
+/* Width grow animation for skill bars */
+@keyframes width-grow {
+  from {
+    width: 0%;
   }
-  
-  .animate-auto-scroll {
-    animation: auto-scroll 100s linear infinite;
+  to {
+    width: var(--target-width, 100%);
   }
-  
+}
+
+.animate-width-grow {
+  animation: width-grow 1s ease-out forwards;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Slide up animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--primary);
+  color: var(--text-main);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
