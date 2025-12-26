@@ -44,7 +44,7 @@ export default function Testimonials() {
           {/* Testimonial Card */}
           <div className="bg-surface border border-border rounded-2xl p-6 md:p-8 shadow-lg mx-4 md:mx-12">
             {/* Quote Icon */}
-            <div className="text-primary/20 text-6xl font-serif mb-4">"</div>
+            <div className="text-primary/20 text-6xl font-serif mb-4">&ldquo;</div>
 
             {/* Content */}
             <p className="text-lg md:text-xl text-textMain mb-8 leading-relaxed">

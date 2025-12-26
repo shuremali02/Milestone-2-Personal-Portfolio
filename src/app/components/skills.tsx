@@ -14,7 +14,7 @@ export default function Skills() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [animatedSkills, setAnimatedSkills] = useState<Record<string, boolean>>({});
 
-  const categories = ["All", ...new Set(skills.map(skill => skill.category))];
+  const categories = ["All", ...Array.from(new Set(skills.map(skill => skill.category)))];
 
   const filteredSkills = selectedCategory === "All"
     ? skills
