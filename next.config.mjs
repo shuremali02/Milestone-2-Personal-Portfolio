@@ -1,14 +1,32 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images:{
-        domains:[
-            "res.cloudinary.com",
-            "pixelplex.io",
-            "www.singlegrain.com",
-            "randomuser.me",
-            "via.placeholder.com",
-            "api.dicebear.com"
-        ]
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'res.cloudinary.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'pixelplex.io',
+            },
+            {
+                protocol: 'https',
+                hostname: 'www.singlegrain.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'randomuser.me',
+            },
+            {
+                protocol: 'https',
+                hostname: 'via.placeholder.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'api.dicebear.com',
+            },
+        ],
     },
 };
 
