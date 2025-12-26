@@ -5,6 +5,7 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
 import ChatBot from "./components/chatbot";
+import ScrollToTop from "./components/scroll-to-top";
 
 export const metadata: Metadata = {
   title: {
@@ -68,7 +69,7 @@ export default function RootLayout({
       
           {children}
         <ChatBot />
-       
+        <ScrollToTop />
         <Footer />
       </body>
     </html>

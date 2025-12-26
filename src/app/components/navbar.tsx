@@ -1,11 +1,66 @@
 "use client";
 import Link from 'next/link';
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { FiMenu, FiX } from "react-icons/fi";
 import ThemeToggle from "./theme-toggle";
 
+const navLinks = [
+  { href: "/#skills", label: "Skills", section: "skills" },
+  { href: "/#testimonials", label: "Testimonials", section: "testimonials" },
+  { href: "/portfolio", label: "Projects", section: "portfolio" },
+  { href: "/about", label: "About", section: "about" },
+  { href: "/contact", label: "Contact", section: "contact" },
+];
+
 export default function Navbar() {
   const [Open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
+
+  // Track active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (pathname !== "/") return;
+
+      const sections = ["skills", "testimonials", "about", "contact"];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            return;
+          }
+        }
+      }
+
+      if (scrollPosition < 300) {
+        setActiveSection("");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
+
+  // Set active based on pathname for non-home pages
+  useEffect(() => {
+    if (pathname === "/portfolio") setActiveSection("portfolio");
+    else if (pathname === "/about") setActiveSection("about");
+    else if (pathname === "/contact") setActiveSection("contact");
+    else if (pathname === "/") setActiveSection("");
+  }, [pathname]);
+
+  const isActive = (link: typeof navLinks[0]) => {
+    if (link.href.startsWith("/#")) {
+      return activeSection === link.section;
+    }
+    return pathname === link.href;
+  };
 
   return (
     <header className="bg-background/80 top-0 z-50 sticky w-full shadow-md text-textMain py-3 px-5 flex items-center justify-between border-b border-border backdrop-blur-lg">
@@ -22,11 +77,23 @@ export default function Navbar() {
       {/* Centered Navigation for larger screens */}
       <nav className="hidden md:flex flex-1 justify-center" aria-label="Main navigation">
         <ul className="flex space-x-8 text-textMuted font-medium">
-          <li><Link className="hover:text-primary hover:underline underline-offset-4 transition-all" href="/#skills">Skills</Link></li>
-          <li><Link className="hover:text-primary hover:underline underline-offset-4 transition-all" href="/#testimonials">Testimonials</Link></li>
-          <li><Link className="hover:text-primary hover:underline underline-offset-4 transition-all" href="/portfolio">Projects</Link></li>
-          <li><Link className="hover:text-primary hover:underline underline-offset-4 transition-all" href="/about">About</Link></li>
-          <li><Link className="hover:text-primary hover:underline underline-offset-4 transition-all" href="/contact">Contact</Link></li>
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={`relative py-2 transition-all ${
+                  isActive(link)
+                    ? "text-primary"
+                    : "hover:text-primary"
+                }`}
+              >
+                {link.label}
+                {isActive(link) && (
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full" />
+                )}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
 
@@ -52,12 +119,22 @@ export default function Navbar() {
           className="absolute top-16 left-0 right-0 bg-surface text-textMain text-center border-t border-border shadow-md animate-slide-up"
           aria-label="Mobile navigation"
         >
-          <ul className="flex flex-col gap-4 py-4">
-            <li><Link href="/#skills" onClick={() => setOpen(false)} className="block py-2 hover:text-primary hover:bg-background/50 transition">Skills</Link></li>
-            <li><Link href="/#testimonials" onClick={() => setOpen(false)} className="block py-2 hover:text-primary hover:bg-background/50 transition">Testimonials</Link></li>
-            <li><Link href="/portfolio" onClick={() => setOpen(false)} className="block py-2 hover:text-primary hover:bg-background/50 transition">Projects</Link></li>
-            <li><Link href="/about" onClick={() => setOpen(false)} className="block py-2 hover:text-primary hover:bg-background/50 transition">About</Link></li>
-            <li><Link href="/contact" onClick={() => setOpen(false)} className="block py-2 hover:text-primary hover:bg-background/50 transition">Contact</Link></li>
+          <ul className="flex flex-col gap-2 py-4">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className={`block py-3 transition ${
+                    isActive(link)
+                      ? "text-primary bg-primary/10 font-medium"
+                      : "hover:text-primary hover:bg-background/50"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       )}

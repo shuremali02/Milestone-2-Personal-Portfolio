@@ -6,6 +6,7 @@ import "./globals.css";
 import Portfolio from "./portfolio/page";
 import Skills from "./components/skills";
 import Testimonials from "./components/testimonials";
+import StatsCounter from "./components/stats-counter";
 // import Blog from "./components/blog";
 import { Metadata } from "next";
 
@@ -27,6 +28,8 @@ export default function Main() {
       <div>
         <Hero />
       </div>
+
+      <StatsCounter />
 
       <div className="pt-20" id="project">
         <Portfolio />

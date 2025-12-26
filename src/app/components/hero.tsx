@@ -1,15 +1,49 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+const roles = [
+  "Frontend Developer",
+  "React.js Expert",
+  "Next.js Developer",
+  "AI Enthusiast",
+  "UI/UX Designer"
+];
+
 export default function Hero() {
+  const [currentRole, setCurrentRole] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
+
+  useEffect(() => {
+    const role = roles[currentRole];
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < role.length) {
+          setDisplayText(role.slice(0, displayText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setCurrentRole((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, isDeleting ? 50 : 100);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentRole]);
 
   return (
     <div className="w-full min-h-[90vh] flex items-center justify-center text-textMuted bg-background px-4 overflow-hidden">
@@ -47,13 +81,16 @@ export default function Hero() {
         >
           Syed Shurem Ali
         </h1>
-        <p
-          className="text-lg md:text-xl text-textMuted mb-6"
+
+        {/* Typing Animation */}
+        <div
+          className="text-lg md:text-xl text-textMuted mb-6 h-8"
           data-aos="fade-up"
           data-aos-delay="400"
         >
-          Frontend Developer & AI Enthusiast
-        </p>
+          <span className="text-primary font-medium">{displayText}</span>
+          <span className="animate-pulse text-primary">|</span>
+        </div>
 
         {/* Headline */}
         <h2
