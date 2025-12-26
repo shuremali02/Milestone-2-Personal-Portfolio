@@ -20,9 +20,11 @@ export default function Navbar() {
 
       {/* Centered Navigation for larger screens */}
       <nav className="hidden md:flex flex-1 justify-center">
-        <ul className="flex space-x-14 text-textMuted font-medium">
-          <li><Link className="hover:text-primary hover:underline underline-offset-2 transition-all" href="/about">About</Link></li>
+        <ul className="flex space-x-8 text-textMuted font-medium">
+          <li><Link className="hover:text-primary hover:underline underline-offset-2 transition-all" href="/#skills">Skills</Link></li>
+          <li><Link className="hover:text-primary hover:underline underline-offset-2 transition-all" href="/#testimonials">Testimonials</Link></li>
           <li><Link className="hover:text-primary hover:underline underline-offset-2 transition-all" href="/portfolio">Projects</Link></li>
+          <li><Link className="hover:text-primary hover:underline underline-offset-2 transition-all" href="/about">About</Link></li>
           <li><Link className="hover:text-primary hover:underline underline-offset-2 transition-all" href="/contact">Contact</Link></li>
         </ul>
       </nav>
@@ -38,6 +40,8 @@ export default function Navbar() {
       {Open && (
         <nav className="absolute top-16 left-0 right-0 bg-surface text-textMain text-center border-t border-border shadow-md">
           <ul className="flex flex-col gap-4 py-4">
+            <li><Link href="/#skills" className="hover:text-primary hover:underline underline-offset-2 transition">Skills</Link></li>
+            <li><Link href="/#testimonials" className="hover:text-primary hover:underline underline-offset-2 transition">Testimonials</Link></li>
             <li><Link href="/portfolio" className="hover:text-primary hover:underline underline-offset-2 transition">Projects</Link></li>
             <li><Link href="/about" className="hover:text-primary hover:underline underline-offset-2 transition">About</Link></li>
             <li><Link href="/contact" className="hover:text-primary hover:underline underline-offset-2 transition">Contact</Link></li>

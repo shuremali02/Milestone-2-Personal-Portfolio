@@ -46,8 +46,21 @@ html {
       transform: translateX(100%); /* Return to the original position */
     }
   }
-  
+
+  @keyframes width-grow {
+    from {
+      width: 0%;
+    }
+    to {
+      width: var(--target-width, 100%);
+    }
+  }
+
   .animate-auto-scroll {
     animation: auto-scroll 100s linear infinite;
+  }
+
+  .animate-width-grow {
+    animation: width-grow 1s ease-out forwards;
   }
   

@@ -1,59 +1,129 @@
-import React from 'react';
-import { GoDotFill } from "react-icons/go";
+"use client";
+import React, { useEffect } from 'react';
 import Image from "next/image";
-import typewriter from "./home.module.css";
+import Link from "next/link";
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Hero() {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   return (
-    <div className="w-full text-textMuted bg-background">
-      {/* Top Intro Button */}
-      <div className="flex justify-center pt-10">
-        <button className="bg-surface border border-border space-x-2 rounded-full py-2 px-4 text-sm flex items-center justify-center text-textMuted shadow-md">
-          <p className="text-primary">
-            <GoDotFill />
-          </p>
-          <p className={`${typewriter.typewriter}`}>
-            It&#39;s me <b className="text-primary">Syed Shurem Ali 🙎🏻‍♂️</b>
-          </p>
-        </button>
-      </div>
+    <div className="w-full min-h-[90vh] flex items-center justify-center text-textMuted bg-background px-4 overflow-hidden">
+      <div className="max-w-4xl mx-auto text-center">
+        {/* Status Badge */}
+        <div className="flex justify-center mb-6" data-aos="fade-down" data-aos-delay="100">
+          <div className="bg-surface border border-border rounded-full py-2 px-5 text-sm flex items-center gap-2 shadow-md hover:shadow-lg transition-shadow">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="text-textMuted">Available for work</span>
+          </div>
+        </div>
 
-      {/* Profile Image */}
-      <div className="flex justify-center pt-7">
-        <Image
-          src={"https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg"}
-          width={150}
-          height={150}
-          alt="Syed Shurem Ali"
-          className="rounded-full border border-border shadow-md"
-        />
-      </div>
+        {/* Profile Image */}
+        <div className="flex justify-center mb-6" data-aos="zoom-in" data-aos-delay="200">
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primaryHover rounded-full blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+            <Image
+              src="https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg"
+              width={140}
+              height={140}
+              alt="Syed Shurem Ali"
+              className="relative rounded-full border-4 border-primary shadow-xl group-hover:scale-105 transition-transform duration-300"
+            />
+            <div className="absolute -bottom-2 -right-2 bg-primary text-background text-xs font-bold px-3 py-1 rounded-full animate-bounce">
+              2.5+ yrs
+            </div>
+          </div>
+        </div>
 
-      {/* Headline Text */}
-      <div className="text-primary flex flex-col items-center justify-center pt-6">
-        <p className="text-2xl md:text-5xl font-bold text-center leading-snug">
-          Websites Designing
-          <br />
-          that drive Conversions
+        {/* Name & Title */}
+        <h1
+          className="text-3xl md:text-5xl font-bold text-primary mb-2"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          Syed Shurem Ali
+        </h1>
+        <p
+          className="text-lg md:text-xl text-textMuted mb-6"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          Frontend Developer & AI Enthusiast
         </p>
-      </div>
 
-      {/* Sub Text */}
-      <div className="text-textMain flex flex-col items-center justify-center pt-6">
-        <p className="text-md md:text-xl text-center leading-snug">
-          <b className="text-primary">AIM</b> to Design and develop visually stunning
-          <br />
-          and technically proficient websites for
-          <br />
-          clients worldwide.
+        {/* Headline */}
+        <h2
+          className="text-xl md:text-3xl font-semibold text-textMain mb-4 leading-relaxed"
+          data-aos="fade-up"
+          data-aos-delay="500"
+        >
+          Building <span className="text-primary bg-primary/10 px-2 rounded">Modern Web Experiences</span>
+          <br className="hidden md:block" /> that Drive Results
+        </h2>
+
+        {/* Description */}
+        <p
+          className="text-textMuted text-md md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
+          I specialize in creating responsive, user-friendly web applications using
+          <span className="text-primary font-medium"> React, Next.js, TypeScript</span> and
+          <span className="text-primary font-medium"> Tailwind CSS</span>. Currently exploring
+          <span className="text-primary font-medium"> Agentic AI</span> &
+          <span className="text-primary font-medium"> OpenAI Agents SDK</span> to build intelligent solutions.
         </p>
-      </div>
 
-      {/* Contact Button */}
-      <div className="flex items-center justify-center pt-7">
-        <button className="bg-primary text-background hover:bg-primaryHover hover:text-background py-3 px-7 rounded-full transition-all shadow-lg">
-          📧 Shuremsyed41@gmail.com
-        </button>
+        {/* CTA Buttons */}
+        <div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
+          data-aos="fade-up"
+          data-aos-delay="700"
+        >
+          <Link href="/contact">
+            <button className="bg-primary text-background hover:bg-primaryHover py-3 px-8 rounded-full transition-all shadow-lg font-medium flex items-center gap-2 hover:scale-105 hover:shadow-xl">
+              <FaEnvelope /> Get in Touch
+            </button>
+          </Link>
+          <Link href="https://docs.google.com/document/d/19yPE2EWRe6PUPX9WkA1m3r6wkthM2jRL/edit?usp=sharing&ouid=107599650906310040146&rtpof=true&sd=true" target="_blank">
+            <button className="bg-surface border border-border text-textMain hover:border-primary py-3 px-8 rounded-full transition-all shadow-md font-medium flex items-center gap-2 hover:scale-105 hover:shadow-lg">
+              <FaDownload /> Download CV
+            </button>
+          </Link>
+        </div>
+
+        {/* Social Links */}
+        <div
+          className="flex justify-center gap-4"
+          data-aos="fade-up"
+          data-aos-delay="800"
+        >
+          <Link href="https://github.com/shuremali02" target="_blank" className="w-11 h-11 bg-surface border border-border rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition-all group hover:scale-110 hover:shadow-lg">
+            <FaGithub className="text-primary text-lg group-hover:text-background" />
+          </Link>
+          <Link href="https://linkedin.com/in/syed-shurem-ali-5a55852a0" target="_blank" className="w-11 h-11 bg-surface border border-border rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition-all group hover:scale-110 hover:shadow-lg">
+            <FaLinkedin className="text-primary text-lg group-hover:text-background" />
+          </Link>
+          <Link href="mailto:shuremsyed41@gmail.com" className="w-11 h-11 bg-surface border border-border rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition-all group hover:scale-110 hover:shadow-lg">
+            <FaEnvelope className="text-primary text-lg group-hover:text-background" />
+          </Link>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div
+          className="mt-12 animate-bounce"
+          data-aos="fade-up"
+          data-aos-delay="900"
+        >
+          <div className="w-6 h-10 border-2 border-primary/50 rounded-full mx-auto flex justify-center">
+            <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
+          </div>
+          <p className="text-textMuted text-xs mt-2">Scroll Down</p>
+        </div>
       </div>
     </div>
   );

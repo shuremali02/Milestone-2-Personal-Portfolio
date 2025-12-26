@@ -25,11 +25,17 @@ export default function Footer() {
 
         {/* Navigation Links */}
         <div className="text-primary text-md grid grid-cols-1 md:grid-cols-3 lg:flex lg:justify-center lg:space-x-6">
-          <Link href="/about" className="hover:underline text-center hover:text-primaryHover transition">
-            About
+          <Link href="/#skills" className="hover:underline text-center hover:text-primaryHover transition">
+            Skills
+          </Link>
+          <Link href="/#testimonials" className="hover:underline text-center hover:text-primaryHover transition">
+            Testimonials
           </Link>
           <Link href="/portfolio" className="hover:underline text-center hover:text-primaryHover transition">
             Project
+          </Link>
+          <Link href="/about" className="hover:underline text-center hover:text-primaryHover transition">
+            About
           </Link>
           <Link href="/contact" className="hover:underline text-center hover:text-primaryHover transition">
             Contact
