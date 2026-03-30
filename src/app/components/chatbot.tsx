@@ -2,9 +2,9 @@
 import { useState, useRef, useEffect } from "react";
 import { BiMessageDetail } from "react-icons/bi";
 import { IoMdClose, IoMdSend } from "react-icons/io";
-import { FaRobot, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import { SiOpenai } from "react-icons/si";
 
-// Configure your HuggingFace Spaces URL here
 const CHATBOT_API_URL = process.env.NEXT_PUBLIC_CHATBOT_API_URL || "https://shurem-portfolio-chatbot.hf.space/chat";
 
 interface Message {
@@ -20,13 +20,12 @@ export default function Chatbot() {
   const [hovered, setHovered] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
-  // Welcome message on first open
   useEffect(() => {
     if (open && messages.length === 0) {
       setMessages([
         {
           role: "assistant",
-          content: "Hi! I'm Shurem's AI assistant. Ask me anything about his skills, projects, or experience! 🚀",
+          content: "Hi! I'm Shurem's AI assistant. Ask me anything! 🚀",
         },
       ]);
     }
@@ -34,7 +33,6 @@ export default function Chatbot() {
 
   const sendMessage = async () => {
     if (!input.trim()) return;
-
     const userMsg: Message = { role: "user", content: input };
     const updatedMessages = [...messages, userMsg];
     setMessages(updatedMessages);
@@ -45,33 +43,14 @@ export default function Chatbot() {
       const res = await fetch(CHATBOT_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: input,
-          history: updatedMessages.slice(0, -1), // Send history without current message
-        }),
+        body: JSON.stringify({ message: input, history: updatedMessages.slice(0, -1) }),
       });
-
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
-
       const data = await res.json();
-
       if (data.success && data.response) {
-        const botMsg: Message = { role: "assistant", content: data.response };
-        setMessages((prev) => [...prev, botMsg]);
-      } else {
-        throw new Error("Invalid response from server");
+        setMessages((prev) => [...prev, { role: "assistant", content: data.response }]);
       }
     } catch (error) {
       console.error("Chat error:", error);
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: "Sorry, I'm having trouble connecting. Please try again later or contact Shurem directly!",
-        },
-      ]);
     } finally {
       setLoading(false);
     }
@@ -83,50 +62,144 @@ export default function Chatbot() {
 
   return (
     <div>
-      {/* Floating Chat Icon */}
       {!open && (
         <div
-          className="fixed bottom-5 right-5 flex flex-col items-center z-50"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
+          style={{
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px',
+            zIndex: 9999,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}
         >
           {hovered && (
-            <div className="mb-2 px-3 py-2 rounded-lg bg-gradient-to-r from-primary to-purple-600 text-white text-sm shadow-lg transition-all animate-fade-in">
-              <span className="flex items-center gap-2">
-                <FaRobot /> Ask me anything!
-              </span>
+            <div style={{
+              marginBottom: '12px',
+              padding: '8px 16px',
+              borderRadius: '9999px',
+              background: 'linear-gradient(to right, var(--primary), #9333ea)',
+              color: 'white',
+              fontSize: '14px',
+              boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+              animation: 'slideUp 0.3s ease-out',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}>
+              <SiOpenai style={{ animation: 'pulse 2s infinite' }} />
+              <span style={{ fontWeight: 500 }}>Ask me anything!</span>
             </div>
           )}
+          
           <button
             onClick={() => setOpen(true)}
-            className="bg-gradient-to-r from-primary to-purple-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-110 animate-pulse-slow"
+            style={{
+              position: 'relative',
+              width: '64px',
+              height: '64px',
+              borderRadius: '9999px',
+              background: 'linear-gradient(to bottom right, var(--primary), #9333ea)',
+              border: 'none',
+              boxShadow: '0 25px 50px -12px rgba(0, 163, 140, 0.4)',
+              cursor: 'pointer',
+              transition: 'transform 0.3s',
+              animation: 'aiGlow 3s ease-in-out infinite',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
             aria-label="Open chat"
           >
-            <BiMessageDetail size={28} />
+            <BiMessageDetail size={32} color="white" />
           </button>
+          
+          <div style={{
+            marginTop: '12px',
+            padding: '6px 12px',
+            background: 'var(--surface)',
+            border: '1px solid var(--border)',
+            borderRadius: '9999px',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
+          }}>
+            <div style={{
+              width: '8px',
+              height: '8px',
+              background: '#22c55e',
+              borderRadius: '9999px',
+              animation: 'pulse 2s infinite'
+            }} />
+            <span style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: 500 }}>AI Online</span>
+          </div>
         </div>
       )}
 
-      {/* Chatbox */}
       {open && (
-        <div className="fixed bottom-5 right-5 w-[350px] sm:w-[380px] bg-surface border border-border rounded-2xl shadow-2xl flex flex-col animate-slide-up z-50 overflow-hidden">
+        <div style={{
+          position: 'fixed',
+          bottom: '100px',
+          right: '20px',
+          zIndex: 9999,
+          width: '380px',
+          maxWidth: 'calc(100vw - 2rem)',
+          background: 'var(--surface)',
+          border: '1px solid var(--border)',
+          borderRadius: '16px',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
+          animation: 'slideUp 0.3s ease-out'
+        }}>
           {/* Header */}
-          <div className="bg-gradient-to-r from-primary to-purple-600 text-white p-4 flex justify-between items-center">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                <FaRobot size={20} />
+          <div style={{
+            padding: '16px',
+            background: 'linear-gradient(to right, var(--primary), #9333ea)',
+            color: 'white',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexShrink: 0
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '9999px',
+                background: 'rgba(255, 255, 255, 0.2)',
+                backdropFilter: 'blur(8px)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                animation: 'aiGlow 3s ease-in-out infinite'
+              }}>
+                <SiOpenai size={24} color="white" />
               </div>
               <div>
-                <h3 className="font-bold text-lg">Portfolio Assistant</h3>
-                <span className="text-xs text-white/80 flex items-center gap-1">
-                  <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                  Online
+                <h3 style={{ fontWeight: 700, fontSize: '18px', margin: 0 }}>Portfolio Assistant</h3>
+                <span style={{ fontSize: '12px', opacity: 0.8, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <span style={{ width: '8px', height: '8px', background: '#4ade80', borderRadius: '9999px', animation: 'pulse 2s infinite' }} />
+                  Online - AI Powered
                 </span>
               </div>
             </div>
             <button
               onClick={() => setOpen(false)}
-              className="hover:bg-white/20 p-2 rounded-lg transition-colors"
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: 'white',
+                cursor: 'pointer',
+                padding: '8px',
+                borderRadius: '8px',
+                transition: 'background 0.2s'
+              }}
               aria-label="Close chat"
             >
               <IoMdClose size={22} />
@@ -134,50 +207,85 @@ export default function Chatbot() {
           </div>
 
           {/* Messages */}
-          <div className="p-4 flex-1 overflow-y-auto max-h-[400px] bg-background space-y-4">
+          <div style={{
+            padding: '16px',
+            flex: 1,
+            overflowY: 'auto',
+            background: 'var(--background)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px',
+            minHeight: '250px',
+            maxHeight: '350px'
+          }}>
             {messages.map((msg, i) => (
               <div
                 key={i}
-                className={`flex items-start gap-3 ${
-                  msg.role === "user" ? "flex-row-reverse" : ""
-                }`}
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '12px',
+                  flexDirection: msg.role === "user" ? 'row-reverse' : 'row'
+                }}
               >
-                {/* Avatar */}
-                <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    msg.role === "user"
-                      ? "bg-primary text-white"
-                      : "bg-purple-500/20 text-purple-500"
-                  }`}
-                >
-                  {msg.role === "user" ? <FaUser size={14} /> : <FaRobot size={14} />}
+                <div style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '9999px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  background: msg.role === "user" 
+                    ? 'linear-gradient(to bottom right, var(--primary), #9333ea)'
+                    : 'linear-gradient(to bottom right, rgba(147, 51, 234, 0.2), rgba(0, 163, 140, 0.2))',
+                  border: msg.role !== "user" ? '1px solid rgba(147, 51, 234, 0.3)' : 'none',
+                  animation: 'aiGlow 3s ease-in-out infinite'
+                }}>
+                  {msg.role === "user" ? <FaUser size={14} color="white" /> : <SiOpenai size={14} color="#a855f7" />}
                 </div>
-
-                {/* Message Bubble */}
-                <div
-                  className={`max-w-[75%] px-4 py-3 rounded-2xl ${
-                    msg.role === "user"
-                      ? "bg-primary text-white rounded-tr-sm"
-                      : "bg-surface border border-border text-textMain rounded-tl-sm"
-                  }`}
-                >
-                  <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                <div style={{
+                  maxWidth: '75%',
+                  padding: '12px 16px',
+                  borderRadius: '16px',
+                  background: msg.role === "user"
+                    ? 'linear-gradient(to bottom right, var(--primary), #9333ea)'
+                    : 'var(--surface)',
+                  color: msg.role === "user" ? 'white' : 'var(--text-main)',
+                  border: msg.role !== "user" ? '1px solid var(--border)' : 'none',
+                  fontSize: '14px',
+                  lineHeight: 1.5,
+                  whiteSpace: 'pre-wrap'
+                }}>
+                  {msg.content}
                 </div>
               </div>
             ))}
-
-            {/* Typing Indicator */}
             {loading && (
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-full bg-purple-500/20 text-purple-500 flex items-center justify-center">
-                  <FaRobot size={14} />
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <div style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '9999px',
+                  background: 'rgba(147, 51, 234, 0.2)',
+                  border: '1px solid rgba(147, 51, 234, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <SiOpenai size={14} color="#a855f7" />
                 </div>
-                <div className="bg-surface border border-border px-4 py-3 rounded-2xl rounded-tl-sm">
-                  <div className="flex gap-1">
-                    <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></span>
-                    <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></span>
-                    <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></span>
-                  </div>
+                <div style={{
+                  padding: '12px 16px',
+                  background: 'var(--surface)',
+                  border: '1px solid var(--border)',
+                  borderRadius: '16px',
+                  display: 'flex',
+                  gap: '4px'
+                }}>
+                  <span style={{ width: '8px', height: '8px', background: 'var(--primary)', borderRadius: '9999px', animation: 'bounce 1s infinite' }} />
+                  <span style={{ width: '8px', height: '8px', background: 'var(--primary)', borderRadius: '9999px', animation: 'bounce 1s 0.15s infinite' }} />
+                  <span style={{ width: '8px', height: '8px', background: 'var(--primary)', borderRadius: '9999px', animation: 'bounce 1s 0.3s infinite' }} />
                 </div>
               </div>
             )}
@@ -185,14 +293,30 @@ export default function Chatbot() {
           </div>
 
           {/* Quick Actions */}
-          <div className="px-4 py-2 border-t border-border bg-surface/50 flex gap-2 overflow-x-auto">
+          <div style={{
+            padding: '12px 16px',
+            borderTop: '1px solid var(--border)',
+            background: 'rgba(255, 255, 255, 0.05)',
+            display: 'flex',
+            gap: '8px',
+            overflowX: 'auto',
+            flexShrink: 0
+          }}>
             {["Skills", "Projects", "Experience", "Contact"].map((action) => (
               <button
                 key={action}
-                onClick={() => {
-                  setInput(`Tell me about your ${action.toLowerCase()}`);
+                onClick={() => setInput(`Tell me about your ${action.toLowerCase()}`)}
+                style={{
+                  padding: '8px 12px',
+                  fontSize: '12px',
+                  background: 'var(--background)',
+                  border: '1px solid var(--border)',
+                  borderRadius: '9999px',
+                  color: 'var(--text-muted)',
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  transition: 'all 0.2s'
                 }}
-                className="px-3 py-1.5 text-xs bg-background border border-border rounded-full hover:border-primary hover:text-primary transition-colors whitespace-nowrap"
               >
                 {action}
               </button>
@@ -200,26 +324,50 @@ export default function Chatbot() {
           </div>
 
           {/* Input */}
-          <div className="flex items-center gap-2 p-3 border-t border-border bg-surface">
+          <div style={{
+            padding: '16px',
+            borderTop: '1px solid var(--border)',
+            background: 'var(--surface)',
+            display: 'flex',
+            gap: '8px',
+            flexShrink: 0
+          }}>
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="flex-1 px-4 py-3 bg-background border border-border rounded-xl text-textMain placeholder-textMuted focus:outline-none focus:border-primary transition-colors"
+              style={{
+                flex: 1,
+                padding: '12px 16px',
+                background: 'var(--background)',
+                border: '1px solid var(--border)',
+                borderRadius: '12px',
+                color: 'var(--text-main)',
+                fontSize: '14px',
+                outline: 'none',
+                transition: 'all 0.2s'
+              }}
               placeholder="Type your message..."
               onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && sendMessage()}
               disabled={loading}
             />
             <button
               onClick={sendMessage}
-              className={`p-3 rounded-xl transition-all ${
-                loading || !input.trim()
-                  ? "bg-gray-500/50 cursor-not-allowed"
-                  : "bg-gradient-to-r from-primary to-purple-600 hover:shadow-lg hover:scale-105"
-              } text-white`}
               disabled={loading || !input.trim()}
+              style={{
+                padding: '12px',
+                background: loading || !input.trim() 
+                  ? 'rgba(107, 114, 128, 0.5)' 
+                  : 'linear-gradient(to right, var(--primary), #9333ea)',
+                border: 'none',
+                borderRadius: '12px',
+                color: 'white',
+                cursor: loading || !input.trim() ? 'not-allowed' : 'pointer',
+                transition: 'all 0.2s',
+                opacity: loading || !input.trim() ? 0.5 : 1
+              }}
               aria-label="Send message"
             >
-              <IoMdSend size={20} />
+              <IoMdSend size={18} />
             </button>
           </div>
         </div>

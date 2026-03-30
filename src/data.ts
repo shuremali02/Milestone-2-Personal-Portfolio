@@ -11,6 +11,9 @@ export interface Project {
   route: string;
   tags: string[];
   github?: string;
+  featured?: boolean;
+  year?: number;
+  category?: string;
 }
 
 export const personalData = `
@@ -130,7 +133,10 @@ export const project = [
     description: "A comprehensive Docusaurus-based textbook on Physical AI & Humanoid Robotics with RAG-based chatbot, Urdu translation, personalized content for signed-in users, and interactive learning features. Built during GIAIC Spec-Driven SpecKit+ Hackathon.",
     route: "https://ai-spec-driven-online-hackathon-1.vercel.app/",
     tags: ["AI/ML", "Docusaurus", "RAG Chatbot", "Hackathon", "SDD"],
-    github: "https://github.com/shuremali02/AI_Spec-Driven_Online_Hackathon_1"
+    github: "https://github.com/shuremali02/AI_Spec-Driven_Online_Hackathon_1",
+    featured: true,
+    year: 2025,
+    category: "AI/ML"
   },
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1759697057/roommatcher_qtnhiv.png",

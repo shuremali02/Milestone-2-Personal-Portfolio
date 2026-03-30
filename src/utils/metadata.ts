@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const generatePageMetadata = (title: string, description?: string, image?: string): Metadata => {
-  const baseUrl = "https://your-portfolio-url.com"; // Replace with your actual domain
+  const baseUrl = "https://syed-shurem-ali.vercel.app"; // Your portfolio domain
   const defaultImage = "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg";
 
   return {

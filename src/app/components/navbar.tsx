@@ -6,9 +6,10 @@ import { FiMenu, FiX } from "react-icons/fi";
 import ThemeToggle from "./theme-toggle";
 
 const navLinks = [
+  { href: "/#project", label: "Projects", section: "project" },
   { href: "/#skills", label: "Skills", section: "skills" },
   { href: "/#testimonials", label: "Testimonials", section: "testimonials" },
-  { href: "/portfolio", label: "Projects", section: "portfolio" },
+  { href: "/blog", label: "Blog", section: "blog" },
   { href: "/about", label: "About", section: "about" },
   { href: "/contact", label: "Contact", section: "contact" },
 ];
@@ -23,14 +24,17 @@ export default function Navbar() {
     const handleScroll = () => {
       if (pathname !== "/") return;
 
-      const sections = ["skills", "testimonials", "about", "contact"];
-      const scrollPosition = window.scrollY + 100;
+      const sections = ["project", "skills", "testimonials", "blog", "about", "contact"];
+      const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          const rect = element.getBoundingClientRect();
+          const elementTop = element.offsetTop;
+          const elementBottom = elementTop + element.offsetHeight;
+
+          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
             setActiveSection(section);
             return;
           }
@@ -42,14 +46,14 @@ export default function Navbar() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
   // Set active based on pathname for non-home pages
   useEffect(() => {
-    if (pathname === "/portfolio") setActiveSection("portfolio");
+    if (pathname === "/portfolio") setActiveSection("project");
     else if (pathname === "/about") setActiveSection("about");
     else if (pathname === "/contact") setActiveSection("contact");
     else if (pathname === "/") setActiveSection("");

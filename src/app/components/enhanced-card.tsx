@@ -8,7 +8,7 @@ interface CardProps {
 
 export default function EnhancedCard({ prop }: CardProps) {
   return (
-    <div className="bg-surface border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div className="bg-surface border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 relative">
       <div className="relative h-48 overflow-hidden">
         <Image
           src={prop.img}
@@ -17,11 +17,23 @@ export default function EnhancedCard({ prop }: CardProps) {
           height={200}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
         />
+        {prop.featured && (
+          <div className="absolute top-3 left-3 bg-gradient-to-r from-primary to-primaryHover text-background text-xs font-bold px-3 py-1 rounded-full">
+            Featured
+          </div>
+        )}
+        {prop.year && (
+          <div className="absolute top-3 right-3 bg-surface/80 backdrop-blur-sm text-textMuted text-xs px-2 py-1 rounded-full border border-border">
+            {prop.year}
+          </div>
+        )}
       </div>
 
       <div className="p-6">
         <h3 className="text-xl font-bold text-primary mb-2">{prop.title}</h3>
-
+        {prop.category && (
+          <div className="text-xs text-primary font-medium mb-2">{prop.category}</div>
+        )}
         <p className="text-textMuted mb-4 line-clamp-3">{prop.description}</p>
 
         {/* Tags Section */}
