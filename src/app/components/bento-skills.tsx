@@ -5,18 +5,34 @@ import { FaCode } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 export default function BentoSkills() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [animatedSkills, setAnimatedSkills] = useState<Record<string, boolean>>({});
   const [showAllSkills, setShowAllSkills] = useState(false);
 
   const categories = ["All", ...Array.from(new Set(skills.map((skill) => skill.category)))];
 
-  const filteredSkills = selectedCategory === "All"
+  // Filter skills based on selected categories (multi-select)
+  const filteredSkills = selectedCategories.length === 0 || selectedCategories.includes("All")
     ? skills
-    : skills.filter((skill) => skill.category === selectedCategory);
+    : skills.filter((skill) => selectedCategories.includes(skill.category));
 
   // Show only 4 skills initially, rest on "View More"
   const displayedSkills = showAllSkills ? filteredSkills : filteredSkills.slice(0, 4);
+
+  const toggleCategory = (category: string) => {
+    if (category === "All") {
+      setSelectedCategories([]);
+    } else {
+      setSelectedCategories((prev) => {
+        const newCategories = prev.filter((c) => c !== "All");
+        if (newCategories.includes(category)) {
+          return newCategories.filter((c) => c !== category);
+        } else {
+          return [...newCategories, category];
+        }
+      });
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +58,7 @@ export default function BentoSkills() {
         setAnimatedSkills(prev => ({ ...prev, [element.id]: true }));
       });
     }, 100);
-  }, [selectedCategory]);
+  }, [selectedCategories]);
 
   const topSkills = [...skills].sort((a, b) => b.level - a.level).slice(0, 6);
 
@@ -80,11 +96,15 @@ export default function BentoSkills() {
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => toggleCategory(category)}
               className={`px-5 py-2 rounded-full border font-medium transition-all duration-300 hover:scale-105 ${
-                selectedCategory === category
-                  ? "bg-primary text-background border-primary shadow-lg shadow-primary/25"
-                  : "bg-surface text-textMuted border-border hover:border-primary hover:text-primary"
+                category === "All"
+                  ? selectedCategories.length === 0
+                    ? "bg-primary text-background border-primary shadow-lg shadow-primary/25"
+                    : "bg-surface text-textMuted border-border hover:border-primary hover:text-primary"
+                  : selectedCategories.includes(category)
+                    ? "bg-primary text-background border-primary shadow-lg shadow-primary/25"
+                    : "bg-surface text-textMuted border-border hover:border-primary hover:text-primary"
               }`}
             >
               {category}
@@ -168,7 +188,7 @@ export default function BentoSkills() {
           {/* All Skills Grid */}
           {displayedSkills.map((skill: { name: string; level: number; category: string }, index: number) => (
             <div
-              key={`${selectedCategory}-${index}`}
+              key={`${selectedCategories}-${index}`}
               className="bg-surface border border-border rounded-xl p-5 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group card-glow relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -182,13 +202,13 @@ export default function BentoSkills() {
                   <span className="text-primary font-bold text-lg">{skill.level}%</span>
                 </div>
                 <div
-                  id={`skill-${selectedCategory}-${index}`}
+                  id={`skill-${selectedCategories}-${index}`}
                   className="skill-bar h-3 bg-background rounded-full overflow-hidden"
                 >
                   <div
                     className="h-full bg-gradient-to-r from-primary to-primaryHover rounded-full transition-all duration-1000 ease-out"
                     style={{
-                      width: animatedSkills[`skill-${selectedCategory}-${index}`] ? `${skill.level}%` : '0%',
+                      width: animatedSkills[`skill-${selectedCategories}-${index}`] ? `${skill.level}%` : '0%',
                       transition: 'width 1s ease-out'
                     }}
                   />
@@ -217,6 +237,18 @@ export default function BentoSkills() {
                 ? `Showing all ${filteredSkills.length} skills`
                 : `${filteredSkills.length - 4} more ${filteredSkills.length - 4 === 1 ? 'skill' : 'skills'} available`}
             </p>
+          </div>
+        )}
+
+        {/* Clear Filters Button */}
+        {selectedCategories.length > 1 && (
+          <div className="text-center mt-6">
+            <button
+              onClick={() => setSelectedCategories([])}
+              className="px-4 py-2 text-sm text-textMuted hover:text-primary transition-colors"
+            >
+              Clear all filters
+            </button>
           </div>
         )}
       </div>

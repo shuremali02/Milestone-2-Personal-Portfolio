@@ -125,7 +125,7 @@ export default function Contact() {
                 </div>
               </Link>
 
-              <Link href="https://drive.google.com/file/d/1wi8TLqxmGrDWF0xYxoqccFE62MnFdv13/view?usp=sharing" target="_blank">
+              <Link href="https://drive.google.com/uc?export=download&id=1wi8TLqxmGrDWF0xYxoqccFE62MnFdv13" target="_blank">
                 <div className="bg-surface border border-border rounded-2xl p-5 shadow-lg hover:border-primary transition-all group cursor-pointer card-glow relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-primaryHover/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute top-2 right-2 sparkle opacity-0 group-hover:opacity-100" style={{ animationDelay: '0.25s' }} />
