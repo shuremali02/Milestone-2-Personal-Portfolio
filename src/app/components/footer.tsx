@@ -64,6 +64,9 @@ export default function Footer() {
               <Link href="/portfolio" className="text-textMuted hover:text-primary transition-colors">
                 Projects
               </Link>
+              <Link href="/blog" className="text-textMuted hover:text-primary transition-colors">
+                Blog
+              </Link>
               <Link href="/about" className="text-textMuted hover:text-primary transition-colors">
                 About
               </Link>

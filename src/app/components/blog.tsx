@@ -6,22 +6,44 @@ import { useState } from "react";
 export default function Blog() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-  // Get all unique tags
   const allTags = Array.from(
     new Set(blogPosts.flatMap((post) => post.tags))
   );
 
-  // Filter posts based on selected tag
   const filteredPosts = selectedTag
     ? blogPosts.filter((post) => post.tags.includes(selectedTag))
     : blogPosts;
 
+  // Show only 3 posts on homepage
+  const displayedPosts = filteredPosts.slice(0, 3);
+
   return (
-    <div className="bg-background py-16 text-textMuted" id="blog">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="flex items-center justify-center p-8 text-4xl font-bold text-primary">
-          Blog & Articles
-        </h2>
+    <div className="bg-background py-16 text-textMuted relative overflow-hidden" id="blog">
+      <div className="absolute inset-0 animated-gradient opacity-5" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(10)].map((_, i) => (
+          <div
+            key={i}
+            className="particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 10}s`,
+              animationDuration: `${10 + Math.random() * 10}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
+        <div className="text-center relative mb-8">
+          <div className="absolute -top-4 left-1/4 sparkle" style={{ animationDelay: '0s' }} />
+          <div className="absolute -top-4 right-1/4 sparkle" style={{ animationDelay: '0.5s' }} />
+          
+          <h2 className="text-4xl font-bold text-primary neon-text">
+            Blog & Articles
+          </h2>
+          <p className="text-textMuted mt-2">Latest insights about web development and AI</p>
+        </div>
 
         {/* Tag Filter */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">
@@ -52,12 +74,15 @@ export default function Blog() {
 
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.map((post) => (
+          {displayedPosts.map((post) => (
             <div
               key={post.id}
-              className="bg-surface border border-border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="bg-surface border border-border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 card-glow relative overflow-hidden"
             >
-              <div className="p-6">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-4 right-4 sparkle opacity-0 hover:opacity-100" style={{ animationDelay: '0s' }} />
+
+              <div className="relative z-10 p-6">
                 <div className="flex justify-between items-center mb-3">
                   <span className="text-sm text-textMuted">{post.date}</span>
                   <span className="text-sm text-textMuted">{post.readTime}</span>
@@ -87,6 +112,24 @@ export default function Blog() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* View More Button */}
+        <div className="text-center mt-12 relative">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sparkle" style={{ animationDelay: '0s' }} />
+          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 sparkle" style={{ animationDelay: '0.5s' }} />
+          
+          <Link href="/blog">
+            <button className="relative px-8 py-4 bg-gradient-to-r from-primary to-primaryHover text-background rounded-full font-bold text-lg hover:shadow-xl hover:shadow-primary/25 hover:scale-105 transition-all ai-glow">
+              View More Blogs →
+            </button>
+          </Link>
+          
+          <p className="text-textMuted mt-4 text-sm">
+            {filteredPosts.length > 3 
+              ? `See ${filteredPosts.length - 3} more ${filteredPosts.length - 3 === 1 ? 'post' : 'posts'}`
+              : 'Check back for more content!'}
+          </p>
         </div>
       </div>
     </div>

@@ -1,6 +1,8 @@
 "use client";
+
 import { useState, useEffect, useRef } from "react";
-import { FaProjectDiagram, FaClock, FaCode, FaTrophy } from "react-icons/fa";
+import { FaClock, FaProjectDiagram, FaCode, FaTrophy } from "react-icons/fa";
+import ExperienceCounter from "./experience-counter";
 
 interface Stat {
   icon: React.ElementType;
@@ -8,13 +10,6 @@ interface Stat {
   suffix: string;
   label: string;
 }
-
-const stats: Stat[] = [
-  { icon: FaClock, value: 2.5, suffix: "+", label: "Years Experience" },
-  { icon: FaProjectDiagram, value: 15, suffix: "+", label: "Projects Completed" },
-  { icon: FaCode, value: 14, suffix: "+", label: "Technologies" },
-  { icon: FaTrophy, value: 5, suffix: "+", label: "Hackathons" },
-];
 
 function useCountUp(end: number, duration: number = 2000, start: boolean = false) {
   const [count, setCount] = useState(0);
@@ -48,7 +43,56 @@ function useCountUp(end: number, duration: number = 2000, start: boolean = false
 
 export default function StatsCounter() {
   const [isVisible, setIsVisible] = useState(false);
+  const [githubStats, setGithubStats] = useState({
+    experience: 0,
+    projects: 15,
+    technologies: 14,
+    hackathons: 5
+  });
+  const [loading, setLoading] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Fetch GitHub stats
+    const fetchGithubStats = async () => {
+      try {
+        // Fetch GitHub user data
+        const response = await fetch('https://api.github.com/users/shuremali02');
+        const data = await response.json();
+
+        if (data.created_at) {
+          const createdDate = new Date(data.created_at);
+          const now = new Date();
+          const diffTime = Math.abs(now.getTime() - createdDate.getTime());
+          const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365.25);
+
+          setGithubStats(prev => ({
+            ...prev,
+            experience: parseFloat(diffYears.toFixed(1))
+          }));
+        }
+
+        // Fetch repositories count
+        setGithubStats(prev => ({
+          ...prev,
+          projects: data.public_repos || 15
+        }));
+      } catch (error) {
+        console.error('Error fetching GitHub stats:', error);
+        // Fallback to default values if API fails
+        setGithubStats({
+          experience: 2.5,
+          projects: 15,
+          technologies: 14,
+          hackathons: 5
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGithubStats();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -68,12 +112,45 @@ export default function StatsCounter() {
     return () => observer.disconnect();
   }, []);
 
+  const stats: Stat[] = [
+    {
+      icon: FaClock,
+      value: githubStats.experience,
+      suffix: "+",
+      label: "Years Experience"
+    },
+    {
+      icon: FaProjectDiagram,
+      value: githubStats.projects,
+      suffix: "+",
+      label: "Projects Completed"
+    },
+    {
+      icon: FaCode,
+      value: githubStats.technologies,
+      suffix: "+",
+      label: "Technologies"
+    },
+    {
+      icon: FaTrophy,
+      value: githubStats.hackathons,
+      suffix: "+",
+      label: "Hackathons"
+    },
+  ];
+
   return (
     <div ref={ref} className="bg-surface border-y border-border py-12">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => (
-            <StatCard key={index} stat={stat} isVisible={isVisible} delay={index * 100} />
+            <StatCard
+              key={index}
+              stat={stat}
+              isVisible={isVisible}
+              delay={index * 100}
+              loading={loading}
+            />
           ))}
         </div>
       </div>
@@ -81,9 +158,9 @@ export default function StatsCounter() {
   );
 }
 
-function StatCard({ stat, isVisible, delay }: { stat: Stat; isVisible: boolean; delay: number }) {
+function StatCard({ stat, isVisible, delay, loading }: { stat: Stat; isVisible: boolean; delay: number; loading: boolean }) {
   const [shouldAnimate, setShouldAnimate] = useState(false);
-  const count = useCountUp(stat.value, 2000, shouldAnimate);
+  const count = useCountUp(stat.value, 2000, shouldAnimate && !loading);
 
   useEffect(() => {
     if (isVisible) {
@@ -100,8 +177,15 @@ function StatCard({ stat, isVisible, delay }: { stat: Stat; isVisible: boolean; 
         <Icon className="text-2xl text-primary" />
       </div>
       <div className="text-3xl md:text-4xl font-bold text-primary mb-1">
-        {stat.value % 1 !== 0 ? count.toFixed(1) : Math.floor(count)}
-        <span className="text-primaryHover">{stat.suffix}</span>
+        {loading ? (
+          <div className="h-8 w-16 bg-border rounded animate-pulse mx-auto"></div>
+        ) : stat.icon === FaClock ? (
+          <ExperienceCounter />
+        ) : stat.value % 1 !== 0 ? (
+          `${count.toFixed(1)}${stat.suffix}`
+        ) : (
+          `${Math.floor(count)}${stat.suffix}`
+        )}
       </div>
       <p className="text-textMuted text-sm">{stat.label}</p>
     </div>

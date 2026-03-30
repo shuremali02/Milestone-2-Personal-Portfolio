@@ -3,11 +3,11 @@ import Hero from "./components/hero";
 import Auto from "./components/auto scroll";
 import Contact from "./contact/page";
 import "./globals.css";
-import Portfolio from "./portfolio/page";
-import Skills from "./components/skills";
-import Testimonials from "./components/testimonials";
-import StatsCounter from "./components/stats-counter";
-// import Blog from "./components/blog";
+import BentoProjects from "./components/bento-projects";
+import BentoSkills from "./components/bento-skills";
+import BentoStats from "./components/bento-stats";
+import BentoTestimonials from "./components/bento-testimonials";
+import Blog from "./components/blog";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: "Syed Shurem Ali - Frontend Developer & AI Specialist",
     description: "Welcome to my portfolio. I'm a Frontend Developer specializing in React, Next.js, TypeScript, and Agentic AI. Explore my projects, skills, and expertise in modern web development.",
     type: "website",
-    url: "https://your-portfolio-url.com/",
+    url: "https://syed-shurem-ali.vercel.app/",
   },
 };
 
@@ -29,25 +29,25 @@ export default function Main() {
         <Hero />
       </div>
 
-      <StatsCounter />
-
-      <div className="pt-20" id="project">
-        <Portfolio />
+      <div className="pt-12" id="stats">
+        <BentoStats />
       </div>
 
-      <div className="pt-20" id="skills">
-        <Skills />
+      <div className="pt-12" id="project">
+        <BentoProjects />
       </div>
 
-      <div className="pt-20" id="testimonials">
-        <Testimonials />
+      <div className="pt-12" id="skills">
+        <BentoSkills />
       </div>
 
-      {/* Blog section - commented out for now
-      <div className="pt-20" id="blog">
+      <div className="pt-12" id="testimonials">
+        <BentoTestimonials />
+      </div>
+
+      <div className="pt-12" id="blog">
         <Blog />
       </div>
-      */}
 
       <div className="pt-20" id="about">
         <About />

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://your-portfolio-url.com",
+    url: "https://syed-shurem-ali.vercel.app",
     title: "Syed Shurem Ali - Frontend Developer & AI Specialist",
     description: "Portfolio of Syed Shurem Ali - Frontend Developer specializing in React, Next.js, TypeScript, and Agentic AI.",
     siteName: "Syed Shurem Ali Portfolio",
@@ -63,10 +63,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="eng">
+    <html lang="en">
       <body>
         <Navbar />
-      
           {children}
         <ChatBot />
         <ScrollToTop />
