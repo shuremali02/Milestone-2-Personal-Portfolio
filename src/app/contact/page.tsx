@@ -2,21 +2,9 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link';
-import { Metadata } from "next";
 import { FaEnvelope, FaLinkedin, FaGithub, FaFileAlt, FaMapMarkerAlt } from "react-icons/fa";
 import ContactForm from "../components/contact-form";
 import CVModal from "../components/cv-modal";
-
-export const metadata: Metadata = {
-  title: "Contact - Syed Shurem Ali Portfolio",
-  description: "Get in touch with Syed Shurem Ali, Frontend Developer.",
-  openGraph: {
-    title: "Contact - Syed Shurem Ali Portfolio",
-    description: "Get in touch with Syed Shurem Ali, Frontend Developer.",
-    type: "website",
-    url: "https://syed-shurem-ali.vercel.app/contact",
-  },
-};
 
 export default function Contact() {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
