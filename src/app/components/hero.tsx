@@ -165,7 +165,7 @@ export default function Hero() {
               <FaEnvelope /> Get in Touch
             </button>
           </Link>
-          <Link href="https://drive.google.com/uc?export=download&id=1wi8TLqxmGrDWF0xYxoqccFE62MnFdv13" target="_blank">
+          <Link href="/cv/Syed-Shurem-Ali-CV.pdf" target="_blank" download="Syed-Shurem-Ali-CV.pdf">
             <button className="bg-surface border border-border text-textMain hover:border-primary py-3 px-8 rounded-full transition-all shadow-md font-medium flex items-center gap-2 hover:scale-105 hover:shadow-lg card-glow">
               <FaDownload /> Download CV
             </button>
