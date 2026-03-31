@@ -267,13 +267,12 @@ export default function BentoStats() {
             <h3 className="text-lg sm:text-xl font-bold text-primary mb-2 neon-text">Download Resume</h3>
             <p className="text-textMuted text-xs sm:text-sm mb-3 sm:mb-4">Get my full CV in PDF format</p>
             <a
-              href="/cv/Syed-Shurem-Ali-CV.pdf"
+              href="https://drive.google.com/file/d/1wi8TLqxmGrDWF0xYxoqccFE62MnFdv13/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              download="Syed-Shurem-Ali-CV.pdf"
               className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-background rounded-full text-sm sm:text-base font-medium hover:bg-primaryHover transition-colors ai-glow"
             >
-              <FaDownload /> <span className="hidden sm:inline">Download CV</span>
+              <FaDownload /> <span className="hidden sm:inline">View CV</span>
               <span className="sm:hidden">CV</span>
             </a>
           </div>
