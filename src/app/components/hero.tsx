@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import CVModal from "./cv-modal";
 
 const roles = [
   "Frontend Developer",
@@ -18,6 +19,7 @@ export default function Hero() {
   const [currentRole, setCurrentRole] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -165,11 +167,14 @@ export default function Hero() {
               <FaEnvelope /> Get in Touch
             </button>
           </Link>
-          <Link href="https://drive.google.com/file/d/1wi8TLqxmGrDWF0xYxoqccFE62MnFdv13/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-            <button className="bg-surface border border-border text-textMain hover:border-primary py-3 px-8 rounded-full transition-all shadow-md font-medium flex items-center gap-2 hover:scale-105 hover:shadow-lg card-glow">
-              <FaDownload /> View CV
-            </button>
-          </Link>
+          <button
+            onClick={() => setIsCVModalOpen(true)}
+            className="bg-surface border border-border text-textMain hover:border-primary py-3 px-8 rounded-full transition-all shadow-md font-medium flex items-center gap-2 hover:scale-105 hover:shadow-lg card-glow"
+          >
+            <FaDownload /> View CV
+          </button>
+
+        <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
         </div>
 
         {/* Social Links with Sparkles */}
