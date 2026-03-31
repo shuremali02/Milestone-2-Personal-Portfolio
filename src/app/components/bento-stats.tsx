@@ -185,35 +185,35 @@ export default function BentoStats() {
           ))}
 
           {/* GitHub Stats - 2x1 with AI Effects */}
-          <div className="lg:col-span-2 rounded-3xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 p-6 flex items-center gap-6 relative overflow-hidden group card-glow">
-  {/* Animated Background Pattern */}
+          <div className="lg:col-span-2 rounded-3xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 p-4 sm:p-6 flex items-center gap-4 sm:gap-6 relative overflow-hidden group card-glow">
+            {/* Animated Background Pattern */}
             <div className="absolute inset-0 opacity-10">
-              <FaGithub className="absolute -right-8 -bottom-8 text-9xl text-white float" />
+              <FaGithub className="absolute -right-8 -bottom-8 text-8xl sm:text-9xl text-white float" />
             </div>
-            
-  {/* Data Stream Lines */}
+
+            {/* Data Stream Lines */}
             <div className="absolute top-0 left-1/4 w-1 h-24 data-stream opacity-30"></div>
             <div className="absolute top-0 right-1/4 w-1 h-24 data-stream opacity-30" style={{ animationDelay: '1s' }}></div>
 
-            <div className="relative z-10 flex items-center gap-6 flex-1">
-              <div className="w-20 h-20 rounded-2xl bg-gray-700/50 flex items-center justify-center group-hover:scale-110 transition-transform ai-glow">
-                <FaGithub className="text-white text-4xl" />
+            <div className="relative z-10 flex items-center gap-4 sm:gap-6 flex-1 flex-wrap">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gray-700/50 flex items-center justify-center group-hover:scale-110 transition-transform ai-glow flex-shrink-0">
+                <FaGithub className="text-white text-3xl sm:text-4xl" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-white mb-1 neon-text">GitHub</h3>
-                <p className="text-gray-400 text-sm">@shuremali02</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 neon-text">GitHub</h3>
+                <p className="text-gray-400 text-xs sm:text-sm">@shuremali02</p>
               </div>
             </div>
 
-            <div className="relative z-10 flex gap-6">
+            <div className="relative z-10 flex gap-4 sm:gap-6">
               <div className="text-center">
-                <p className="text-3xl font-bold text-white">
+                <p className="text-2xl sm:text-3xl font-bold text-white">
                   {loading ? "-" : githubStats.projects}+
                 </p>
                 <p className="text-gray-400 text-xs">Repos</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-white">
+                <p className="text-2xl sm:text-3xl font-bold text-white">
                   {loading ? "-" : githubStats.stars}+
                 </p>
                 <p className="text-gray-400 text-xs">Stars</p>
@@ -222,23 +222,23 @@ export default function BentoStats() {
           </div>
 
           {/* Social Stats - 2x1 with AI Effects */}
-          <div className="lg:col-span-2 rounded-3xl bg-gradient-to-br from-blue-600/20 to-cyan-600/20 border border-blue-500/30 p-6 flex items-center gap-6 relative overflow-hidden group card-glow">
-  {/* Animated Background Pattern */}
+          <div className="lg:col-span-2 rounded-3xl bg-gradient-to-br from-blue-600/20 to-cyan-600/20 border border-blue-500/30 p-4 sm:p-6 flex items-center gap-4 sm:gap-6 relative overflow-hidden group card-glow">
+            {/* Animated Background Pattern */}
             <div className="absolute inset-0 opacity-10">
-              <SiLinkedin className="absolute -right-8 -bottom-8 text-9xl text-blue-400 float" />
+              <SiLinkedin className="absolute -right-8 -bottom-8 text-8xl sm:text-9xl text-blue-400 float" />
             </div>
-            
-  {/* Data Stream Lines */}
+
+            {/* Data Stream Lines */}
             <div className="absolute top-0 left-1/3 w-1 h-24 data-stream opacity-30" style={{ animationDelay: '0.5s' }}></div>
             <div className="absolute top-0 right-1/3 w-1 h-24 data-stream opacity-30" style={{ animationDelay: '1.5s' }}></div>
 
-            <div className="relative z-10 flex items-center gap-6 flex-1">
-              <div className="w-20 h-20 rounded-2xl bg-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform ai-glow">
-                <SiLinkedin className="text-blue-400 text-4xl" />
+            <div className="relative z-10 flex items-center gap-4 sm:gap-6 flex-1 flex-wrap">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform ai-glow flex-shrink-0">
+                <SiLinkedin className="text-blue-400 text-3xl sm:text-4xl" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-blue-400 mb-1 neon-text">LinkedIn</h3>
-                <p className="text-blue-300/70 text-sm">Professional Network</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-blue-400 mb-1 neon-text">LinkedIn</h3>
+                <p className="text-blue-300/70 text-xs sm:text-sm">Professional Network</p>
               </div>
             </div>
 
@@ -247,61 +247,64 @@ export default function BentoStats() {
                 href="https://linkedin.com/in/syed-shurem-ali-5a55852a0"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors ai-glow"
+                className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white rounded-full text-sm sm:text-base font-medium hover:bg-blue-600 transition-colors ai-glow"
               >
-                <SiLinkedin /> Connect
+                <SiLinkedin /> <span className="hidden sm:inline">Connect</span>
               </a>
             </div>
           </div>
 
           {/* Resume Download - 2x1 with Sparkles */}
-          <div className="lg:col-span-2 rounded-3xl bg-gradient-to-br from-primary/20 to-primaryHover/20 border border-primary/30 p-6 flex flex-col justify-center items-center text-center group card-glow relative overflow-hidden">
-  {/* Floating Sparkles */}
+          <div className="lg:col-span-2 rounded-3xl bg-gradient-to-br from-primary/20 to-primaryHover/20 border border-primary/30 p-4 sm:p-6 flex flex-col justify-center items-center text-center group card-glow relative overflow-hidden">
+            {/* Floating Sparkles */}
             <div className="absolute top-4 left-4 sparkle" style={{ animationDelay: '0s' }}></div>
             <div className="absolute bottom-4 right-4 sparkle" style={{ animationDelay: '0.5s' }}></div>
             <div className="absolute top-1/2 right-4 sparkle" style={{ animationDelay: '1s' }}></div>
-            
-            <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform ai-glow">
-              <FaDownload className="text-primary text-3xl" />
+
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-primary/20 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform ai-glow">
+              <FaDownload className="text-primary text-2xl sm:text-3xl" />
             </div>
-            <h3 className="text-xl font-bold text-primary mb-2 neon-text">Download Resume</h3>
-            <p className="text-textMuted text-sm mb-4">Get my full CV in PDF format</p>
+            <h3 className="text-lg sm:text-xl font-bold text-primary mb-2 neon-text">Download Resume</h3>
+            <p className="text-textMuted text-xs sm:text-sm mb-3 sm:mb-4">Get my full CV in PDF format</p>
             <a
-              href="https://drive.google.com/file/d/1wi8TLqxmGrDWF0xYxoqccFE62MnFdv13/view?usp=sharing"
+              href="https://drive.google.com/uc?export=download&id=1wi8TLqxmGrDWF0xYxoqccFE62MnFdv13"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-primary text-background rounded-full font-medium hover:bg-primaryHover transition-colors ai-glow"
+              download
+              className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-background rounded-full text-sm sm:text-base font-medium hover:bg-primaryHover transition-colors ai-glow"
             >
-              <FaDownload /> Download CV
+              <FaDownload /> <span className="hidden sm:inline">Download CV</span>
+              <span className="sm:hidden">CV</span>
             </a>
           </div>
 
           {/* Availability - 2x1 with Pulse Effect */}
-          <div className="lg:col-span-2 rounded-3xl bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/30 p-6 flex items-center gap-6 card-glow relative overflow-hidden">
-  {/* Animated Background */}
+          <div className="lg:col-span-2 rounded-3xl bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/30 p-4 sm:p-6 flex items-center gap-4 sm:gap-6 card-glow relative overflow-hidden">
+            {/* Animated Background */}
             <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-emerald-500/5 animate-pulse"></div>
-            
+
             <div className="relative z-10 flex-shrink-0">
-              <div className="w-16 h-16 rounded-2xl bg-green-500/20 flex items-center justify-center ai-glow">
-  {/* Multiple Pulsing Dots */}
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-green-500/20 flex items-center justify-center ai-glow">
+                {/* Multiple Pulsing Dots */}
                 <div className="relative">
-                  <div className="w-6 h-6 bg-green-500 rounded-full animate-pulse"></div>
-                  <div className="absolute inset-0 w-6 h-6 bg-green-500 rounded-full animate-ping opacity-20"></div>
-                  <div className="absolute -inset-2 w-10 h-10 border-2 border-green-500 rounded-full animate-pulse opacity-30"></div>
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-green-500 rounded-full animate-pulse"></div>
+                  <div className="absolute inset-0 w-5 h-5 sm:w-6 sm:h-6 bg-green-500 rounded-full animate-ping opacity-20"></div>
+                  <div className="absolute -inset-2 w-8 h-8 sm:w-10 sm:h-10 border-2 border-green-500 rounded-full animate-pulse opacity-30"></div>
                 </div>
               </div>
             </div>
-            <div className="relative z-10 flex-1">
-              <h3 className="text-xl font-bold text-green-400 mb-2 neon-text">Available for Work</h3>
-              <p className="text-textMuted text-sm">
-                Open to freelance projects and full-time opportunities. Let&apos;s build something amazing together!
+            <div className="relative z-10 flex-1 min-w-0">
+              <h3 className="text-base sm:text-xl font-bold text-green-400 mb-1 sm:mb-2 neon-text">Available for Work</h3>
+              <p className="text-textMuted text-xs sm:text-sm">
+                Open to freelance projects and full-time opportunities.
               </p>
             </div>
             <a
               href="/contact"
-              className="relative z-10 flex-shrink-0 px-6 py-3 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-colors ai-glow"
+              className="relative z-10 flex-shrink-0 px-4 sm:px-6 py-2 sm:py-3 bg-green-500 text-white rounded-full text-sm sm:text-base font-medium hover:bg-green-600 transition-colors ai-glow whitespace-nowrap"
             >
-              Hire Me
+              <span className="hidden sm:inline">Hire Me</span>
+              <span className="sm:hidden">Hire</span>
             </a>
           </div>
         </div>

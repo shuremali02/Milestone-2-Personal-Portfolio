@@ -4,18 +4,31 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Blog() {
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   const allTags = Array.from(
     new Set(blogPosts.flatMap((post) => post.tags))
   );
 
-  const filteredPosts = selectedTag
-    ? blogPosts.filter((post) => post.tags.includes(selectedTag))
-    : blogPosts;
+  // Filter posts based on selected tags (multi-select)
+  const filteredPosts = selectedTags.length === 0
+    ? blogPosts
+    : blogPosts.filter((post) => 
+        selectedTags.some((tag) => post.tags.includes(tag))
+      );
 
   // Show only 3 posts on homepage
   const displayedPosts = filteredPosts.slice(0, 3);
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags((prev) => {
+      if (prev.includes(tag)) {
+        return prev.filter((t) => t !== tag);
+      } else {
+        return [...prev, tag];
+      }
+    });
+  };
 
   return (
     <div className="bg-background py-16 text-textMuted relative overflow-hidden" id="blog">
@@ -48,9 +61,9 @@ export default function Blog() {
         {/* Tag Filter */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">
           <button
-            onClick={() => setSelectedTag(null)}
+            onClick={() => setSelectedTags([])}
             className={`px-4 py-2 rounded-full ${
-              selectedTag === null
+              selectedTags.length === 0
                 ? "bg-primary text-background"
                 : "bg-surface text-textMuted border border-border hover:bg-surface/80"
             }`}
@@ -60,9 +73,9 @@ export default function Blog() {
           {allTags.map((tag) => (
             <button
               key={tag}
-              onClick={() => setSelectedTag(tag)}
+              onClick={() => toggleTag(tag)}
               className={`px-4 py-2 rounded-full ${
-                selectedTag === tag
+                selectedTags.includes(tag)
                   ? "bg-primary text-background"
                   : "bg-surface text-textMuted border border-border hover:bg-surface/80"
               }`}
@@ -131,6 +144,18 @@ export default function Blog() {
               : 'Check back for more content!'}
           </p>
         </div>
+
+        {/* Clear Filters Button */}
+        {selectedTags.length > 1 && (
+          <div className="text-center mt-6">
+            <button
+              onClick={() => setSelectedTags([])}
+              className="px-4 py-2 text-sm text-textMuted hover:text-primary transition-colors"
+            >
+              Clear all filters
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

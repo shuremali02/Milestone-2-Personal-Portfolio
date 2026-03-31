@@ -14,16 +14,16 @@ export default function Footer() {
       <div className="w-full px-6 lg:px-16 xl:px-24 py-12">
 
         {/* Top Section - CTA Banner */}
-        <div className="bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-2xl p-8 mb-12 border border-border">
+        <div className="bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-2xl p-4 sm:p-8 mb-12 border border-border">
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-primary mb-2">Let&apos;s Work Together</h3>
-            <p className="text-textMuted mb-6">Have a project in mind? I&apos;d love to hear from you!</p>
+            <h3 className="text-xl sm:text-2xl font-bold text-primary mb-2">Let&apos;s Work Together</h3>
+            <p className="text-textMuted text-sm sm:text-base mb-4 sm:mb-6">Have a project in mind? I&apos;d love to hear from you!</p>
             <a
               href="mailto:shuremsyed41@gmail.com"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-purple-600 text-white py-3 px-8 rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-purple-600 text-white py-2 sm:py-3 px-4 sm:px-8 rounded-full text-sm sm:text-base font-medium hover:shadow-lg hover:scale-105 transition-all break-all"
             >
               <FaEnvelope />
-              shuremsyed41@gmail.com
+              <span className="break-all">shuremsyed41@gmail.com</span>
             </a>
           </div>
         </div>
