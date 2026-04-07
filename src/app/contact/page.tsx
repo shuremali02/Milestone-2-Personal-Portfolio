@@ -1,21 +1,14 @@
-import React from 'react'
+"use client";
+
+import React, { useState } from 'react'
 import Link from 'next/link';
-import { Metadata } from "next";
 import { FaEnvelope, FaLinkedin, FaGithub, FaFileAlt, FaMapMarkerAlt } from "react-icons/fa";
 import ContactForm from "../components/contact-form";
-
-export const metadata: Metadata = {
-  title: "Contact - Syed Shurem Ali Portfolio",
-  description: "Get in touch with Syed Shurem Ali, Frontend Developer.",
-  openGraph: {
-    title: "Contact - Syed Shurem Ali Portfolio",
-    description: "Get in touch with Syed Shurem Ali, Frontend Developer.",
-    type: "website",
-    url: "https://syed-shurem-ali.vercel.app/contact",
-  },
-};
+import CVModal from "../components/cv-modal";
 
 export default function Contact() {
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
+
   return (
     <section className="bg-background py-12 text-textMuted relative overflow-hidden">
       <div className="absolute inset-0 animated-gradient opacity-5" />
@@ -125,22 +118,25 @@ export default function Contact() {
                 </div>
               </Link>
 
-              <Link href="https://drive.google.com/uc?export=download&id=1wi8TLqxmGrDWF0xYxoqccFE62MnFdv13" target="_blank">
-                <div className="bg-surface border border-border rounded-2xl p-5 shadow-lg hover:border-primary transition-all group cursor-pointer card-glow relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primaryHover/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute top-2 right-2 sparkle opacity-0 group-hover:opacity-100" style={{ animationDelay: '0.25s' }} />
-                  
-                  <div className="relative z-10 flex items-center gap-3">
-                    <div className="w-12 h-12 bg-primaryHover rounded-xl flex items-center justify-center">
-                      <FaFileAlt className="text-background text-xl" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-primary">Resume</h3>
-                      <p className="text-textMuted text-sm">Download CV</p>
-                    </div>
+              <div
+                onClick={() => setIsCVModalOpen(true)}
+                className="bg-surface border border-border rounded-2xl p-5 shadow-lg hover:border-primary transition-all group cursor-pointer card-glow relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primaryHover/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-2 right-2 sparkle opacity-0 group-hover:opacity-100" style={{ animationDelay: '0.25s' }} />
+                
+                <div className="relative z-10 flex items-center gap-3">
+                  <div className="w-12 h-12 bg-primaryHover rounded-xl flex items-center justify-center">
+                    <FaFileAlt className="text-background text-xl" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-primary">Resume</h3>
+                    <p className="text-textMuted text-sm">View CV</p>
                   </div>
                 </div>
-              </Link>
+              </div>
+
+              <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
 
               <div className="bg-gradient-to-r from-primary/10 to-primaryHover/10 border border-primary/30 rounded-2xl p-5 card-glow relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primaryHover/5 animate-pulse" />

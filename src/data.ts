@@ -128,6 +128,17 @@ export const testimonials: Testimonial[] = [
 
 export const project = [
   {
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
+    title: "AI-Powered Todo App",
+    description: "An intelligent todo application built during the GIAIC Spec-Driven SpecKit+ Hackathon, successfully completing all 5 phases within the deadline. Built using SpecKit+ and Claude Code CLI. Features an AI-powered chatbot that allows users to manage tasks through simple natural language commands like 'add my new task for grocery' - the chatbot can create, update, and delete tasks conversationally. Includes a comprehensive dashboard where users can easily view and manage all their tasks at a glance, plus a detailed audit trail that tracks all task activities (creation, completion, deletion). The chatbot feature is exclusively available for signed-in users. The app also includes a user profile page where users can easily update their email and password.",
+    route: "https://the-evolution-of-todo-mastering-spe.vercel.app/",
+    tags: ["AI/ML", "Next.js", "Hackathon", "Task Management", "Chatbot", "Authentication", "SpecKit+"],
+    github: "https://github.com/shuremali02/The-Evolution-of-Todo---Mastering-Spec-Driven-Development---Cloud-Native-AI",
+    featured: true,
+    year: 2025,
+    category: "AI/ML"
+  },
+  {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1766755841/physical_ai_book_dje6hv.png",
     title: "Physical AI & Humanoid Robotics Book",
     description: "A comprehensive Docusaurus-based textbook on Physical AI & Humanoid Robotics with RAG-based chatbot, Urdu translation, personalized content for signed-in users, and interactive learning features. Built during GIAIC Spec-Driven SpecKit+ Hackathon.",

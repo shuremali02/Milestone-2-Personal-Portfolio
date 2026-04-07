@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { FaClock, FaProjectDiagram, FaCode, FaTrophy, FaGithub, FaUsers, FaStar, FaDownload } from "react-icons/fa";
 import { SiVercel, SiLinkedin } from "react-icons/si";
 import ExperienceCounter from "./experience-counter";
+import CVModal from "./cv-modal";
 
 interface Stat {
   icon: React.ElementType;
@@ -52,6 +53,7 @@ export default function BentoStats() {
     followers: 100,
   });
   const [loading, setLoading] = useState(true);
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -266,16 +268,15 @@ export default function BentoStats() {
             </div>
             <h3 className="text-lg sm:text-xl font-bold text-primary mb-2 neon-text">Download Resume</h3>
             <p className="text-textMuted text-xs sm:text-sm mb-3 sm:mb-4">Get my full CV in PDF format</p>
-            <a
-              href="https://drive.google.com/uc?export=download&id=1wi8TLqxmGrDWF0xYxoqccFE62MnFdv13"
-              target="_blank"
-              rel="noopener noreferrer"
-              download
+            <button
+              onClick={() => setIsCVModalOpen(true)}
               className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-background rounded-full text-sm sm:text-base font-medium hover:bg-primaryHover transition-colors ai-glow"
             >
-              <FaDownload /> <span className="hidden sm:inline">Download CV</span>
+              <FaDownload /> <span className="hidden sm:inline">View CV</span>
               <span className="sm:hidden">CV</span>
-            </a>
+            </button>
+
+            <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
           </div>
 
           {/* Availability - 2x1 with Pulse Effect */}
