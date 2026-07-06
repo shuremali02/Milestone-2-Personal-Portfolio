@@ -5,6 +5,8 @@ import { FaClock, FaProjectDiagram, FaCode, FaTrophy, FaGithub, FaUsers, FaStar,
 import { SiVercel, SiLinkedin } from "react-icons/si";
 import ExperienceCounter from "./experience-counter";
 import CVModal from "./cv-modal";
+import TiltCard from "./tilt-card";
+import Reveal from "./reveal";
 
 interface Stat {
   icon: React.ElementType;
@@ -144,33 +146,18 @@ export default function BentoStats() {
       <div className="absolute inset-0 animated-gradient opacity-5" />
       
       {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: `${10 + Math.random() * 10}s`
-            }}
-          />
-        ))}
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header with Neon Effect */}
-        <div className="text-center mb-12 relative">
-          <div className="absolute -top-4 left-1/4 sparkle" style={{ animationDelay: '0s' }} />
-          <div className="absolute -top-4 right-1/4 sparkle" style={{ animationDelay: '0.5s' }} />
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-3 neon-text">
+        <Reveal className="text-center mb-12 relative">
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-3 gradient-text">
             By The Numbers
           </h2>
           <p className="text-textMuted max-w-2xl mx-auto">
             A quick snapshot of my journey and achievements
           </p>
-        </div>
+        </Reveal>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[160px]">
@@ -202,20 +189,20 @@ export default function BentoStats() {
                 <FaGithub className="text-white text-3xl sm:text-4xl" />
               </div>
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 neon-text">GitHub</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">GitHub</h3>
                 <p className="text-gray-400 text-xs sm:text-sm">@shuremali02</p>
               </div>
             </div>
 
             <div className="relative z-10 flex gap-4 sm:gap-6">
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-white">
+                <p className="text-2xl sm:text-3xl font-bold font-heading text-white">
                   {loading ? "-" : githubStats.projects}+
                 </p>
                 <p className="text-gray-400 text-xs">Repos</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-white">
+                <p className="text-2xl sm:text-3xl font-bold font-heading text-white">
                   {loading ? "-" : githubStats.stars}+
                 </p>
                 <p className="text-gray-400 text-xs">Stars</p>
@@ -239,7 +226,7 @@ export default function BentoStats() {
                 <SiLinkedin className="text-blue-400 text-3xl sm:text-4xl" />
               </div>
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-blue-400 mb-1 neon-text">LinkedIn</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-blue-400 mb-1">LinkedIn</h3>
                 <p className="text-blue-300/70 text-xs sm:text-sm">Professional Network</p>
               </div>
             </div>
@@ -259,14 +246,11 @@ export default function BentoStats() {
           {/* Resume Download - 2x1 with Sparkles */}
           <div className="lg:col-span-2 rounded-3xl bg-gradient-to-br from-primary/20 to-primaryHover/20 border border-primary/30 p-4 sm:p-6 flex flex-col justify-center items-center text-center group card-glow relative overflow-hidden">
             {/* Floating Sparkles */}
-            <div className="absolute top-4 left-4 sparkle" style={{ animationDelay: '0s' }}></div>
-            <div className="absolute bottom-4 right-4 sparkle" style={{ animationDelay: '0.5s' }}></div>
-            <div className="absolute top-1/2 right-4 sparkle" style={{ animationDelay: '1s' }}></div>
 
             <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-primary/20 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform ai-glow">
               <FaDownload className="text-primary text-2xl sm:text-3xl" />
             </div>
-            <h3 className="text-lg sm:text-xl font-bold text-primary mb-2 neon-text">Download Resume</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-primary mb-2">Download Resume</h3>
             <p className="text-textMuted text-xs sm:text-sm mb-3 sm:mb-4">Get my full CV in PDF format</p>
             <button
               onClick={() => setIsCVModalOpen(true)}
@@ -295,7 +279,7 @@ export default function BentoStats() {
               </div>
             </div>
             <div className="relative z-10 flex-1 min-w-0">
-              <h3 className="text-base sm:text-xl font-bold text-green-400 mb-1 sm:mb-2 neon-text">Available for Work</h3>
+              <h3 className="text-base sm:text-xl font-bold text-green-400 mb-1 sm:mb-2">Available for Work</h3>
               <p className="text-textMuted text-xs sm:text-sm">
                 Open to freelance projects and full-time opportunities.
               </p>
@@ -328,18 +312,17 @@ function StatCard({ stat, isVisible, delay, loading }: { stat: Stat; isVisible: 
   const Icon = stat.icon;
 
   return (
-    <div className="rounded-3xl bg-gradient-to-br from-surface to-surface/50 border border-border p-6 flex flex-col justify-center items-center text-center group hover:border-primary/50 transition-colors card-glow relative overflow-hidden">
+    <TiltCard max={14} className="rounded-3xl h-full">
+    <div className="rounded-3xl bg-gradient-to-br from-surface to-surface/50 border border-border p-6 h-full flex flex-col justify-center items-center text-center group hover:border-primary/50 transition-colors card-glow relative overflow-hidden">
   {/* Animated Background Glow */}
       <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
       
   {/* Floating Sparkles */}
-      <div className="absolute top-2 right-2 sparkle" style={{ animationDelay: '0s' }}></div>
-      <div className="absolute bottom-2 left-2 sparkle" style={{ animationDelay: '0.5s' }}></div>
       
       <div className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform ai-glow`}>
         <Icon className="text-white text-2xl" />
       </div>
-      <div className="relative text-4xl md:text-5xl font-bold text-primary mb-1">
+      <div className="relative text-4xl md:text-5xl font-bold font-heading text-primary mb-1">
         {loading ? (
           <div className="h-12 w-20 bg-border rounded animate-pulse"></div>
         ) : stat.icon === FaClock ? (
@@ -352,5 +335,6 @@ function StatCard({ stat, isVisible, delay, loading }: { stat: Stat; isVisible: 
       </div>
       <p className="relative text-textMuted text-sm">{stat.label}</p>
     </div>
+    </TiltCard>
   );
 }

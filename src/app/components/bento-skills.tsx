@@ -3,6 +3,8 @@
 import { skills } from "@/data";
 import { FaCode } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import TiltCard from "./tilt-card";
+import Reveal from "./reveal";
 
 export default function BentoSkills() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -65,32 +67,17 @@ export default function BentoSkills() {
   return (
     <div className="bg-background py-16 text-textMuted relative overflow-hidden">
       <div className="absolute inset-0 animated-gradient opacity-5" />
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(10)].map((_, i) => (
-          <div
-            key={i}
-            className="particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: `${10 + Math.random() * 10}s`
-            }}
-          />
-        ))}
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12 relative">
-          <div className="absolute -top-4 left-1/3 sparkle" style={{ animationDelay: '0s' }} />
-          <div className="absolute -top-4 right-1/3 sparkle" style={{ animationDelay: '0.5s' }} />
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-3 neon-text">
+        <Reveal className="text-center mb-12 relative">
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-3 gradient-text">
             Skills & Expertise
           </h2>
           <p className="text-textMuted max-w-2xl mx-auto">
             Technologies and tools I use to bring ideas to life
           </p>
-        </div>
+        </Reveal>
 
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
@@ -115,15 +102,13 @@ export default function BentoSkills() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 rounded-2xl bg-surface border border-border p-6 shadow-lg card-glow relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute top-4 right-4 sparkle" style={{ animationDelay: '0s' }} />
-            <div className="absolute bottom-4 left-4 sparkle" style={{ animationDelay: '0.5s' }} />
             
             <div className="flex items-center gap-3 mb-6 relative z-10">
               <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center ai-glow">
                 <FaCode className="text-primary text-2xl" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-primary neon-text">Top Skills</h3>
+                <h3 className="text-xl font-bold text-primary">Top Skills</h3>
                 <p className="text-textMuted text-sm">My strongest expertise areas</p>
               </div>
             </div>
@@ -160,12 +145,10 @@ export default function BentoSkills() {
 
           <div className="rounded-2xl bg-gradient-to-r from-primary/10 to-primaryHover/10 border border-primary/30 p-6 flex flex-col justify-center card-glow relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primaryHover/5 animate-pulse" />
-            <div className="absolute top-4 right-4 sparkle" style={{ animationDelay: '0s' }} />
-            <div className="absolute bottom-4 left-4 sparkle" style={{ animationDelay: '0.5s' }} />
             
             <div className="flex items-center gap-3 mb-4 relative z-10">
               <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-              <h3 className="text-xl font-bold text-primary neon-text">Currently Learning</h3>
+              <h3 className="text-xl font-bold text-primary">Currently Learning</h3>
             </div>
             <div className="space-y-3 relative z-10">
               <div className="bg-background/50 rounded-xl p-4 border border-border">
@@ -187,12 +170,11 @@ export default function BentoSkills() {
 
           {/* All Skills Grid */}
           {displayedSkills.map((skill: { name: string; level: number; category: string }, index: number) => (
+            <TiltCard key={`${selectedCategories}-${index}`} max={12} className="rounded-xl h-full">
             <div
-              key={`${selectedCategories}-${index}`}
-              className="bg-surface border border-border rounded-xl p-5 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group card-glow relative overflow-hidden"
+              className="bg-surface border border-border rounded-xl p-5 h-full hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 group card-glow relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute top-2 right-2 sparkle opacity-0 group-hover:opacity-100" style={{ animationDelay: `${index * 0.1}s` }} />
 
               <div className="relative z-10">
                 <div className="flex justify-between items-center mb-3">
@@ -216,14 +198,13 @@ export default function BentoSkills() {
                 <div className="mt-2 text-xs text-textMuted">{skill.category}</div>
               </div>
             </div>
+            </TiltCard>
           ))}
         </div>
 
         {/* View More Button */}
         {filteredSkills.length > 4 && (
           <div className="text-center mt-8 relative">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sparkle" style={{ animationDelay: '0s' }} />
-            <div className="absolute top-1/2 left-1/4 -translate-y-1/2 sparkle" style={{ animationDelay: '0.5s' }} />
             
             <button
               onClick={() => setShowAllSkills(!showAllSkills)}

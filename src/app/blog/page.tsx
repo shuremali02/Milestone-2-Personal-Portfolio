@@ -17,26 +17,11 @@ export default function BlogPage() {
   return (
     <div className="bg-background min-h-screen py-16 text-textMuted relative overflow-hidden">
       <div className="absolute inset-0 animated-gradient opacity-5" />
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: `${10 + Math.random() * 10}s`
-            }}
-          />
-        ))}
-      </div>
 
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <div className="text-center relative mb-8">
-          <div className="absolute -top-4 left-1/4 sparkle" style={{ animationDelay: '0s' }} />
-          <div className="absolute -top-4 right-1/4 sparkle" style={{ animationDelay: '0.5s' }} />
           
-          <h1 className="text-4xl font-bold text-primary neon-text">
+          <h1 className="text-4xl font-bold gradient-text">
             All Blog Posts
           </h1>
         </div>
@@ -48,7 +33,6 @@ export default function BlogPage() {
               className="bg-surface border border-border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 card-glow relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute top-4 right-4 sparkle opacity-0 hover:opacity-100" style={{ animationDelay: '0s' }} />
               
               <div className="relative z-10 p-6">
                 <div className="flex justify-between items-center mb-3">

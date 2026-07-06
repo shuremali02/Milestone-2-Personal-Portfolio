@@ -8,7 +8,6 @@ import ThemeToggle from "./theme-toggle";
 const navLinks = [
   { href: "/#project", label: "Projects", section: "project" },
   { href: "/#skills", label: "Skills", section: "skills" },
-  { href: "/#testimonials", label: "Testimonials", section: "testimonials" },
   { href: "/blog", label: "Blog", section: "blog" },
   { href: "/about", label: "About", section: "about" },
   { href: "/contact", label: "Contact", section: "contact" },
@@ -17,14 +16,23 @@ const navLinks = [
 export default function Navbar() {
   const [Open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  // Shrink + deepen the glass effect once the page is scrolled
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
       if (pathname !== "/") return;
 
-      const sections = ["project", "skills", "testimonials", "blog", "about", "contact"];
+      const sections = ["project", "skills", "blog", "about", "contact"];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -67,14 +75,20 @@ export default function Navbar() {
   };
 
   return (
-    <header className="bg-background/80 top-0 z-50 sticky w-full shadow-md text-textMain py-3 px-5 flex items-center justify-between border-b border-border backdrop-blur-lg">
+    <header
+      className={`glass top-0 z-50 sticky w-full text-textMain border-b border-border transition-all duration-300 ${
+        scrolled ? "py-2 shadow-xl shadow-black/20" : "py-3 shadow-md"
+      }`}
+    >
+      {/* Inner container aligned with page content on large screens */}
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
       {/* Logo Section */}
       <Link href="/" aria-label="Home">
-        <div className="flex items-center space-x-4 text-primary hover:scale-105 transition-transform">
-          <h1 className="text-3xl font-bold italic font-serif tracking-wide">
+        <div className="flex items-center space-x-4 hover:scale-105 transition-transform">
+          <span className="text-3xl font-bold font-heading gradient-text tracking-tight">
             SSA
-          </h1>
+          </span>
         </div>
       </Link>
 
@@ -85,16 +99,14 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`relative py-2 transition-all ${
+                className={`nav-link relative py-2 transition-all ${
                   isActive(link)
                     ? "text-primary"
                     : "hover:text-primary"
                 }`}
               >
                 {link.label}
-                {isActive(link) && (
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full" />
-                )}
+                <span className={`nav-underline ${isActive(link) ? "active" : ""}`} />
               </Link>
             </li>
           ))}
@@ -115,6 +127,7 @@ export default function Navbar() {
         >
           {Open ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
+      </div>
       </div>
 
       {/* Mobile Navigation */}

@@ -37,6 +37,12 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Distinctive display typeface for headings, tight tracking */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), var(--font-inter), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
 /* ✨ AI Glow Effect */
 @keyframes ai-glow {
   0%, 100% {
@@ -367,6 +373,312 @@ body {
 
 .bento-card:hover::before {
   left: 100%;
+}
+
+/* ===================================================================
+   ✨ MODERN 3D / GLASS / MOTION SYSTEM (2026 refresh)
+   =================================================================== */
+
+/* 3D Tilt Card — driven by mouse via CSS custom props set in JS */
+.tilt-card {
+  transform-style: preserve-3d;
+  transform: perspective(900px)
+    rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg))
+    translateZ(0);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Lift child content off the card surface for real depth (on hover) */
+.tilt-layer {
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tilt-card:hover .tilt-layer {
+  transform: translateZ(28px);
+}
+
+/* Moving glare that follows the pointer */
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.28),
+    transparent 45%
+  );
+  transition: opacity 0.3s ease;
+}
+.tilt-card:hover .tilt-glare {
+  opacity: 1;
+}
+
+/* Glassmorphism surface */
+.glass {
+  background: rgba(22, 27, 34, 0.55);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+:root.light .glass {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Animated gradient border (conic spin) */
+.gradient-border {
+  position: relative;
+  border-radius: 1.25rem;
+  background: var(--surface);
+  z-index: 0;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    #00A38C,
+    #14B8A6,
+    #3B82F6,
+    #8B5CF6,
+    #00A38C
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  animation: border-spin 6s linear infinite;
+}
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes border-spin {
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* Scroll reveal (used by IntersectionObserver toggling .is-visible) */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Static gradient text — calm, premium. (Shimmer removed: when every
+   heading animates, nothing reads as important.) */
+.gradient-text {
+  background: linear-gradient(100deg, #00A38C, #3B82F6 60%, #8B5CF6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Timeline vertical progress line pulse */
+@keyframes timeline-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 163, 140, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(0, 163, 140, 0.9); }
+}
+.timeline-dot {
+  animation: timeline-glow 2.5s ease-in-out infinite;
+}
+
+/* Marquee / tech pill spin-in */
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.pop-in {
+  animation: pop-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Aurora blobs — soft drifting color fields for the hero */
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate(calc(var(--px, 0) * 30px), calc(var(--py, 0) * 30px)) scale(1); }
+  33% { transform: translate(calc(var(--px, 0) * 30px + 6vw), calc(var(--py, 0) * 30px - 4vh)) scale(1.15); }
+  66% { transform: translate(calc(var(--px, 0) * 30px - 5vw), calc(var(--py, 0) * 30px + 5vh)) scale(0.95); }
+}
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate(calc(var(--px, 0) * -45px), calc(var(--py, 0) * -45px)) scale(1); }
+  50% { transform: translate(calc(var(--px, 0) * -45px - 7vw), calc(var(--py, 0) * -45px + 6vh)) scale(1.2); }
+}
+.aurora-blob {
+  position: absolute;
+  width: clamp(280px, 45vw, 640px);
+  height: clamp(280px, 45vw, 640px);
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  pointer-events: none;
+  will-change: transform;
+}
+.aurora-1 {
+  background: radial-gradient(circle, rgba(0, 163, 140, 0.55), transparent 65%);
+  top: -10%;
+  left: -5%;
+  animation: aurora-drift-1 18s ease-in-out infinite;
+}
+.aurora-2 {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.45), transparent 65%);
+  bottom: -15%;
+  right: -8%;
+  animation: aurora-drift-2 22s ease-in-out infinite;
+}
+.aurora-3 {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.4), transparent 65%);
+  top: 30%;
+  left: 45%;
+  animation: aurora-drift-1 26s ease-in-out infinite reverse;
+}
+
+/* 3D perspective grid floor (retro grid) at the bottom of the hero */
+@keyframes grid-scroll {
+  from { background-position: 0 0; }
+  to { background-position: 0 48px; }
+}
+.grid-floor {
+  position: absolute;
+  left: -25%;
+  right: -25%;
+  bottom: 0;
+  height: 55%;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(0, 163, 140, 0.45) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 163, 140, 0.45) 1px, transparent 1px);
+  background-size: 48px 48px;
+  transform: perspective(600px) rotateX(62deg);
+  transform-origin: bottom center;
+  animation: grid-scroll 2.5s linear infinite;
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 90%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 90%);
+}
+
+/* Staggered letter reveal for headings */
+@keyframes letter-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.6em) rotateX(-70deg);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+    filter: blur(0);
+  }
+}
+.letter-reveal {
+  display: inline-block;
+  animation: letter-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: bottom center;
+}
+
+/* Cursor spotlight glow */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle, rgba(0, 163, 140, 0.07), transparent 60%);
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  z-index: 100;
+  background: linear-gradient(90deg, #00A38C, #3B82F6, #8B5CF6);
+  box-shadow: 0 0 10px rgba(0, 163, 140, 0.6);
+  transform-origin: left;
+  will-change: transform;
+}
+
+/* Magnetic button wrapper */
+.magnetic {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Animated nav underline */
+.nav-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 9999px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover .nav-underline,
+.nav-underline.active {
+  transform: scaleX(1);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .tilt-card,
+  .ai-glow,
+  .neon-text,
+  .float,
+  .animated-gradient,
+  .gradient-border::before,
+  .gradient-text,
+  .timeline-dot,
+  .data-stream,
+  .particle,
+  .sparkle,
+  .pop-in,
+  .aurora-blob,
+  .grid-floor,
+  .letter-reveal,
+  .magnetic,
+  .nav-underline {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .tilt-card {
+    transform: none !important;
+  }
+  .letter-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .cursor-glow {
+    display: none;
+  }
 }
 
 /* Scrollbar styling */
