@@ -3,8 +3,9 @@ import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import { FaGraduationCap, FaBriefcase, FaCode, FaRocket } from "react-icons/fa";
+import { FaGraduationCap, FaCode, FaRocket } from "react-icons/fa";
 import ExperienceCounter from "../components/experience-counter";
+import BentoExperience from "../components/bento-experience";
 
 export default function About() {
   useEffect(() => { AOS.init({ duration: 800, once: true }) }, [])
@@ -12,26 +13,11 @@ export default function About() {
   return (
     <div className="bg-background py-12 text-textMuted relative overflow-hidden">
       <div className="absolute inset-0 animated-gradient opacity-5" />
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: `${10 + Math.random() * 10}s`
-            }}
-          />
-        ))}
-      </div>
 
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <div className="text-center relative mb-12">
-          <div className="absolute -top-4 left-1/4 sparkle" style={{ animationDelay: '0s' }} />
-          <div className="absolute -top-4 right-1/4 sparkle" style={{ animationDelay: '0.5s' }} />
           
-          <h1 className="text-center text-4xl md:text-5xl font-bold text-primary mb-12 neon-text">
+          <h1 className="text-center text-4xl md:text-5xl font-bold gradient-text mb-12">
             About Me
           </h1>
         </div>
@@ -43,8 +29,6 @@ export default function About() {
           >
             <div className="bg-surface border border-border rounded-2xl p-6 text-center shadow-lg card-glow relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 opacity-0 hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute top-4 right-4 sparkle" style={{ animationDelay: '0s' }} />
-              <div className="absolute bottom-4 left-4 sparkle" style={{ animationDelay: '0.5s' }} />
               
               <div className="relative z-10">
                 <Image
@@ -55,7 +39,7 @@ export default function About() {
                   className="rounded-full mx-auto border-4 border-primary shadow-lg ai-glow"
                 />
                 <h2 className="text-2xl font-bold text-primary mt-4">Syed Shurem Ali</h2>
-                <p className="text-textMuted mt-1">Frontend Developer</p>
+                <p className="text-textMuted mt-1">Full-Stack Developer &amp; AI Engineer</p>
                 <p className="text-primary font-semibold mt-1"><ExperienceCounter /> Years Experience</p>
 
                 <div className="mt-6 pt-6 border-t border-border">
@@ -72,26 +56,24 @@ export default function About() {
           >
             <div className="bg-surface border border-border rounded-2xl p-6 shadow-lg card-glow relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute top-4 right-4 sparkle" style={{ animationDelay: '0s' }} />
               
               <div className="relative z-10">
-                <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2 neon-text">
+                <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
                   <FaRocket className="text-primaryHover" /> Who I Am
                 </h3>
                 <p className="text-textMain leading-relaxed">
-                  I am a passionate Frontend Developer specializing in building modern, responsive, and user-friendly web applications. With over <span className="text-primary font-semibold"><ExperienceCounter /> years</span> of hands-on experience, I have developed expertise in React.js, Next.js, TypeScript, and Tailwind CSS.
+                  I am a passionate Full-Stack Developer &amp; AI Engineer building modern, responsive products across web and mobile. With over <span className="text-primary font-semibold"><ExperienceCounter /> years</span> of hands-on experience, I work end-to-end with React.js, Next.js, TypeScript, Tailwind CSS, and Flutter / Dart for native Android apps — and integrate Agentic AI to make them intelligent.
                 </p>
                 <p className="text-textMain leading-relaxed mt-3">
-                  Currently, I am expanding my skills in Agentic AI development through the Governor House Initiative, exploring the intersection of AI and web technologies to create intelligent applications.
+                  I currently work <span className="text-primary font-semibold">full-time as a Full-Stack Developer</span>, where I ship production apps and own their deployment — VPS servers with Nginx and NSSM, plus Hostinger hosting with custom domains, subdomains, and MySQL databases. Alongside this, I&apos;m advancing my Agentic AI skills through the Governor House Initiative.
                 </p>
               </div>
             </div>
 
             <div className="bg-surface border border-border rounded-2xl p-6 shadow-lg card-glow relative overflow-hidden">
-              <div className="absolute top-4 right-4 sparkle" style={{ animationDelay: '0.25s' }} />
               
               <div className="relative z-10">
-                <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2 neon-text">
+                <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
                   <FaGraduationCap className="text-primaryHover" /> Education
                 </h3>
                 <div className="space-y-4">
@@ -114,62 +96,39 @@ export default function About() {
             </div>
 
             <div className="bg-surface border border-border rounded-2xl p-6 shadow-lg card-glow relative overflow-hidden">
-              <div className="absolute top-4 right-4 sparkle" style={{ animationDelay: '0.5s' }} />
               
               <div className="relative z-10">
-                <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2 neon-text">
+                <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
                   <FaCode className="text-primaryHover" /> What I Do
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                    <p className="text-textMain">Frontend Development with React & Next.js</p>
+                    <p className="text-textMain">Full-Stack Web Apps with Next.js & MySQL</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                    <p className="text-textMain">Responsive UI/UX Implementation</p>
+                    <p className="text-textMain">Android Apps with Flutter, Dart & Android SDK</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                    <p className="text-textMain">API Integration & State Management</p>
+                    <p className="text-textMain">VPS Deployment with Nginx & NSSM</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                    <p className="text-textMain">AI-Powered Web Applications</p>
+                    <p className="text-textMain">Hostinger Hosting — Domains, Subdomains & MySQL DBs</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-surface border border-border rounded-2xl p-6 shadow-lg card-glow relative overflow-hidden">
-              <div className="absolute top-4 right-4 sparkle" style={{ animationDelay: '0.75s' }} />
-              
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2 neon-text">
-                  <FaBriefcase className="text-primaryHover" /> Experience Highlights
-                </h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                  <div className="bg-background rounded-xl p-4 border border-border">
-                    <p className="text-2xl font-bold text-primary">15+</p>
-                    <p className="text-textMuted text-sm">Projects</p>
-                  </div>
-                  <div className="bg-background rounded-xl p-4 border border-border">
-                    <p className="text-2xl font-bold text-primary"><ExperienceCounter /></p>
-                    <p className="text-textMuted text-sm">Years Exp.</p>
-                  </div>
-                  <div className="bg-background rounded-xl p-4 border border-border">
-                    <p className="text-2xl font-bold text-primary">5+</p>
-                    <p className="text-textMuted text-sm">Hackathons</p>
-                  </div>
-                  <div className="bg-background rounded-xl p-4 border border-border">
-                    <p className="text-2xl font-bold text-primary">10+</p>
-                    <p className="text-textMuted text-sm">Technologies</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
+      </div>
+
+      {/* Professional Experience — part of the About story */}
+      <div id="experience" className="relative z-10 mt-8">
+        <BentoExperience />
       </div>
     </div>
   )

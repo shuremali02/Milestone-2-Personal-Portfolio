@@ -6,10 +6,10 @@ export const generatePageMetadata = (title: string, description?: string, image?
 
   return {
     title: `${title} | Syed Shurem Ali Portfolio`,
-    description: description || "Portfolio of Syed Shurem Ali - Frontend Developer specializing in React, Next.js, TypeScript, and Agentic AI.",
+    description: description || "Portfolio of Syed Shurem Ali - Full-Stack Developer & AI Engineer building web & mobile apps with Next.js, TypeScript, Flutter/Dart, MySQL, and Agentic AI.",
     openGraph: {
       title: `${title} | Syed Shurem Ali Portfolio`,
-      description: description || "Portfolio of Syed Shurem Ali - Frontend Developer specializing in React, Next.js, TypeScript, and Agentic AI.",
+      description: description || "Portfolio of Syed Shurem Ali - Full-Stack Developer & AI Engineer building web & mobile apps with Next.js, TypeScript, Flutter/Dart, MySQL, and Agentic AI.",
       url: `${baseUrl}${typeof window !== 'undefined' ? window.location.pathname : ''}`,
       images: [
         {
@@ -25,7 +25,7 @@ export const generatePageMetadata = (title: string, description?: string, image?
     twitter: {
       card: "summary_large_image",
       title: `${title} | Syed Shurem Ali Portfolio`,
-      description: description || "Portfolio of Syed Shurem Ali - Frontend Developer specializing in React, Next.js, TypeScript, and Agentic AI.",
+      description: description || "Portfolio of Syed Shurem Ali - Full-Stack Developer & AI Engineer building web & mobile apps with Next.js, TypeScript, Flutter/Dart, MySQL, and Agentic AI.",
       images: [image || defaultImage],
     },
   };

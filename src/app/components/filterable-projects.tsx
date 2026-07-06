@@ -54,7 +54,7 @@ export default function FilterableProjects() {
 
   return (
     <div className="bg-background py-8 text-textMuted">
-      <h1 className="flex items-center justify-center p-8 pt-8 text-5xl font-bold tracking-widest underline text-primary decoration-primaryHover hover:animate-pulse">
+      <h1 className="flex items-center justify-center p-8 pt-8 text-4xl md:text-5xl font-bold gradient-text">
         Featured Projects
       </h1>
 

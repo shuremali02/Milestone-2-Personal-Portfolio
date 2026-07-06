@@ -34,25 +34,9 @@ export default function TechStack() {
   return (
     <div className="w-full bg-background py-16 relative overflow-hidden">
       <div className="absolute inset-0 animated-gradient opacity-5" />
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(10)].map((_, i) => (
-          <div
-            key={i}
-            className="particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: `${10 + Math.random() * 10}s`
-            }}
-          />
-        ))}
-      </div>
 
       <div className="text-center mb-12 relative z-10">
-        <div className="absolute -top-4 left-1/4 sparkle" style={{ animationDelay: '0s' }} />
-        <div className="absolute -top-4 right-1/4 sparkle" style={{ animationDelay: '0.5s' }} />
-        
-        <h2 className="text-4xl md:text-5xl font-bold text-primary mb-3 neon-text">
+        <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-3">
           Tech Stack
         </h2>
         <p className="text-textMuted">Technologies I work with</p>
@@ -87,22 +71,18 @@ export default function TechStack() {
       <div className="max-w-4xl mx-auto mt-12 px-4 relative z-10" data-aos="fade-up" data-aos-delay="200">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-surface border border-border rounded-xl p-4 text-center hover:border-primary/50 transition-all hover:shadow-lg card-glow relative overflow-hidden">
-            <div className="absolute top-2 right-2 sparkle" style={{ animationDelay: '0s' }} />
             <p className="text-3xl font-bold text-primary relative z-10">14+</p>
             <p className="text-textMuted text-sm relative z-10">Technologies</p>
           </div>
           <div className="bg-surface border border-border rounded-xl p-4 text-center hover:border-primary/50 transition-all hover:shadow-lg card-glow relative overflow-hidden">
-            <div className="absolute top-2 right-2 sparkle" style={{ animationDelay: '0.25s' }} />
             <p className="text-3xl font-bold text-primary relative z-10">3+</p>
             <p className="text-textMuted text-sm relative z-10">AI/ML Tools</p>
           </div>
           <div className="bg-surface border border-border rounded-xl p-4 text-center hover:border-primary/50 transition-all hover:shadow-lg card-glow relative overflow-hidden">
-            <div className="absolute top-2 right-2 sparkle" style={{ animationDelay: '0.5s' }} />
             <p className="text-3xl font-bold text-primary relative z-10">5+</p>
             <p className="text-textMuted text-sm relative z-10">Frameworks</p>
           </div>
           <div className="bg-surface border border-border rounded-xl p-4 text-center hover:border-primary/50 transition-all hover:shadow-lg card-glow relative overflow-hidden">
-            <div className="absolute top-2 right-2 sparkle" style={{ animationDelay: '0.75s' }} />
             <p className="text-3xl font-bold text-primary relative z-10">2.5+</p>
             <p className="text-textMuted text-sm relative z-10">Years Learning</p>
           </div>

@@ -16,21 +16,73 @@ export interface Project {
   category?: string;
 }
 
+export interface Experience {
+  role: string;
+  company: string;
+  type: string;
+  start: string;
+  end: string;
+  current?: boolean;
+  location?: string;
+  description: string;
+  achievements: string[];
+  tech: string[];
+}
+
+export const experiences: Experience[] = [
+  {
+    role: "Full-Stack Developer",
+    company: "Elipse Studio",
+    type: "Full-time",
+    start: "May 2026",
+    end: "Present",
+    current: true,
+    location: "On-site",
+    description:
+      "Building and shipping production web and mobile applications end-to-end — from database design to responsive front-ends and live server deployment. I own features across the full stack and handle the infrastructure they run on.",
+    achievements: [
+      "Developed cross-platform mobile apps with Flutter, Dart & the Android SDK, delivering native-feeling Android experiences.",
+      "Built full-stack web applications using Next.js, TypeScript and MySQL databases hosted on Hostinger.",
+      "Deployed and maintained apps on VPS servers — configuring Nginx reverse proxies and running Node/services as Windows services with NSSM.",
+      "Set up production hosting on Hostinger: custom domains, subdomains and provisioned MySQL databases for live clients.",
+    ],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Flutter",
+      "Dart",
+      "Android SDK",
+      "MySQL",
+      "Nginx",
+      "NSSM",
+      "VPS",
+      "Hostinger",
+    ],
+  },
+];
+
 export const personalData = `
 Name: Syed Shurem Ali
-Role: Front-End Developer
+Role: Full-Stack Developer
 Experience: 2.5+ years
+
+Current Position:
+- Full-Stack Developer (Full-time) at Elipse Studio — May 2026 to Present.
+  Building production web & mobile apps end-to-end: Flutter/Dart Android apps,
+  Next.js + MySQL web apps, and handling VPS/Nginx/NSSM and Hostinger
+  (domains, subdomains, MySQL databases) deployments.
 
 Education:
 - 1-Year Diploma in Information Technology — SZABIST ZABTech, Hyderabad
 - Ongoing: Agentic AI Development Course — Governor House Initiative
 
 Skills:
-- Frontend: React.js, Next.js, TypeScript, JavaScript (ES6+) , Python , Agentic AI
+- Frontend: React.js, Next.js, TypeScript, JavaScript (ES6+), Python, Agentic AI
+- Mobile: Android Development, Flutter (Flutter SDK), Dart, Android SDK
 - Styling: Tailwind CSS, Sass, CSS3, HTML5, AOS Animations, Framer Motion
-- API Integration (REST)
+- Backend & Data: API Integration (REST), MySQL
 - State Management: Redux
-- Deployment: Vercel, Netlify
+- Deployment & DevOps: Vercel, Netlify, VPS Deployment, Nginx, NSSM, Hostinger (domains, subdomains, MySQL databases)
 - Tools: Git, GitHub, VS Code
 
 Projects & Hackathons:
@@ -39,7 +91,7 @@ Projects & Hackathons:
 3. **Hackathon Projects** – Participated in multiple coding hackathons, building innovative prototypes within limited timeframes.
 
 Passion:
-I am passionate about creating modern, responsive, and user-friendly interfaces. I enjoy experimenting with new technologies, building functional prototypes, and solving real-world problems through creative web solutions.
+I am a Full-Stack Developer passionate about building modern, responsive, end-to-end applications across web and mobile. I enjoy shipping real products — from Flutter Android apps to Next.js web apps — and owning the full lifecycle including server deployment on VPS and Hostinger.
 `;
 
 export const skills: Skill[] = [
@@ -50,6 +102,12 @@ export const skills: Skill[] = [
   { name: "JavaScript (ES6+)", level: 85, category: "Frontend" },
   { name: "HTML5", level: 90, category: "Frontend" },
   { name: "CSS3", level: 88, category: "Frontend" },
+
+  // Mobile
+  { name: "Android Development", level: 78, category: "Mobile" },
+  { name: "Flutter (SDK)", level: 80, category: "Mobile" },
+  { name: "Dart", level: 78, category: "Mobile" },
+  { name: "Android SDK", level: 74, category: "Mobile" },
 
   // Styling
   { name: "Tailwind CSS", level: 90, category: "Styling" },
@@ -65,6 +123,7 @@ export const skills: Skill[] = [
   // Backend/Other
   { name: "Python", level: 70, category: "Backend" },
   { name: "API Integration", level: 80, category: "Backend" },
+  { name: "MySQL", level: 76, category: "Backend" },
   { name: "Docker", level: 65, category: "Backend" },
 
   // Development Practices
@@ -77,6 +136,10 @@ export const skills: Skill[] = [
   { name: "VS Code", level: 90, category: "Tools" },
   { name: "Vercel", level: 80, category: "Deployment" },
   { name: "Netlify", level: 75, category: "Deployment" },
+  { name: "VPS Deployment", level: 76, category: "Deployment" },
+  { name: "Nginx", level: 74, category: "Deployment" },
+  { name: "NSSM (Windows Services)", level: 72, category: "Deployment" },
+  { name: "Hostinger", level: 82, category: "Deployment" },
   { name: "Docker Deployment", level: 65, category: "Deployment" },
 ];
 

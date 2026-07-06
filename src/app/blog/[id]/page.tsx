@@ -12,7 +12,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
     <div className="bg-background min-h-screen py-16 text-textMuted">
       <div className="max-w-4xl mx-auto px-4">
         <div className="bg-surface border border-border rounded-xl p-8 shadow-lg">
-          <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">{post.title}</h1>
+          <h1 className="text-3xl md:text-4xl font-bold gradient-text mb-4">{post.title}</h1>
 
           <div className="flex flex-wrap gap-4 mb-6 text-textMuted">
             <span>By {post.author}</span>

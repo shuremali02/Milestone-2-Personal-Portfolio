@@ -4,50 +4,34 @@ import { project } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaExternalLinkAlt, FaStar } from "react-icons/fa";
-import { useState } from "react";
+import TiltCard from "./tilt-card";
+import Magnetic from "./magnetic";
+import Reveal from "./reveal";
 
 const featuredProjects = project.filter((p) => p.featured || p.year === 2025);
 const topProjects = project.slice(0, 9);
 
 export default function BentoProjects() {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-
   return (
     <div className="bg-background py-16 text-textMuted relative overflow-hidden">
       <div className="absolute inset-0 animated-gradient opacity-5" />
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: `${10 + Math.random() * 10}s`
-            }}
-          />
-        ))}
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12 relative">
-          <div className="absolute -top-4 left-1/4 sparkle" style={{ animationDelay: '0s' }} />
-          <div className="absolute -top-4 right-1/4 sparkle" style={{ animationDelay: '0.5s' }} />
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-3 neon-text">
+        <Reveal className="text-center mb-12 relative">
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-3 gradient-text">
             Featured Projects
           </h2>
           <p className="text-textMuted max-w-2xl mx-auto">
             A curated selection of my best work in web development and AI
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto">
           {featuredProjects[0] && (
+            <TiltCard max={6} className="lg:col-span-2 rounded-2xl h-full">
             <div
-              className="lg:col-span-2 relative group overflow-hidden rounded-2xl bg-surface border border-border shadow-lg hover:shadow-xl transition-all duration-300 card-glow"
-              onMouseEnter={() => setHoveredCard(0)}
-              onMouseLeave={() => setHoveredCard(null)}
+              className="relative group overflow-hidden rounded-2xl bg-surface border border-border shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 card-glow h-full"
             >
               <div className="absolute inset-0 border-2 border-primary/0 group-hover:border-primary/30 rounded-2xl transition-colors duration-500 pointer-events-none" />
               
@@ -118,18 +102,15 @@ export default function BentoProjects() {
                 </div>
               </div>
             </div>
+            </TiltCard>
           )}
 
           {topProjects.slice(1, 7).map((proj, index) => (
+            <TiltCard key={index} max={9} className="rounded-2xl h-full">
             <div
-              key={index}
-              className="bg-surface border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group card-glow relative"
-              onMouseEnter={() => setHoveredCard(index + 1)}
-              onMouseLeave={() => setHoveredCard(null)}
+              className="bg-surface border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 group card-glow relative h-full"
             >
-              <div className="absolute top-2 right-2 sparkle opacity-0 group-hover:opacity-100" style={{ animationDelay: '0s' }} />
-              <div className="absolute bottom-2 left-2 sparkle opacity-0 group-hover:opacity-100" style={{ animationDelay: '0.5s' }} />
-              
+
               <div className="relative h-48 overflow-hidden">
                 <Image
                   src={proj.img}
@@ -191,18 +172,19 @@ export default function BentoProjects() {
                 </div>
               </div>
             </div>
+            </TiltCard>
           ))}
         </div>
 
         <div className="text-center mt-8 relative">
-          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 sparkle" style={{ animationDelay: '0s' }} />
-          <div className="absolute top-1/2 right-1/4 -translate-y-1/2 sparkle" style={{ animationDelay: '0.5s' }} />
           
-          <Link href="/portfolio">
-            <button className="px-8 py-3 bg-gradient-to-r from-primary to-primaryHover text-background rounded-full font-medium hover:shadow-lg hover:shadow-primary/25 hover:scale-105 transition-all flex items-center gap-2 mx-auto ai-glow">
-              View All Projects <FaExternalLinkAlt />
-            </button>
-          </Link>
+          <Magnetic strength={8} className="mx-auto">
+            <Link href="/portfolio">
+              <button className="px-8 py-3 bg-gradient-to-r from-primary to-primaryHover text-background rounded-full font-medium hover:shadow-lg hover:shadow-primary/25 hover:scale-105 transition-all flex items-center gap-2 mx-auto ai-glow">
+                View All Projects <FaExternalLinkAlt />
+              </button>
+            </Link>
+          </Magnetic>
         </div>
       </div>
     </div>

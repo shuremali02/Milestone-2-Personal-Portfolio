@@ -2,8 +2,27 @@
 
 import { testimonials } from "@/data";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { FaQuoteLeft, FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
+import Reveal from "./reveal";
+
+/** Gradient initials avatar — honest and clean, no stock photos. */
+function InitialsAvatar({ name, size = 48 }: { name: string; size?: number }) {
+  const initials = name
+    .split(" ")
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+  return (
+    <div
+      className="rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-background font-bold flex-shrink-0 border-2 border-primary/30"
+      style={{ width: size, height: size, fontSize: size * 0.36 }}
+      aria-hidden="true"
+    >
+      {initials}
+    </div>
+  );
+}
 
 export default function BentoTestimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,39 +49,21 @@ export default function BentoTestimonials() {
   return (
     <div className="bg-background py-16 text-textMuted relative overflow-hidden">
       <div className="absolute inset-0 animated-gradient opacity-5" />
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(10)].map((_, i) => (
-          <div
-            key={i}
-            className="particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: `${10 + Math.random() * 10}s`
-            }}
-          />
-        ))}
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12 relative">
-          <div className="absolute -top-4 left-1/4 sparkle" style={{ animationDelay: '0s' }} />
-          <div className="absolute -top-4 right-1/4 sparkle" style={{ animationDelay: '0.5s' }} />
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-3 neon-text">
+        <Reveal className="text-center mb-12 relative">
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-3 gradient-text">
             Client Testimonials
           </h2>
           <p className="text-textMuted max-w-2xl mx-auto">
             What people say about working with me
           </p>
-        </div>
+        </Reveal>
 
         <div className="relative max-w-4xl mx-auto mb-12">
           <div className="bg-surface border border-border rounded-2xl p-6 md:p-8 shadow-lg card-glow relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 opacity-0 hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute top-4 left-4 sparkle" style={{ animationDelay: '0s' }} />
-            <div className="absolute bottom-4 right-4 sparkle" style={{ animationDelay: '0.5s' }} />
-            <div className="absolute top-1/2 right-4 sparkle" style={{ animationDelay: '1s' }} />
             
             <div className="text-primary/20 text-6xl font-serif mb-4 relative z-10 float">&ldquo;</div>
 
@@ -72,16 +73,7 @@ export default function BentoTestimonials() {
 
             <div className="flex items-center justify-between flex-wrap gap-4 relative z-10">
               <div className="flex items-center">
-                <Image
-                  src={
-                    testimonials[currentIndex].avatar ||
-                    `https://api.dicebear.com/7.x/initials/png?seed=${testimonials[currentIndex].name}&size=80&backgroundColor=b6e3f4,c0aede,d1d4f9,cffafe,b5b9ff`
-                  }
-                  alt={testimonials[currentIndex].name}
-                  width={60}
-                  height={60}
-                  className="rounded-full border-2 border-primary"
-                />
+                <InitialsAvatar name={testimonials[currentIndex].name} size={60} />
                 <div className="ml-4">
                   <h3 className="text-lg font-bold text-primary">
                     {testimonials[currentIndex].name}
@@ -157,8 +149,6 @@ export default function BentoTestimonials() {
               }`}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute top-2 right-2 sparkle opacity-0 hover:opacity-100" style={{ animationDelay: '0s' }} />
-              <div className="absolute bottom-2 left-2 sparkle opacity-0 hover:opacity-100" style={{ animationDelay: '0.5s' }} />
               
               <div className="relative z-10">
                 <div className="flex gap-1 mb-4">
@@ -177,16 +167,7 @@ export default function BentoTestimonials() {
                 </blockquote>
 
                 <div className="flex items-center gap-3">
-                  <Image
-                    src={
-                      testimonial.avatar ||
-                      `https://api.dicebear.com/7.x/initials/png?seed=${testimonial.name}&size=80`
-                    }
-                    alt={testimonial.name}
-                    width={48}
-                    height={48}
-                    className="rounded-full border-2 border-border hover:border-primary transition-colors"
-                  />
+                  <InitialsAvatar name={testimonial.name} size={48} />
                   <div>
                     <h4 className="text-primary font-semibold text-sm">
                       {testimonial.name}
@@ -205,8 +186,6 @@ export default function BentoTestimonials() {
         </div>
 
         <div className="text-center mt-8 relative">
-          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 sparkle" style={{ animationDelay: '0s' }} />
-          <div className="absolute top-1/2 right-1/4 -translate-y-1/2 sparkle" style={{ animationDelay: '0.5s' }} />
           
           <a
             href="/contact"
