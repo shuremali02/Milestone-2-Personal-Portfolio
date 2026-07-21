@@ -9,16 +9,15 @@ export default function BentoExperience() {
   return (
     <div className="bg-background py-16 text-textMuted relative overflow-hidden">
       {/* Ambient animated background */}
-      <div className="absolute inset-0 animated-gradient opacity-5" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Heading */}
         <Reveal className="text-center mb-14 relative">
-          <span className="inline-flex items-center gap-2 text-sm font-medium bg-primary/10 text-primary border border-primary/30 rounded-full px-4 py-1.5 mb-4">
+          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mb-3">
             <FaBriefcase /> Where I&apos;ve Worked
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-3 gradient-text">
-            Professional Experience
+          <h2 className="text-4xl md:text-5xl font-bold mb-3 text-textMain">
+            Professional <span className="text-primary">Experience</span>
           </h2>
           <p className="text-textMuted max-w-2xl mx-auto">
             My journey building real-world products across web &amp; mobile
@@ -28,7 +27,7 @@ export default function BentoExperience() {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical spine */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primaryHover to-transparent md:-translate-x-1/2" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-1/2" />
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
@@ -47,9 +46,9 @@ export default function BentoExperience() {
                 >
                   <TiltCard
                     max={7}
-                    className="gradient-border p-[2px] rounded-3xl"
+                    className="gradient-border p-[2px] rounded-xl"
                   >
-                    <div className="glass rounded-3xl p-6 sm:p-8 h-full">
+                    <div className="glass rounded-xl p-6 sm:p-8 h-full">
                       {/* Header row */}
                       <div className="flex items-start justify-between gap-4 flex-wrap mb-4">
                         <div>
@@ -104,7 +103,7 @@ export default function BentoExperience() {
                         {exp.tech.map((t, i) => (
                           <span
                             key={t}
-                            className="pop-in text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-full px-3 py-1 hover:bg-primary hover:text-background transition-colors"
+                            className="pop-in text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-md px-3 py-1 hover:bg-primary hover:text-background transition-colors"
                             style={{ animationDelay: `${i * 60}ms` }}
                           >
                             {t}

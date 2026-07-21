@@ -33,11 +33,13 @@ export default function TechStack() {
 
   return (
     <div className="w-full bg-background py-16 relative overflow-hidden">
-      <div className="absolute inset-0 animated-gradient opacity-5" />
 
       <div className="text-center mb-12 relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-3">
-          Tech Stack
+        <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mb-3">
+          <span className="w-6 h-px bg-gold" /> Tools <span className="w-6 h-px bg-gold" />
+        </span>
+        <h2 className="text-4xl md:text-5xl font-bold text-textMain mb-3">
+          Tech <span className="text-primary">Stack</span>
         </h2>
         <p className="text-textMuted">Technologies I work with</p>
       </div>
@@ -50,7 +52,7 @@ export default function TechStack() {
           <div className="flex animate-auto-scroll whitespace-nowrap">
             {technologies.map((tech, index) => (
               <div key={index} className="flex flex-col items-center mx-6 md:mx-10 group">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-background rounded-2xl flex items-center justify-center border border-border shadow-lg group-hover:scale-110 group-hover:shadow-xl group-hover:border-primary/50 transition-all duration-300 ai-glow">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-background rounded-xl flex items-center justify-center border border-border shadow-lg group-hover:scale-110 group-hover:shadow-xl group-hover:border-primary/50 transition-all duration-300">
                   <tech.icon className={`text-3xl md:text-4xl ${tech.color} group-hover:scale-110 transition-transform`} />
                 </div>
                 <span className="text-textMuted text-xs md:text-sm mt-2 group-hover:text-primary transition-colors">{tech.name}</span>
@@ -58,7 +60,7 @@ export default function TechStack() {
             ))}
             {technologies.map((tech, index) => (
               <div key={`dup-${index}`} className="flex flex-col items-center mx-6 md:mx-10 group">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-background rounded-2xl flex items-center justify-center border border-border shadow-lg group-hover:scale-110 group-hover:shadow-xl group-hover:border-primary/50 transition-all duration-300 ai-glow">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-background rounded-xl flex items-center justify-center border border-border shadow-lg group-hover:scale-110 group-hover:shadow-xl group-hover:border-primary/50 transition-all duration-300">
                   <tech.icon className={`text-3xl md:text-4xl ${tech.color} group-hover:scale-110 transition-transform`} />
                 </div>
                 <span className="text-textMuted text-xs md:text-sm mt-2 group-hover:text-primary transition-colors">{tech.name}</span>

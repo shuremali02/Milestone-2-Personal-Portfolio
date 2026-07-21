@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -i 's/max-w-5xl/max-w-7xl/g' src/app/components/navbar.tsx)",
+      "Bash(sed -i s/max-w-6xl/max-w-7xl/g src/app/components/hero.tsx src/app/about/page.tsx src/app/blog/page.tsx src/app/contact/page.tsx src/app/components/about-preview.tsx src/app/components/bento-experience.tsx src/app/components/blog.tsx src/app/components/filterable-projects.tsx)"
+    ]
+  }
+}

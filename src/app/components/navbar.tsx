@@ -14,12 +14,11 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [Open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Shrink + deepen the glass effect once the page is scrolled
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -27,39 +26,30 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Track active section on scroll
+  // Track active section on scroll (home page only)
   useEffect(() => {
     const handleScroll = () => {
       if (pathname !== "/") return;
-
       const sections = ["project", "skills", "blog", "about", "contact"];
       const scrollPosition = window.scrollY + 200;
-
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
-          const rect = element.getBoundingClientRect();
           const elementTop = element.offsetTop;
           const elementBottom = elementTop + element.offsetHeight;
-
           if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
             setActiveSection(section);
             return;
           }
         }
       }
-
-      if (scrollPosition < 300) {
-        setActiveSection("");
-      }
+      if (scrollPosition < 300) setActiveSection("");
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
-  // Set active based on pathname for non-home pages
   useEffect(() => {
     if (pathname === "/portfolio") setActiveSection("project");
     else if (pathname === "/about") setActiveSection("about");
@@ -68,90 +58,97 @@ export default function Navbar() {
   }, [pathname]);
 
   const isActive = (link: typeof navLinks[0]) => {
-    if (link.href.startsWith("/#")) {
-      return activeSection === link.section;
-    }
+    if (link.href.startsWith("/#")) return activeSection === link.section;
     return pathname === link.href;
   };
 
   return (
-    <header
-      className={`glass top-0 z-50 sticky w-full text-textMain border-b border-border transition-all duration-300 ${
-        scrolled ? "py-2 shadow-xl shadow-black/20" : "py-3 shadow-md"
-      }`}
-    >
-      {/* Inner container aligned with page content on large screens */}
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-
-      {/* Logo Section */}
-      <Link href="/" aria-label="Home">
-        <div className="flex items-center space-x-4 hover:scale-105 transition-transform">
-          <span className="text-3xl font-bold font-heading gradient-text tracking-tight">
-            SSA
+    <header className={`sticky top-0 z-50 w-full px-4 transition-all duration-300 ${scrolled ? "pt-2" : "pt-4"}`}>
+      {/* Floating pill */}
+      <div
+        className={`max-w-7xl mx-auto flex items-center justify-between gap-4 rounded-full border border-border bg-surface/80 backdrop-blur-md shadow-lg shadow-black/5 px-3 sm:px-4 transition-all duration-300 ${
+          scrolled ? "py-1.5" : "py-2"
+        }`}
+      >
+        {/* Logo */}
+        <Link href="/" aria-label="Home" className="flex items-center gap-2 pl-1 group">
+          <span className="w-8 h-8 rounded-lg bg-primary text-background font-heading font-bold flex items-center justify-center text-sm group-hover:scale-105 transition-transform">
+            S
           </span>
-        </div>
-      </Link>
+          <span className="text-lg font-bold font-heading tracking-tight text-textMain">SSA</span>
+        </Link>
 
-      {/* Centered Navigation for larger screens */}
-      <nav className="hidden md:flex flex-1 justify-center" aria-label="Main navigation">
-        <ul className="flex space-x-8 text-textMuted font-medium">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className={`nav-link relative py-2 transition-all ${
-                  isActive(link)
-                    ? "text-primary"
-                    : "hover:text-primary"
-                }`}
-              >
-                {link.label}
-                <span className={`nav-underline ${isActive(link) ? "active" : ""}`} />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      {/* Right Side - Theme Toggle & Mobile Menu */}
-      <div className="flex items-center gap-3">
-        {/* Theme Toggle - visible on all screens */}
-        <ThemeToggle />
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-primary border border-border p-2 rounded hover:bg-surface transition"
-          onClick={() => setOpen(!Open)}
-          aria-label={Open ? "Close menu" : "Open menu"}
-          aria-expanded={Open}
-        >
-          {Open ? <FiX size={24} /> : <FiMenu size={24} />}
-        </button>
-      </div>
-      </div>
-
-      {/* Mobile Navigation */}
-      {Open && (
-        <nav
-          className="absolute top-16 left-0 right-0 bg-surface text-textMain text-center border-t border-border shadow-md animate-slide-up"
-          aria-label="Mobile navigation"
-        >
-          <ul className="flex flex-col gap-2 py-4">
+        {/* Center links */}
+        <nav className="hidden md:flex" aria-label="Main navigation">
+          <ul className="flex items-center gap-1 text-sm font-medium">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={`block py-3 transition ${
+                  className={`px-3 py-2 rounded-full transition-colors ${
                     isActive(link)
-                      ? "text-primary bg-primary/10 font-medium"
-                      : "hover:text-primary hover:bg-background/50"
+                      ? "text-primary bg-primary/10"
+                      : "text-textMuted hover:text-textMain"
                   }`}
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
+          </ul>
+        </nav>
+
+        {/* Right side */}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Link
+            href="/contact"
+            className="hidden sm:inline-flex items-center gap-2 bg-primary text-background rounded-full px-4 py-2 text-sm font-semibold hover:bg-primaryHover active:scale-95 transition-all shadow-md shadow-primary/20"
+          >
+            Let&apos;s Talk
+          </Link>
+          <button
+            className="md:hidden text-textMain p-2 rounded-full hover:bg-primary/10 transition"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            {open ? <FiX size={22} /> : <FiMenu size={22} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <nav
+          className="md:hidden max-w-7xl mx-auto mt-2 rounded-2xl border border-border bg-surface shadow-lg overflow-hidden animate-slide-up"
+          aria-label="Mobile navigation"
+        >
+          <ul className="flex flex-col p-2">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className={`block py-3 px-4 rounded-xl transition ${
+                    isActive(link)
+                      ? "text-primary bg-primary/10 font-medium"
+                      : "text-textMuted hover:text-textMain hover:bg-primary/5"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+            <li className="p-2">
+              <Link
+                href="/contact"
+                onClick={() => setOpen(false)}
+                className="block text-center bg-primary text-background rounded-xl py-3 font-semibold hover:bg-primaryHover transition-colors"
+              >
+                Let&apos;s Talk
+              </Link>
+            </li>
           </ul>
         </nav>
       )}

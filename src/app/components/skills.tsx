@@ -74,7 +74,7 @@ export default function Skills() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-5 py-2 rounded-full border font-medium transition-all duration-300 hover:scale-105 ${
+              className={`px-5 py-2 rounded-md border font-medium transition-all duration-300 hover:scale-105 ${
                 selectedCategory === category
                   ? "bg-primary text-background border-primary shadow-lg shadow-primary/25"
                   : "bg-surface text-textMuted border-border hover:border-primary hover:text-primary"
@@ -105,7 +105,7 @@ export default function Skills() {
                 className="skill-bar h-3 bg-background rounded-full overflow-hidden"
               >
                 <div
-                  className={`h-full bg-gradient-to-r from-primary to-primaryHover rounded-full transition-all duration-1000 ease-out ${
+                  className={`h-full bg-primary rounded-full transition-all duration-1000 ease-out ${
                     animatedSkills[`skill-${selectedCategory}-${index}`] ? '' : ''
                   }`}
                   style={{
@@ -125,7 +125,7 @@ export default function Skills() {
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          <div className="bg-gradient-to-r from-primary/10 to-primaryHover/10 border border-primary/30 rounded-2xl px-6 py-4 inline-flex items-center gap-3">
+          <div className="bg-primary/10 border border-primary/30 rounded-xl px-6 py-4 inline-flex items-center gap-3">
             <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
             <span className="text-textMain">
               Currently learning: <span className="text-primary font-semibold">SDD (Spec-Driven Development)</span> &

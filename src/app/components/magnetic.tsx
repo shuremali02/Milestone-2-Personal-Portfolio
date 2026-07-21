@@ -12,8 +12,7 @@ interface MagneticProps {
 /**
  * Magnetic hover wrapper: the child is gently pulled toward the cursor
  * while hovered and springs back on leave. No-op on touch devices
- * (mousemove simply never fires) and under prefers-reduced-motion
- * (transition disabled via `.magnetic` CSS).
+ * and under prefers-reduced-motion (transition disabled via `.magnetic`).
  */
 export default function Magnetic({ children, className = "", strength = 6 }: MagneticProps) {
   const ref = useRef<HTMLDivElement>(null);

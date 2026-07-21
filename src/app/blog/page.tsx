@@ -1,6 +1,7 @@
 import { blogPosts } from "@/data/blog";
 import { Metadata } from "next";
 import Link from "next/link";
+import Reveal from "../components/reveal";
 
 export const metadata: Metadata = {
   title: "Blog - Syed Shurem Ali Portfolio",
@@ -16,31 +17,30 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <div className="bg-background min-h-screen py-16 text-textMuted relative overflow-hidden">
-      <div className="absolute inset-0 animated-gradient opacity-5" />
 
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
-        <div className="text-center relative mb-8">
-          
-          <h1 className="text-4xl font-bold gradient-text">
-            All Blog Posts
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
+        <div className="text-center relative mb-10">
+          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mb-3">
+            <span className="w-6 h-px bg-gold" /> Writing <span className="w-6 h-px bg-gold" />
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold text-textMain">
+            All Blog <span className="text-primary">Posts</span>
           </h1>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
+          {blogPosts.map((post, index) => (
+            <Reveal key={post.id} delay={(index % 3) * 80} className="h-full">
             <div
-              key={post.id}
-              className="bg-surface border border-border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 card-glow relative overflow-hidden"
+              className="group h-full bg-surface border border-border rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 hover:border-primary/40 transition-all duration-300 card-glow relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-              
               <div className="relative z-10 p-6">
                 <div className="flex justify-between items-center mb-3">
                   <span className="text-sm text-textMuted">{post.date}</span>
                   <span className="text-sm text-textMuted">{post.readTime}</span>
                 </div>
 
-                <h3 className="text-xl font-bold text-primary mb-3">{post.title}</h3>
+                <h3 className="text-xl font-bold text-textMain mb-3 group-hover:text-primary transition-colors">{post.title}</h3>
 
                 <p className="text-textMuted mb-4 line-clamp-3">{post.excerpt}</p>
 
@@ -48,7 +48,7 @@ export default function BlogPage() {
                   {post.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20"
+                      className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md border border-primary/20"
                     >
                       {tag}
                     </span>
@@ -57,12 +57,13 @@ export default function BlogPage() {
 
                 <Link
                   href={`/blog/${post.id}`}
-                  className="inline-block px-4 py-2 bg-primary text-background rounded-lg hover:bg-primaryHover transition-colors text-sm font-medium"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-background rounded-lg hover:bg-primaryHover active:scale-95 transition-all text-sm font-medium"
                 >
-                  Read More
+                  Read More →
                 </Link>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
       </div>

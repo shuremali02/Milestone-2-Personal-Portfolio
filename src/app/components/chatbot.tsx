@@ -81,7 +81,7 @@ export default function Chatbot() {
               marginBottom: '12px',
               padding: '8px 16px',
               borderRadius: '9999px',
-              background: 'linear-gradient(to right, var(--primary), #9333ea)',
+              background: 'var(--primary)',
               color: 'white',
               fontSize: '14px',
               boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
@@ -102,7 +102,7 @@ export default function Chatbot() {
               width: '64px',
               height: '64px',
               borderRadius: '9999px',
-              background: 'linear-gradient(to bottom right, var(--primary), #9333ea)',
+              background: 'var(--primary)',
               border: 'none',
               boxShadow: '0 25px 50px -12px rgba(0, 163, 140, 0.4)',
               cursor: 'pointer',
@@ -160,7 +160,7 @@ export default function Chatbot() {
           {/* Header */}
           <div style={{
             padding: '16px',
-            background: 'linear-gradient(to right, var(--primary), #9333ea)',
+            background: 'var(--primary)',
             color: 'white',
             display: 'flex',
             justifyContent: 'space-between',
@@ -237,7 +237,7 @@ export default function Chatbot() {
                   justifyContent: 'center',
                   flexShrink: 0,
                   background: msg.role === "user" 
-                    ? 'linear-gradient(to bottom right, var(--primary), #9333ea)'
+                    ? 'var(--primary)'
                     : 'linear-gradient(to bottom right, rgba(147, 51, 234, 0.2), rgba(0, 163, 140, 0.2))',
                   border: msg.role !== "user" ? '1px solid rgba(147, 51, 234, 0.3)' : 'none',
                   animation: 'aiGlow 3s ease-in-out infinite'
@@ -249,7 +249,7 @@ export default function Chatbot() {
                   padding: '12px 16px',
                   borderRadius: '16px',
                   background: msg.role === "user"
-                    ? 'linear-gradient(to bottom right, var(--primary), #9333ea)'
+                    ? 'var(--primary)'
                     : 'var(--surface)',
                   color: msg.role === "user" ? 'white' : 'var(--text-main)',
                   border: msg.role !== "user" ? '1px solid var(--border)' : 'none',
@@ -357,7 +357,7 @@ export default function Chatbot() {
                 padding: '12px',
                 background: loading || !input.trim() 
                   ? 'rgba(107, 114, 128, 0.5)' 
-                  : 'linear-gradient(to right, var(--primary), #9333ea)',
+                  : 'var(--primary)',
                 border: 'none',
                 borderRadius: '12px',
                 color: 'white',

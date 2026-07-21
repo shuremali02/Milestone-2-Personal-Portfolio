@@ -40,9 +40,6 @@ export default function Main() {
 
       <Auto />
 
-      {/* Testimonials hidden until real client feedback is collected.
-          Re-enable by restoring <BentoTestimonials /> here. */}
-
       <div id="blog">
         <Blog />
       </div>

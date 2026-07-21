@@ -66,13 +66,14 @@ export default function BentoSkills() {
 
   return (
     <div className="bg-background py-16 text-textMuted relative overflow-hidden">
-      <div className="absolute inset-0 animated-gradient opacity-5" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <Reveal className="text-center mb-12 relative">
-
-          <h2 className="text-4xl md:text-5xl font-bold mb-3 gradient-text">
-            Skills & Expertise
+          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mb-3">
+            <span className="w-6 h-px bg-gold" /> Skills <span className="w-6 h-px bg-gold" />
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-3 text-textMain">
+            Skills &amp; <span className="text-primary">Expertise</span>
           </h2>
           <p className="text-textMuted max-w-2xl mx-auto">
             Technologies and tools I use to bring ideas to life
@@ -84,7 +85,7 @@ export default function BentoSkills() {
             <button
               key={category}
               onClick={() => toggleCategory(category)}
-              className={`px-5 py-2 rounded-full border font-medium transition-all duration-300 hover:scale-105 ${
+              className={`px-5 py-2 rounded-md border font-medium transition-all duration-300 hover:scale-105 ${
                 category === "All"
                   ? selectedCategories.length === 0
                     ? "bg-primary text-background border-primary shadow-lg shadow-primary/25"
@@ -100,11 +101,11 @@ export default function BentoSkills() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 rounded-2xl bg-surface border border-border p-6 shadow-lg card-glow relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="lg:col-span-2 rounded-xl bg-surface border border-border p-6 shadow-lg card-glow relative overflow-hidden">
+            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
             <div className="flex items-center gap-3 mb-6 relative z-10">
-              <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center ai-glow">
+              <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
                 <FaCode className="text-primary text-2xl" />
               </div>
               <div>
@@ -130,7 +131,7 @@ export default function BentoSkills() {
                     className="skill-bar h-3 bg-background rounded-full overflow-hidden"
                   >
                     <div
-                      className="h-full bg-gradient-to-r from-primary to-primaryHover rounded-full transition-all duration-1000 ease-out"
+                      className="h-full bg-primary rounded-full transition-all duration-1000 ease-out"
                       style={{
                         width: animatedSkills[`top-skill-${index}`] ? `${skill.level}%` : '0%',
                         transition: 'width 1s ease-out'
@@ -143,8 +144,8 @@ export default function BentoSkills() {
             </div>
           </div>
 
-          <div className="rounded-2xl bg-gradient-to-r from-primary/10 to-primaryHover/10 border border-primary/30 p-6 flex flex-col justify-center card-glow relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primaryHover/5 animate-pulse" />
+          <div className="rounded-xl bg-primary/10 border border-primary/30 p-6 flex flex-col justify-center card-glow relative overflow-hidden">
+            <div className="absolute inset-0 bg-transparent" />
             
             <div className="flex items-center gap-3 mb-4 relative z-10">
               <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
@@ -154,14 +155,14 @@ export default function BentoSkills() {
               <div className="bg-background/50 rounded-xl p-4 border border-border">
                 <p className="text-textMain font-semibold mb-2">SDD (Spec-Driven Development)</p>
                 <div className="h-2 bg-background rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-primary to-primaryHover rounded-full" style={{ width: '75%' }} />
+                  <div className="h-full bg-primary rounded-full" style={{ width: '75%' }} />
                 </div>
                 <p className="text-xs text-textMuted mt-2">75% complete</p>
               </div>
               <div className="bg-background/50 rounded-xl p-4 border border-border">
                 <p className="text-textMain font-semibold mb-2">Docker Deployment</p>
                 <div className="h-2 bg-background rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-primary to-primaryHover rounded-full" style={{ width: '65%' }} />
+                  <div className="h-full bg-primary rounded-full" style={{ width: '65%' }} />
                 </div>
                 <p className="text-xs text-textMuted mt-2">65% complete</p>
               </div>
@@ -174,7 +175,7 @@ export default function BentoSkills() {
             <div
               className="bg-surface border border-border rounded-xl p-5 h-full hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 group card-glow relative overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative z-10">
                 <div className="flex justify-between items-center mb-3">
@@ -188,7 +189,7 @@ export default function BentoSkills() {
                   className="skill-bar h-3 bg-background rounded-full overflow-hidden"
                 >
                   <div
-                    className="h-full bg-gradient-to-r from-primary to-primaryHover rounded-full transition-all duration-1000 ease-out"
+                    className="h-full bg-primary rounded-full transition-all duration-1000 ease-out"
                     style={{
                       width: animatedSkills[`skill-${selectedCategories}-${index}`] ? `${skill.level}%` : '0%',
                       transition: 'width 1s ease-out'
@@ -208,7 +209,7 @@ export default function BentoSkills() {
             
             <button
               onClick={() => setShowAllSkills(!showAllSkills)}
-              className="relative px-8 py-4 bg-gradient-to-r from-primary to-primaryHover text-background rounded-full font-bold text-lg hover:shadow-xl hover:shadow-primary/25 hover:scale-105 transition-all ai-glow"
+              className="relative px-8 py-4 bg-primary text-background rounded-lg font-bold text-lg hover:shadow-xl hover:shadow-primary/25 hover:scale-105 transition-all"
             >
               {showAllSkills ? 'Show Less' : 'View More Skills'} →
             </button>

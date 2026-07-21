@@ -26,9 +26,9 @@ export default function CVModal({ isOpen, onClose }: CVModalProps) {
       />
 
       {/* Modal Content */}
-      <div className="relative bg-surface border border-border rounded-2xl shadow-2xl w-full max-w-5xl h-[90vh] overflow-hidden animate-slide-up" style={{ zIndex: 10000000 }}>
+      <div className="relative bg-surface border border-border rounded-xl shadow-2xl w-full max-w-5xl h-[90vh] overflow-hidden animate-slide-up" style={{ zIndex: 10000000 }}>
         {/* Header */}
-        <div className="flex items-center justify-between p-3 sm:p-4 border-b border-border bg-gradient-to-r from-primary/10 to-purple-500/10 flex-shrink-0">
+        <div className="flex items-center justify-between p-3 sm:p-4 border-b border-border bg-primary/10 flex-shrink-0">
           <div className="flex items-center gap-2 sm:gap-3">
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
               <FaFilePdf className="text-primary text-lg sm:text-xl" />
@@ -44,7 +44,7 @@ export default function CVModal({ isOpen, onClose }: CVModalProps) {
               href="https://drive.google.com/file/d/1wi8TLqxmGrDWF0xYxoqccFE62MnFdv13/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-primary text-background rounded-full text-xs sm:text-sm font-medium hover:bg-primaryHover transition-all whitespace-nowrap"
+              className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-primary text-background rounded-lg text-xs sm:text-sm font-medium hover:bg-primaryHover transition-all whitespace-nowrap"
             >
               <FaDownload /> <span className="hidden sm:inline">Download</span>
             </a>

@@ -2,6 +2,7 @@
 import { blogPosts } from "@/data/blog";
 import Link from "next/link";
 import { useState } from "react";
+import Reveal from "./reveal";
 
 export default function Blog() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -32,13 +33,14 @@ export default function Blog() {
 
   return (
     <div className="bg-background py-16 text-textMuted relative overflow-hidden" id="blog">
-      <div className="absolute inset-0 animated-gradient opacity-5" />
 
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="text-center relative mb-8">
-          
-          <h2 className="text-4xl font-bold gradient-text">
-            Blog & Articles
+          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mb-3">
+            <span className="w-6 h-px bg-gold" /> Writing <span className="w-6 h-px bg-gold" />
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-textMain">
+            Blog &amp; <span className="text-primary">Articles</span>
           </h2>
           <p className="text-textMuted mt-2">Latest insights about web development and AI</p>
         </div>
@@ -47,7 +49,7 @@ export default function Blog() {
         <div className="flex flex-wrap justify-center gap-2 mb-10">
           <button
             onClick={() => setSelectedTags([])}
-            className={`px-4 py-2 rounded-full ${
+            className={`px-4 py-2 rounded-md ${
               selectedTags.length === 0
                 ? "bg-primary text-background"
                 : "bg-surface text-textMuted border border-border hover:bg-surface/80"
@@ -59,7 +61,7 @@ export default function Blog() {
             <button
               key={tag}
               onClick={() => toggleTag(tag)}
-              className={`px-4 py-2 rounded-full ${
+              className={`px-4 py-2 rounded-md ${
                 selectedTags.includes(tag)
                   ? "bg-primary text-background"
                   : "bg-surface text-textMuted border border-border hover:bg-surface/80"
@@ -72,20 +74,18 @@ export default function Blog() {
 
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayedPosts.map((post) => (
+          {displayedPosts.map((post, index) => (
+            <Reveal key={post.id} delay={index * 80} className="h-full">
             <div
-              key={post.id}
-              className="bg-surface border border-border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 card-glow relative overflow-hidden"
+              className="group h-full bg-surface border border-border rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 hover:border-primary/40 transition-all duration-300 card-glow relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-
               <div className="relative z-10 p-6">
                 <div className="flex justify-between items-center mb-3">
                   <span className="text-sm text-textMuted">{post.date}</span>
                   <span className="text-sm text-textMuted">{post.readTime}</span>
                 </div>
 
-                <h3 className="text-xl font-bold text-primary mb-3">{post.title}</h3>
+                <h3 className="text-xl font-bold text-textMain mb-3 group-hover:text-primary transition-colors">{post.title}</h3>
 
                 <p className="text-textMuted mb-4 line-clamp-3">{post.excerpt}</p>
 
@@ -93,7 +93,7 @@ export default function Blog() {
                   {post.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20"
+                      className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md border border-primary/20"
                     >
                       {tag}
                     </span>
@@ -102,12 +102,13 @@ export default function Blog() {
 
                 <Link
                   href={`/blog/${post.id}`}
-                  className="inline-block px-4 py-2 bg-primary text-background rounded-lg hover:bg-primaryHover transition-colors text-sm font-medium"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-background rounded-lg hover:bg-primaryHover active:scale-95 transition-all text-sm font-medium"
                 >
-                  Read More
+                  Read More →
                 </Link>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
 
@@ -115,7 +116,7 @@ export default function Blog() {
         <div className="text-center mt-12 relative">
           
           <Link href="/blog">
-            <button className="relative px-8 py-4 bg-gradient-to-r from-primary to-primaryHover text-background rounded-full font-bold text-lg hover:shadow-xl hover:shadow-primary/25 hover:scale-105 transition-all ai-glow">
+            <button className="relative px-8 py-4 bg-primary text-background rounded-lg font-bold text-lg hover:shadow-xl hover:shadow-primary/25 hover:scale-105 transition-all">
               View More Blogs →
             </button>
           </Link>

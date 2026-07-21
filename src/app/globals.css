@@ -2,29 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theme CSS Variables */
+/* ===================================================================
+   Design tokens — solid, professional palette (single teal accent)
+   =================================================================== */
 :root {
   /* Dark theme (default) */
   --background: #0B0F14;
   --surface: #161B22;
+  --surface-2: #1C232D;
   --primary: #00A38C;
   --primary-hover: #14B8A6;
-  --accent: #3B82F6;
+  --accent: #00A38C;
+  --gold: #F5B940;
+  --gold-hover: #FFC85A;
   --text-main: #F5F7FA;
   --text-muted: #94A3B8;
-  --border: #2D3748;
+  --border: #2A313C;
+
+  /* RGB channels so Tailwind's <alpha-value> works (bg-primary/10, border-gold/25, ...) */
+  --background-rgb: 11 15 20;
+  --surface-rgb: 22 27 34;
+  --primary-rgb: 0 163 140;
+  --primary-hover-rgb: 20 184 166;
+  --accent-rgb: 0 163 140;
+  --gold-rgb: 245 185 64;
+  --gold-hover-rgb: 255 200 90;
+  --text-main-rgb: 245 247 250;
+  --text-muted-rgb: 148 163 184;
+  --border-rgb: 42 49 60;
 }
 
 /* Light theme */
 :root.light {
   --background: #F8FAFC;
   --surface: #FFFFFF;
+  --surface-2: #F1F5F9;
   --primary: #00897B;
   --primary-hover: #00A38C;
-  --accent: #2563EB;
+  --accent: #00897B;
+  --gold: #B45309;
+  --gold-hover: #92400E;
   --text-main: #1E293B;
   --text-muted: #64748B;
   --border: #E2E8F0;
+
+  --background-rgb: 248 250 252;
+  --surface-rgb: 255 255 255;
+  --primary-rgb: 0 137 123;
+  --primary-hover-rgb: 0 163 140;
+  --accent-rgb: 0 137 123;
+  --gold-rgb: 180 83 9;
+  --gold-hover-rgb: 146 64 14;
+  --text-main-rgb: 30 41 59;
+  --text-muted-rgb: 100 116 139;
+  --border-rgb: 226 232 240;
 }
 
 html {
@@ -37,370 +68,83 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Distinctive display typeface for headings, tight tracking */
+/* Display typeface for headings, tight tracking */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading), var(--font-inter), system-ui, sans-serif;
   letter-spacing: -0.02em;
 }
 
-/* ✨ AI Glow Effect */
-@keyframes ai-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 163, 140, 0.3),
-                0 0 40px rgba(0, 163, 140, 0.2),
-                0 0 60px rgba(0, 163, 140, 0.1);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(0, 163, 140, 0.5),
-                0 0 60px rgba(0, 163, 140, 0.3),
-                0 0 80px rgba(0, 163, 140, 0.2);
-  }
-}
+/* ===================================================================
+   Compatibility shims — these class names are still used throughout
+   the markup; they now resolve to calm, solid, professional styling
+   instead of the old gradient / glow / neon effects.
+   =================================================================== */
 
-.ai-glow {
-  animation: ai-glow 3s ease-in-out infinite;
-}
-
-/* ✨ Floating Animation */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-.float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* ✨ Pulse Glow */
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-}
-
-.pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* ✨ Gradient Animation */
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.animated-gradient {
-  background: linear-gradient(-45deg, #00A38C, #14B8A6, #3B82F6, #8B5CF6);
-  background-size: 400% 400%;
-  animation: gradient-shift 15s ease infinite;
-}
-
-/* ✨ Particle Effect Background */
-.particle-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(0, 163, 140, 0.3);
-  border-radius: 50%;
-  animation: rise 10s infinite ease-in;
-}
-
-@keyframes rise {
-  0% {
-    bottom: -10px;
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    bottom: 100vh;
-    opacity: 0;
-  }
-}
-
-/* ✨ Typing Cursor Effect */
-@keyframes blink {
-  0%, 50% {
-    opacity: 1;
-  }
-  51%, 100% {
-    opacity: 0;
-  }
-}
-
-.typing-cursor::after {
-  content: '|';
-  animation: blink 1s step-end infinite;
-  color: var(--primary);
-  margin-left: 2px;
-}
-
-/* ✨ Neon Text Effect */
-@keyframes neon-pulse {
-  0%, 100% {
-    text-shadow: 
-      0 0 10px rgba(0, 163, 140, 0.5),
-      0 0 20px rgba(0, 163, 140, 0.3),
-      0 0 30px rgba(0, 163, 140, 0.2);
-  }
-  50% {
-    text-shadow: 
-      0 0 20px rgba(0, 163, 140, 0.8),
-      0 0 30px rgba(0, 163, 140, 0.5),
-      0 0 40px rgba(0, 163, 140, 0.3);
-  }
-}
-
-.neon-text {
-  animation: neon-pulse 2s ease-in-out infinite;
-}
-
-/* ✨ Holographic Effect */
-@keyframes holographic {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  100% {
-    filter: hue-rotate(360deg);
-  }
-}
-
-.holographic {
-  animation: holographic 5s linear infinite;
-}
-
-/* ✨ Data Stream Effect */
-@keyframes data-stream {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-}
-
-.data-stream {
-  position: absolute;
-  width: 2px;
-  height: 100px;
-  background: linear-gradient(to bottom, transparent, #00A38C, transparent);
-  animation: data-stream 3s linear infinite;
-}
-
-/* ✨ Card Hover Glow */
-.card-glow {
-  position: relative;
-  overflow: hidden;
-}
-
-.card-glow::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(0, 163, 140, 0.1) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-}
-
-.card-glow:hover::before {
-  opacity: 1;
-}
-
-/* ✨ Border Animation */
-@keyframes border-flow {
-  0% {
-    border-image-source: linear-gradient(0deg, #00A38C, #14B8A6, #3B82F6, #8B5CF6);
-  }
-  100% {
-    border-image-source: linear-gradient(360deg, #00A38C, #14B8A6, #3B82F6, #8B5CF6);
-  }
-}
-
-.animated-border {
-  border: 2px solid transparent;
-  border-image-slice: 1;
-  animation: border-flow 3s linear infinite;
-}
-
-/* ✨ Sparkle Effect */
-@keyframes sparkle {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.sparkle {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: white;
-  border-radius: 50%;
-  animation: sparkle 1.5s ease-in-out infinite;
-}
-
-/* Auto scroll animation */
-@keyframes auto-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-auto-scroll {
-  animation: auto-scroll 30s linear infinite;
-}
-
-/* Width grow animation for skill bars */
-@keyframes width-grow {
-  from {
-    width: 0%;
-  }
-  to {
-    width: var(--target-width, 100%);
-  }
-}
-
-.animate-width-grow {
-  animation: width-grow 1s ease-out forwards;
-}
-
-/* Fade in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-/* Slide up animation */
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.animate-slide-up {
-  animation: slideUp 0.3s ease-out;
-}
-
-/* Focus styles for accessibility */
-*:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-}
-
-/* Selection color */
-::selection {
-  background-color: var(--primary);
+/* Headings are solid text now (was animated gradient text) */
+.gradient-text {
   color: var(--text-main);
 }
 
-/* Bento Grid Card Hover Glow Effect */
-.bento-card {
+/* Solid surface panel (was glassmorphism blur) */
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+/* Readable text on a gold fill — dark on the bright dark-theme gold,
+   white on the deeper light-theme gold. */
+.on-gold { color: #0B0F14; }
+:root.light .on-gold { color: #ffffff; }
+
+.btn-gold { background: var(--gold); }
+.btn-gold:hover { background: var(--gold-hover); }
+
+/* Ambient hero colour fields — dark theme only (they muddy a white bg) */
+:root.light .hero-glow { display: none; }
+
+/* Solid bordered panel (was animated conic gradient border) */
+.gradient-border {
   position: relative;
-  overflow: hidden;
+  border-radius: 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
 }
 
-.bento-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transition: left 0.5s ease;
-}
-
-.bento-card:hover::before {
-  left: 100%;
-}
+/* Gaudy neon / rainbow-gradient effects stay removed (per senior feedback) */
+.ai-glow { box-shadow: none; }
+.animated-gradient,
+.aurora-blob,
+.grid-floor,
+.data-stream,
+.particle,
+.particle-bg,
+.sparkle,
+.neon-text,
+.holographic { display: none; }
+.float { animation: none; }
 
 /* ===================================================================
-   ✨ MODERN 3D / GLASS / MOTION SYSTEM (2026 refresh)
+   Interactive 3D motion — kept: this is what makes the UI feel modern.
    =================================================================== */
 
-/* 3D Tilt Card — driven by mouse via CSS custom props set in JS */
+/* 3D tilt card — driven by pointer via CSS custom props set in JS */
 .tilt-card {
   transform-style: preserve-3d;
   transform: perspective(900px)
     rotateX(var(--tilt-x, 0deg))
-    rotateY(var(--tilt-y, 0deg))
-    translateZ(0);
+    rotateY(var(--tilt-y, 0deg));
   transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
-
-/* Lift child content off the card surface for real depth (on hover) */
 .tilt-layer {
-  transform: translateZ(0);
   transform-style: preserve-3d;
   transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .tilt-card:hover .tilt-layer {
-  transform: translateZ(28px);
+  transform: translateZ(22px);
 }
 
-/* Moving glare that follows the pointer */
+/* Moving glare highlight that follows the pointer */
 .tilt-glare {
   position: absolute;
   inset: 0;
@@ -409,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0;
   background: radial-gradient(
     circle at var(--glare-x, 50%) var(--glare-y, 50%),
-    rgba(255, 255, 255, 0.28),
+    rgba(255, 255, 255, 0.16),
     transparent 45%
   );
   transition: opacity 0.3s ease;
@@ -418,263 +162,238 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
 }
 
-/* Glassmorphism surface */
-.glass {
-  background: rgba(22, 27, 34, 0.55);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-:root.light .glass {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-/* Animated gradient border (conic spin) */
-.gradient-border {
+/* Subtle hover glow accent for cards */
+.card-glow {
   position: relative;
-  border-radius: 1.25rem;
-  background: var(--surface);
-  z-index: 0;
 }
-.gradient-border::before {
+.card-glow::before {
   content: "";
   position: absolute;
-  inset: -2px;
+  inset: 0;
   border-radius: inherit;
-  padding: 2px;
-  background: conic-gradient(
-    from var(--angle, 0deg),
-    #00A38C,
-    #14B8A6,
-    #3B82F6,
-    #8B5CF6,
-    #00A38C
-  );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  z-index: -1;
-  animation: border-spin 6s linear infinite;
-}
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-@keyframes border-spin {
-  to {
-    --angle: 360deg;
-  }
-}
-
-/* Scroll reveal (used by IntersectionObserver toggling .is-visible) */
-.reveal {
+  background: radial-gradient(circle at 50% 0%, rgba(0, 163, 140, 0.10), transparent 70%);
   opacity: 0;
-  transform: translateY(40px) scale(0.98);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
-.reveal.is-visible {
+.card-glow:hover::before {
   opacity: 1;
-  transform: translateY(0) scale(1);
 }
 
-/* Static gradient text — calm, premium. (Shimmer removed: when every
-   heading animates, nothing reads as important.) */
-.gradient-text {
-  background: linear-gradient(100deg, #00A38C, #3B82F6 60%, #8B5CF6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
-/* Timeline vertical progress line pulse */
-@keyframes timeline-glow {
-  0%, 100% { box-shadow: 0 0 8px rgba(0, 163, 140, 0.5); }
-  50% { box-shadow: 0 0 20px rgba(0, 163, 140, 0.9); }
-}
-.timeline-dot {
-  animation: timeline-glow 2.5s ease-in-out infinite;
-}
-
-/* Marquee / tech pill spin-in */
-@keyframes pop-in {
-  from { opacity: 0; transform: translateY(10px) scale(0.9); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-.pop-in {
-  animation: pop-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-/* Aurora blobs — soft drifting color fields for the hero */
-@keyframes aurora-drift-1 {
-  0%, 100% { transform: translate(calc(var(--px, 0) * 30px), calc(var(--py, 0) * 30px)) scale(1); }
-  33% { transform: translate(calc(var(--px, 0) * 30px + 6vw), calc(var(--py, 0) * 30px - 4vh)) scale(1.15); }
-  66% { transform: translate(calc(var(--px, 0) * 30px - 5vw), calc(var(--py, 0) * 30px + 5vh)) scale(0.95); }
-}
-@keyframes aurora-drift-2 {
-  0%, 100% { transform: translate(calc(var(--px, 0) * -45px), calc(var(--py, 0) * -45px)) scale(1); }
-  50% { transform: translate(calc(var(--px, 0) * -45px - 7vw), calc(var(--py, 0) * -45px + 6vh)) scale(1.2); }
-}
-.aurora-blob {
-  position: absolute;
-  width: clamp(280px, 45vw, 640px);
-  height: clamp(280px, 45vw, 640px);
-  border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.55;
-  pointer-events: none;
-  will-change: transform;
-}
-.aurora-1 {
-  background: radial-gradient(circle, rgba(0, 163, 140, 0.55), transparent 65%);
-  top: -10%;
-  left: -5%;
-  animation: aurora-drift-1 18s ease-in-out infinite;
-}
-.aurora-2 {
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.45), transparent 65%);
-  bottom: -15%;
-  right: -8%;
-  animation: aurora-drift-2 22s ease-in-out infinite;
-}
-.aurora-3 {
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.4), transparent 65%);
-  top: 30%;
-  left: 45%;
-  animation: aurora-drift-1 26s ease-in-out infinite reverse;
-}
-
-/* 3D perspective grid floor (retro grid) at the bottom of the hero */
-@keyframes grid-scroll {
-  from { background-position: 0 0; }
-  to { background-position: 0 48px; }
-}
-.grid-floor {
-  position: absolute;
-  left: -25%;
-  right: -25%;
-  bottom: 0;
-  height: 55%;
-  pointer-events: none;
-  background-image:
-    linear-gradient(to right, rgba(0, 163, 140, 0.45) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 163, 140, 0.45) 1px, transparent 1px);
-  background-size: 48px 48px;
-  transform: perspective(600px) rotateX(62deg);
-  transform-origin: bottom center;
-  animation: grid-scroll 2.5s linear infinite;
-  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 90%);
-  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 90%);
-}
-
-/* Staggered letter reveal for headings */
-@keyframes letter-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(0.6em) rotateX(-70deg);
-    filter: blur(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) rotateX(0deg);
-    filter: blur(0);
-  }
-}
-.letter-reveal {
-  display: inline-block;
-  animation: letter-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
-  transform-origin: bottom center;
-}
-
-/* Cursor spotlight glow */
-.cursor-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-  background: radial-gradient(circle, rgba(0, 163, 140, 0.07), transparent 60%);
-  transform: translate(-50%, -50%);
-  will-change: transform;
-}
-
-/* Scroll progress bar */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  z-index: 100;
-  background: linear-gradient(90deg, #00A38C, #3B82F6, #8B5CF6);
-  box-shadow: 0 0 10px rgba(0, 163, 140, 0.6);
-  transform-origin: left;
-  will-change: transform;
-}
-
-/* Magnetic button wrapper */
+/* Magnetic hover wrapper */
 .magnetic {
   display: inline-block;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
-/* Animated nav underline */
+/* Cursor spotlight — subtle teal ambiance */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle, rgba(0, 163, 140, 0.06), transparent 60%);
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+/* Orbit rings around the hero photo */
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+.orbit-ring {
+  animation: orbit-spin 20s linear infinite;
+}
+.orbit-ring-rev {
+  animation: orbit-spin 28s linear infinite reverse;
+}
+
+/* Gentle floating for hero chips / 3D elements */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.floaty {
+  animation: floaty 5s ease-in-out infinite;
+}
+
+/* ===================================================================
+   Functional motion — kept, but subtle
+   =================================================================== */
+
+/* Typing cursor */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: var(--primary);
+  margin-left: 2px;
+}
+
+/* Scroll reveal (IntersectionObserver toggles .is-visible) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Subtle staggered letter reveal for the hero name (fade + rise only) */
+@keyframes letter-reveal {
+  from { opacity: 0; transform: translateY(0.35em); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.letter-reveal {
+  display: inline-block;
+  animation: letter-reveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Gentle content pop-in */
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.pop-in {
+  animation: pop-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Static timeline marker (glow removed) */
+.timeline-dot {
+  box-shadow: 0 0 0 4px var(--background);
+}
+
+/* Solid animated nav underline */
 .nav-underline {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
+  background: var(--primary);
   border-radius: 9999px;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .nav-link:hover .nav-underline,
 .nav-underline.active {
   transform: scaleX(1);
 }
 
+/* Solid scroll progress bar (glow removed) */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  z-index: 100;
+  background: var(--primary);
+  transform-origin: left;
+  will-change: transform;
+}
+
+/* Marquee tech strip */
+@keyframes auto-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-auto-scroll {
+  animation: auto-scroll 30s linear infinite;
+}
+
+/* Skill bar grow */
+@keyframes width-grow {
+  from { width: 0%; }
+  to { width: var(--target-width, 100%); }
+}
+.animate-width-grow {
+  animation: width-grow 1s ease-out forwards;
+}
+
+/* Fade / slide utilities */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Image loading skeleton shimmer */
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.img-skeleton {
+  background-color: var(--surface-2);
+  background-image: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.10), transparent);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+/* Accessibility: focus + selection */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+::selection {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
 /* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .tilt-card,
-  .ai-glow,
-  .neon-text,
-  .float,
-  .animated-gradient,
-  .gradient-border::before,
-  .gradient-text,
-  .timeline-dot,
-  .data-stream,
-  .particle,
-  .sparkle,
-  .pop-in,
-  .aurora-blob,
-  .grid-floor,
   .letter-reveal,
-  .magnetic,
-  .nav-underline {
+  .pop-in,
+  .animate-auto-scroll,
+  .animate-width-grow,
+  .animate-fade-in,
+  .animate-slide-up,
+  .typing-cursor::after {
     animation: none !important;
-    transition: none !important;
   }
   .reveal {
     opacity: 1;
     transform: none;
+    transition: none !important;
+  }
+  .nav-underline {
+    transition: none !important;
+  }
+  .orbit-ring,
+  .orbit-ring-rev,
+  .floaty,
+  .img-skeleton {
+    animation: none !important;
   }
   .tilt-card {
     transform: none !important;
   }
-  .letter-reveal {
-    opacity: 1;
-    transform: none;
-    filter: none;
+  .tilt-card:hover .tilt-layer {
+    transform: none !important;
+  }
+  .magnetic {
+    transition: none !important;
   }
   .cursor-glow {
     display: none;
@@ -686,16 +405,13 @@ h1, h2, h3, h4, h5, h6 {
   width: 8px;
   height: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background: var(--surface);
 }
-
 ::-webkit-scrollbar-thumb {
   background: var(--border);
   border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
 }

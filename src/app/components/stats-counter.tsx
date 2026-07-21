@@ -117,7 +117,7 @@ export default function StatsCounter() {
       icon: FaClock,
       value: githubStats.experience,
       suffix: "+",
-      label: "Years Experience"
+      label: "Years Building"
     },
     {
       icon: FaProjectDiagram,

@@ -39,12 +39,13 @@ export const experiences: Experience[] = [
     current: true,
     location: "On-site",
     description:
-      "Building and shipping production web and mobile applications end-to-end — from database design to responsive front-ends and live server deployment. I own features across the full stack and handle the infrastructure they run on.",
+      "Building production web applications end-to-end — from database design to responsive front-ends and live server deployment — and contributing to the studio's mobile work with Flutter. I own features across the full stack and the infrastructure they run on.",
     achievements: [
-      "Developed cross-platform mobile apps with Flutter, Dart & the Android SDK, delivering native-feeling Android experiences.",
-      "Built full-stack web applications using Next.js, TypeScript and MySQL databases hosted on Hostinger.",
-      "Deployed and maintained apps on VPS servers — configuring Nginx reverse proxies and running Node/services as Windows services with NSSM.",
-      "Set up production hosting on Hostinger: custom domains, subdomains and provisioned MySQL databases for live clients.",
+      "Ship production web features end-to-end — Next.js/TypeScript front-ends backed by MySQL databases — owning each feature from schema to release.",
+      "Own the deployment pipeline: configure Nginx reverse proxies on VPS servers and run Node services under NSSM as auto-restarting Windows services.",
+      "Provision production hosting on Hostinger — custom domains, subdomains, and MySQL databases — for live client applications.",
+      "Collaborate with designers and project leads to turn specs into releases on a regular delivery cycle, incorporating review feedback across the stack.",
+      "Build cross-platform mobile experiences with Flutter, Dart, and the Android SDK as part of the studio's product work.",
     ],
     tech: [
       "Next.js",
@@ -68,9 +69,10 @@ Experience: 2.5+ years
 
 Current Position:
 - Full-Stack Developer (Full-time) at Elipse Studio — May 2026 to Present.
-  Building production web & mobile apps end-to-end: Flutter/Dart Android apps,
-  Next.js + MySQL web apps, and handling VPS/Nginx/NSSM and Hostinger
-  (domains, subdomains, MySQL databases) deployments.
+  Building production Next.js + MySQL web apps end-to-end, owning deployment on
+  VPS servers (Nginx reverse proxies, NSSM Windows services) and Hostinger hosting
+  (custom domains, subdomains, MySQL databases) for live client applications.
+  Also contributing to the studio's mobile work with Flutter, Dart & the Android SDK.
 
 Education:
 - 1-Year Diploma in Information Technology — SZABIST ZABTech, Hyderabad
@@ -91,7 +93,7 @@ Projects & Hackathons:
 3. **Hackathon Projects** – Participated in multiple coding hackathons, building innovative prototypes within limited timeframes.
 
 Passion:
-I am a Full-Stack Developer passionate about building modern, responsive, end-to-end applications across web and mobile. I enjoy shipping real products — from Flutter Android apps to Next.js web apps — and owning the full lifecycle including server deployment on VPS and Hostinger.
+I'm a Full-Stack Developer who builds modern, responsive, end-to-end applications across web and mobile. I ship real products — from Flutter mobile work to Next.js web apps — and own the full lifecycle, including server deployment on VPS and Hostinger.
 `;
 
 export const skills: Skill[] = [
@@ -143,59 +145,28 @@ export const skills: Skill[] = [
   { name: "Docker Deployment", level: 65, category: "Deployment" },
 ];
 
-export interface Testimonial {
-  name: string;
-  role: string;
-  company?: string;
-  content: string;
-  avatar?: string;
-  rating: number;
-}
-
-export const testimonials: Testimonial[] = [
-  {
-    name: "Ahmed Khan",
-    role: "Project Manager",
-    company: "Tech Innovations Inc.",
-    content: "Syed delivered exceptional work on our e-commerce platform. His attention to detail and ability to implement complex UI components was impressive. The project was completed ahead of schedule.",
-    rating: 5,
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg"
-  },
-  {
-    name: "Sarah Johnson",
-    role: "Product Owner",
-    company: "Startup Solutions",
-    content: "Working with Syed was a great experience. He understood our requirements perfectly and created a stunning user interface that exceeded our expectations. Highly recommend his services.",
-    rating: 5,
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg"
-  },
-  {
-    name: "Michael Chen",
-    role: "CTO",
-    company: "Digital Ventures",
-    content: "Syed's expertise in React and Next.js helped us build a scalable web application. His code quality is excellent and he follows best practices. A true professional.",
-    rating: 4,
-    avatar: "https://randomuser.me/api/portraits/men/22.jpg"
-  },
-  {
-    name: "Fatima Ahmed",
-    role: "Design Lead",
-    company: "Creative Designs",
-    content: "Syed transformed our design concepts into beautiful, responsive web pages. His ability to work with designers and translate mockups into functional code is remarkable.",
-    rating: 5,
-    avatar: "https://randomuser.me/api/portraits/women/68.jpg"
-  }
-];
-
 
 
 export const project = [
   {
+    // TODO: replace with a Cloudinary screenshot of the live platform (upload like your other project images)
+    img: "https://placehold.co/800x500/00A38C/ffffff/png?text=Maryam+%26+Zayn+Learning",
+    title: "Maryam & Zayn — Kids Learning Platform",
+    description:
+      "A production EdTech platform built at Elipse Studio for a Pakistani children's education brand. Kids learn six subjects (Urdu, English, Maths, Islamiat, GK, Science) through character-guided, bilingual lessons — with full gamification: XP and levels, daily streaks, Bronze/Silver/Gold leagues, badges, and a guest mode that needs no signup. Live in production with user accounts, dashboards, and progress tracking.",
+    route: "https://learning.maryamandzayn.com/",
+    tags: ["Client Work", "Next.js", "EdTech", "Full-Stack", "Production"],
+    featured: true,
+    year: 2026,
+    category: "Client Work"
+  },
+  {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
     title: "AI-Powered Todo App",
-    description: "An intelligent todo application built during the GIAIC Spec-Driven SpecKit+ Hackathon, successfully completing all 5 phases within the deadline. Built using SpecKit+ and Claude Code CLI. Features an AI-powered chatbot that allows users to manage tasks through simple natural language commands like 'add my new task for grocery' - the chatbot can create, update, and delete tasks conversationally. Includes a comprehensive dashboard where users can easily view and manage all their tasks at a glance, plus a detailed audit trail that tracks all task activities (creation, completion, deletion). The chatbot feature is exclusively available for signed-in users. The app also includes a user profile page where users can easily update their email and password.",
+    description:
+      "Task apps die from input friction, so I made an AI agent the interface: users create, update, and complete tasks in plain language ('add a grocery run for tomorrow'). Every action is written to a full audit trail and gated behind authentication. Built spec-first with SpecKit+ and Claude Code CLI — all 5 hackathon phases shipped on deadline, plus a task dashboard and profile management.",
     route: "https://the-evolution-of-todo-mastering-spe.vercel.app/",
-    tags: ["AI/ML", "Next.js", "Hackathon", "Task Management", "Chatbot", "Authentication", "SpecKit+"],
+    tags: ["AI/ML", "Agentic AI", "Next.js", "Authentication", "Hackathon"],
     github: "https://github.com/shuremali02/The-Evolution-of-Todo---Mastering-Spec-Driven-Development---Cloud-Native-AI",
     featured: true,
     year: 2025,
@@ -204,9 +175,10 @@ export const project = [
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1766755841/physical_ai_book_dje6hv.png",
     title: "Physical AI & Humanoid Robotics Book",
-    description: "A comprehensive Docusaurus-based textbook on Physical AI & Humanoid Robotics with RAG-based chatbot, Urdu translation, personalized content for signed-in users, and interactive learning features. Built during GIAIC Spec-Driven SpecKit+ Hackathon.",
+    description:
+      "Static technical textbooks can't answer questions or serve non-English readers. My solution: an interactive Docusaurus textbook with a RAG chatbot that answers grounded in the book's own chapters, full Urdu translation for accessibility, and personalized content for signed-in learners. Built spec-driven during the GIAIC SpecKit+ Hackathon.",
     route: "https://ai-spec-driven-online-hackathon-1.vercel.app/",
-    tags: ["AI/ML", "Docusaurus", "RAG Chatbot", "Hackathon", "SDD"],
+    tags: ["AI/ML", "RAG", "Docusaurus", "Hackathon"],
     github: "https://github.com/shuremali02/AI_Spec-Driven_Online_Hackathon_1",
     featured: true,
     year: 2025,
@@ -215,145 +187,112 @@ export const project = [
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1759697057/roommatcher_qtnhiv.png",
     title: "Room Matcher AI",
-    description: "AI-powered roommate matcher with multi-agent orchestration and live trace visualization, built during Innovista Indus Hackathon.",
+    description:
+      "Matching people means weighing many soft constraints — a single prompt can't do it reliably or explainably. I built specialized AI agents (profile analysis, compatibility scoring, ranking) coordinated by an orchestrator, with a live trace visualization that streams each agent's reasoning to the screen in real time. Built at the Innovista Indus Hackathon.",
     route: "https://room-matcher-ai-rosy.vercel.app/",
     tags: ["AI/ML", "Agentic AI", "Next.js", "Hackathon"],
-    github: "https://github.com/shuremali02/Room-Matcher-AI"
+    github: "https://github.com/shuremali02/Room-Matcher-AI",
+    year: 2025,
+    category: "AI/ML"
   },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403842/SXN_BY_NASH_neolg6.png",
-      title: "SXN-By-Nash_Marketplace ",
-      description: "SxN by NASH  is an e-commerce platform featuring a curated selection of perfumes and watches, designed with a sleek, modern interface. It offers features like flash sales, wishlist management, and a countdown timer for exclusive offers, enhancing the shopping experience..",
-      route: "https://marketplace-hackathon-03-q2-finale.vercel.app/",
-      tags: ["E-commerce", "Next.js", "Tailwind CSS", "Hackathon"],
-      github: "https://github.com/shuremali02/marketplace-hackathon-03-q2-finale"
-    },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403838/Nft_xwfopj.jpg",
-      title: "NFT-Marketplace",
-      description: "OpenSea Clone A front-end NFT marketplace UI developed using Sass for the first time, fulfilling internship requirements. Features a clean layout and mock authentication to demonstrate front-end functionality.",
-      route: "https://opensea-clone-fawn.vercel.app/",
-      tags: ["E-commerce", "Frontend", "Sass", "UI/UX"],
-      github: "https://github.com/shuremali02/opensea-clone"
-    },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755284159/chatbot_with_chainlit_zaycz2.png",
-      title: "Simple Chatbot with Auth, Chainlit & Gemini",
-      description: "An AI-powered chatbot built using Chainlit and Google's Gemini model, featuring secure user authentication. Designed for a smooth conversational experience with a clean, modern interface.",
-      route: "https://github.com/shuremali02/Simple_Chatbot__With_Auth_Chainlit_And_Gemini",
-      tags: ["AI/ML", "Agentic AI", "Authentication", "Gemini"],
-      github: "https://github.com/shuremali02/Simple_Chatbot__With_Auth_Chainlit_And_Gemini"
-    },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755285617/crypto_fvrzqw.png",
-      title: "Crypto Market Conversational Chatbot",
-      description: "Streamlit-based AI chatbot built using OpenAI's `agents` SDK and CoinGecko API. Offers real-time insights like total cryptocurrencies, market cap, Bitcoin dominance, and live price summaries—delivered via a clean conversational UI.",
-      route: "https://github.com/shuremali02/Crypto_Currency_Agent_Open_Ai_SDK",
-      tags: ["AI/ML", "Agentic AI", "API Integration", "Python"],
-      github: "https://github.com/shuremali02/Crypto_Currency_Agent_Open_Ai_SDK"
-    },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403840/Watchhub_ad0qgk.jpg",
-      title: "Watch-Hub ",
-      description: "Watch Hub  A modern e-commerce frontend platform for premium watches, built with Next.js. Features include a stylish layout, responsive design, and smooth product browsing experience.",
-      route: "https://next-js-milestone-3-watch-hub.vercel.app/",
-      tags: ["E-commerce", "Next.js", "Frontend", "Responsive"],
-      github: "https://github.com/shuremali02/next-js-milestone-3-watch-hub"
-    },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403840/travelBlog_vwnvf0.jpg",
-      title: "Travelling-Website",
-      description: "A modern travel blog built with Next.js, React, and Tailwind CSS, The site features responsive design, dynamic components, and smooth navigation for an engaging travel journey.",
-      route: "https://travelblog-assignment.netlify.app/",
-      tags: ["Blog", "Next.js", "React", "Responsive"],
-      github: "https://github.com/shuremali02/travelblog-assignment"
-    },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403840/Shop.co_lqlrtr.jpg",
-      title: "Shop-co-Hackathon-UI-Design ",
-      description: "Hackathon UI Design A sleek and responsive user interface created as part of a hackathon challenge. Focused purely on front-end layout, animations, and visual appeal using modern UI principles.",
-      route: "https://hackathon-ui-ux-q2-hackathon-3.vercel.app/",
-      tags: ["UI/UX", "Frontend", "Hackathon", "Responsive"],
-      github: "https://github.com/shuremali02/hackathon-ui-ux-q2-hackathon-3"
-    },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403837/BlogPost_dr919d.jpg",
-      title: "Blogpost",
-      description: "This is My BlogPost-web ",
-      route: "https://blogpost101.netlify.app/",
-      tags: ["Blog", "Frontend", "Responsive"],
-      github: "https://github.com/shuremali02/blogpost101"
-    },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403837/Capture_zgk6px.png",
-      title: "Dynamic Resume Builder",
-      description: "Dynamic Resume Builder use to Generate your Resume and save as PDF ",
-      route: "https://editable-resume-builder-milestone-4.netlify.app/",
-      tags: ["Frontend", "PDF Generation", "React", "Next.js"],
-      github: "https://github.com/shuremali02/editable-resume-builder-milestone-4"
-    },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403837/assign_6_pic_xxroee.jpg",
-      title: "Figma design-to-code–Pixel Perfect—Landing Page",
-      description: "Used modern front-end technologies (e.g., HTML, CSS, TypeScript, ShadCN UI) for creating a clean and accessible interface.",
-      route: "https://shurem-class-9to12-assignment-6.netlify.app/",
-      tags: ["Frontend", "UI/UX", "Pixel Perfect", "TypeScript"],
-      github: "https://github.com/shuremali02/shurem-class-9to12-assignment-6"
-    },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403836/3_assignment_sgzx6u.jpg",
-      title: "Green -Groups—Landing Page",
-      description: "Fully responsive design ",
-      route: "https://shurem-class-assignment-3.netlify.app/",
-      tags: ["Landing Page", "Frontend", "Responsive", "HTML/CSS"],
-      github: "https://github.com/shuremali02/shurem-class-assignment-3"
-    },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403837/assign_2_pwpsdk.jpg",
-      title: "Brandbuzz—Landing Page",
-      description: "Fully responsive design ",
-      route: "https://class-assignment-2-shuremali.netlify.app/",
-      tags: ["Landing Page", "Frontend", "Responsive", "HTML/CSS"],
-      github: "https://github.com/shuremali02/class-assignment-2-shuremali"
-    },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403837/cal_fof15x.png",
-      title: "Calculator.ts",
-      description: "A device that performs arithmetic operations on numbers.",
-      route: "https://github.com/shuremali02/CLI-calculator",
-      tags: ["TypeScript", "Calculator", "CLI"],
-      github: "https://github.com/shuremali02/CLI-calculator"
-    },
-    {
-      img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403836/Atm_cxhkol.png",
-      title: "ATM.ts",
-      description: "The ATM System is used to access bank accounts for cash withdrawals.",
-      route: "https://github.com/shuremali02/ATM-project",
-      tags: ["TypeScript", "Banking", "CLI"],
-      github: "https://github.com/shuremali02/ATM-project"
-    },
-    // {
-    //   img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403837/Count_ugtcu2.png",
-    //   title: "Counter",
-    //   description: "Simple Increment Decrement Counter Application built with Next.js & React useState Hooks and styled with Tailwind.",
-    //   route: "https://github.com/shuremali02/Next.js-React.js-Counter.git",
-    //   tags: ["React", "Next.js", "Hooks", "Frontend"],
-    //   github: "https://github.com/shuremali02/Next.js-React.js-Counter.git"
-    // },
-    // {
-    //   img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746404863/navebar_fes7rf.png",
-    //   title: "Navigation Bar",
-    //   description: "Simple Navigation bar with buttons built with Next.js & React useState Hooks and styled with Tailwind.",
-    //   route: "https://counter-nextjs.netlify.app/",
-    //   tags: ["React", "Next.js", "Frontend", "Navigation"],
-    //   github: "https://github.com/shuremali02/counter-nextjs"
-    // },
-    // {
-    //   img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746404862/Milestone1_dpev06.png",
-    //   title: "Hello-World",
-    //   description: "Simple Hello World Application built with Next.js and styled with Tailwind.",
-    //   route: "https://next-js-milestone-1-achieved.netlify.app/",
-    //   tags: ["React", "Next.js", "Frontend", "Learning"],
-    //   github: "https://github.com/shuremali02/next-js-milestone-1-achieved"
-    // },
+  {
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755285617/crypto_fvrzqw.png",
+    title: "Crypto Market Intelligence Agent",
+    description:
+      "Market dashboards make you hunt through charts for answers a sentence could give. I built a tool-calling agent (OpenAI Agents SDK) wired to the CoinGecko API that answers live questions — total market cap, Bitcoin dominance, real-time prices — through a clean Streamlit chat UI. The model reasons; the API supplies the numbers, so answers stay factual.",
+    route: "https://github.com/shuremali02/Crypto_Currency_Agent_Open_Ai_SDK",
+    tags: ["AI/ML", "Agentic AI", "Python", "API Integration"],
+    github: "https://github.com/shuremali02/Crypto_Currency_Agent_Open_Ai_SDK",
+    category: "AI/ML"
+  },
+  {
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403842/SXN_BY_NASH_neolg6.png",
+    title: "SxN by Nash — E-Commerce Platform",
+    description:
+      "Luxury retail needs urgency and curation, not just a product grid. I built a conversion-focused e-commerce experience for a perfume & watch brand: flash-sale mechanics with live countdown timers, wishlist management, and a curated browsing flow. Hackathon finale project, built with Next.js and Tailwind CSS.",
+    route: "https://marketplace-hackathon-03-q2-finale.vercel.app/",
+    tags: ["E-commerce", "Next.js", "Tailwind CSS", "Hackathon"],
+    github: "https://github.com/shuremali02/marketplace-hackathon-03-q2-finale",
+    category: "E-commerce"
+  },
+  {
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403838/Nft_xwfopj.jpg",
+    title: "NFT Marketplace — OpenSea-Style UI",
+    description:
+      "A front-end NFT marketplace UI inspired by OpenSea, built to demonstrate structured, maintainable styling with Sass and a component-driven layout. Features a clean marketplace browsing experience with mock authentication and careful, pixel-level attention to the collection and listing views.",
+    route: "https://opensea-clone-fawn.vercel.app/",
+    tags: ["E-commerce", "Frontend", "Sass", "UI/UX"],
+    github: "https://github.com/shuremali02/opensea-clone",
+    category: "E-commerce"
+  },
+  {
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403840/Watchhub_ad0qgk.jpg",
+    title: "Watch Hub — Premium Watch Store",
+    description:
+      "A modern e-commerce front-end for premium watches, built with Next.js. Features a polished product catalog, responsive layout, and a smooth browsing flow — with an emphasis on clean visual hierarchy and fast rendering of an image-heavy storefront.",
+    route: "https://next-js-milestone-3-watch-hub.vercel.app/",
+    tags: ["E-commerce", "Next.js", "Frontend", "Responsive"],
+    github: "https://github.com/shuremali02/next-js-milestone-3-watch-hub",
+    category: "E-commerce"
+  },
+  {
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403840/travelBlog_vwnvf0.jpg",
+    title: "Travel Blog — Modern Editorial Site",
+    description:
+      "A modern travel blog built with Next.js, React, and Tailwind CSS. Features a fully responsive editorial layout, reusable dynamic components, and smooth navigation designed for an engaging, magazine-style reading experience.",
+    route: "https://travelblog-assignment.netlify.app/",
+    tags: ["Frontend", "Next.js", "React", "Responsive"],
+    github: "https://github.com/shuremali02/travelblog-assignment",
+    category: "Frontend"
+  },
+  {
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403840/Shop.co_lqlrtr.jpg",
+    title: "Shop.co — Hackathon Storefront UI",
+    description:
+      "A sleek, responsive e-commerce interface built under hackathon time pressure. Translated a design brief into a polished storefront UI with precise layout, micro-animations, and modern UI principles — front-end craft delivered against the clock.",
+    route: "https://hackathon-ui-ux-q2-hackathon-3.vercel.app/",
+    tags: ["E-commerce", "Frontend", "UI/UX", "Hackathon"],
+    github: "https://github.com/shuremali02/hackathon-ui-ux-q2-hackathon-3",
+    category: "E-commerce"
+  },
+  {
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403837/Capture_zgk6px.png",
+    title: "Dynamic Resume Builder — Live PDF Export",
+    description:
+      "Most resume tools gate basic editing behind accounts. I built one that's fully client-side: edit inline with live preview and export a print-ready PDF in one click — no signup, and your data never leaves the browser. Built with React state-driven editing and client-side PDF generation for pixel-faithful output.",
+    route: "https://editable-resume-builder-milestone-4.netlify.app/",
+    tags: ["Frontend", "React", "PDF Generation"],
+    github: "https://github.com/shuremali02/editable-resume-builder-milestone-4",
+    category: "Frontend"
+  },
+  {
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403837/assign_6_pic_xxroee.jpg",
+    title: "Figma-to-Code — Pixel-Perfect Landing Page",
+    description:
+      "A pixel-perfect implementation of a Figma design — the designer-to-developer handoff agencies run daily. Matched spacing, type scale, and components to the design spec across breakpoints, with accessible semantics, using TypeScript, ShadCN UI, and Tailwind CSS.",
+    route: "https://shurem-class-9to12-assignment-6.netlify.app/",
+    tags: ["Frontend", "UI/UX", "TypeScript", "Pixel Perfect"],
+    github: "https://github.com/shuremali02/shurem-class-9to12-assignment-6",
+    category: "Frontend"
+  },
+  {
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403836/3_assignment_sgzx6u.jpg",
+    title: "Green Groups — Landing Page",
+    description:
+      "A fully responsive marketing landing page built with clean, semantic HTML and CSS. Focused on strong visual hierarchy, a mobile-first layout, and fast load — a solid demonstration of front-end fundamentals and design-to-code translation.",
+    route: "https://shurem-class-assignment-3.netlify.app/",
+    tags: ["Frontend", "Landing Page", "Responsive", "HTML/CSS"],
+    github: "https://github.com/shuremali02/shurem-class-assignment-3",
+    category: "Frontend"
+  },
+  {
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403837/assign_2_pwpsdk.jpg",
+    title: "Brandbuzz — Landing Page",
+    description:
+      "A responsive brand landing page built with HTML and CSS, featuring a bold hero, clear content sections, and a mobile-first layout — a clean demonstration of layout, spacing, and responsive design fundamentals.",
+    route: "https://class-assignment-2-shuremali.netlify.app/",
+    tags: ["Frontend", "Landing Page", "Responsive", "HTML/CSS"],
+    github: "https://github.com/shuremali02/class-assignment-2-shuremali",
+    category: "Frontend"
+  },
   ];

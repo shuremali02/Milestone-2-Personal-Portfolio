@@ -5,7 +5,6 @@ import { FaHome, FaArrowLeft } from "react-icons/fa";
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4 relative overflow-hidden">
-      <div className="absolute inset-0 animated-gradient opacity-5" />
 
       <div className="text-center max-w-lg relative z-10">
         <div className="relative mb-8">
@@ -29,13 +28,13 @@ export default function NotFound() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link href="/">
-            <button className="bg-primary text-background hover:bg-primaryHover py-3 px-8 rounded-full transition-all shadow-lg font-medium flex items-center gap-2 hover:scale-105 ai-glow">
+            <button className="bg-primary text-background hover:bg-primaryHover py-3 px-8 rounded-lg transition-all shadow-lg font-medium flex items-center gap-2 hover:scale-105">
               <FaHome /> Go Home
             </button>
           </Link>
           <button
             onClick={() => window.history.back()}
-            className="bg-surface border border-border text-textMain hover:border-primary py-3 px-8 rounded-full transition-all shadow-md font-medium flex items-center gap-2 hover:scale-105 card-glow"
+            className="bg-surface border border-border text-textMain hover:border-primary py-3 px-8 rounded-lg transition-all shadow-md font-medium flex items-center gap-2 hover:scale-105 card-glow"
           >
             <FaArrowLeft /> Go Back
           </button>

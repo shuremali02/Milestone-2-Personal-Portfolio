@@ -14,8 +14,7 @@ interface TiltCardProps {
 /**
  * Interactive 3D tilt card. Tracks the pointer and rotates the card in 3D
  * space via CSS custom properties consumed by `.tilt-card` in globals.css.
- * Falls back gracefully (no tilt) when prefers-reduced-motion is set,
- * because the CSS disables the transform.
+ * Falls back gracefully (no tilt) when prefers-reduced-motion is set.
  */
 export default function TiltCard({
   children,
