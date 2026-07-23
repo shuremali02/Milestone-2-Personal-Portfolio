@@ -1,7 +1,7 @@
 import Hero from "./components/hero";
 import Auto from "./components/auto scroll";
 import "./globals.css";
-import BentoProjects from "./components/bento-projects";
+import StackedProjects from "./components/stacked-projects";
 import BentoSkills from "./components/bento-skills";
 import BentoStats from "./components/bento-stats";
 import Blog from "./components/blog";
@@ -23,7 +23,9 @@ export const metadata: Metadata = {
 
 export default function Main() {
   return (
-    <div className="bg-background min-h-screen w-full overflow-x-hidden">
+    // `overflow-x-clip` (not `-hidden`): hidden would make this a scroll
+    // container and break the sticky project stack.
+    <div className="bg-background min-h-screen w-full overflow-x-clip">
       <Hero />
 
       <div id="stats">
@@ -31,7 +33,7 @@ export default function Main() {
       </div>
 
       <div id="project">
-        <BentoProjects />
+        <StackedProjects />
       </div>
 
       <div id="skills">

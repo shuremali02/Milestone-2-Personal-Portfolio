@@ -6,6 +6,13 @@ export interface Skill {
 
 export interface Project {
   img: string;
+  /**
+   * Up to three screenshots for the sticky stacked card on the home page
+   * (two stacked left, one tall right). Fewer than three is fine — the
+   * remaining slots cycle back through these with a different crop. Omit it
+   * entirely and `img` fills all three. Local paths must be URL-encoded.
+   */
+  gallery?: string[];
   title: string;
   description: string;
   route: string;
@@ -147,7 +154,7 @@ export const skills: Skill[] = [
 
 
 
-export const project = [
+export const project: Project[] = [
   {
     // TODO: replace with a Cloudinary screenshot of the live platform (upload like your other project images)
     img: "https://placehold.co/800x500/00A38C/ffffff/png?text=Maryam+%26+Zayn+Learning",
@@ -162,6 +169,11 @@ export const project = [
   },
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
+    gallery: [
+      "/todos%20dashboard.PNG",
+      "/todos%20agent.PNG",
+      "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
+    ],
     title: "AI-Powered Todo App",
     description:
       "Task apps die from input friction, so I made an AI agent the interface: users create, update, and complete tasks in plain language ('add a grocery run for tomorrow'). Every action is written to a full audit trail and gated behind authentication. Built spec-first with SpecKit+ and Claude Code CLI — all 5 hackathon phases shipped on deadline, plus a task dashboard and profile management.",
@@ -174,6 +186,10 @@ export const project = [
   },
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1766755841/physical_ai_book_dje6hv.png",
+    gallery: [
+      "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1766755841/physical_ai_book_dje6hv.png",
+      "/physical_book_content.PNG",
+    ],
     title: "Physical AI & Humanoid Robotics Book",
     description:
       "Static technical textbooks can't answer questions or serve non-English readers. My solution: an interactive Docusaurus textbook with a RAG chatbot that answers grounded in the book's own chapters, full Urdu translation for accessibility, and personalized content for signed-in learners. Built spec-driven during the GIAIC SpecKit+ Hackathon.",
@@ -186,6 +202,7 @@ export const project = [
   },
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1759697057/roommatcher_qtnhiv.png",
+    gallery: ["/room%20hero.PNG", "/room%20feature.PNG", "/room%20profile.PNG"],
     title: "Room Matcher AI",
     description:
       "Matching people means weighing many soft constraints — a single prompt can't do it reliably or explainably. I built specialized AI agents (profile analysis, compatibility scoring, ranking) coordinated by an orchestrator, with a live trace visualization that streams each agent's reasoning to the screen in real time. Built at the Innovista Indus Hackathon.",
