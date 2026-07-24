@@ -72,11 +72,14 @@ export default function BentoSkills() {
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mb-3">
             <span className="w-6 h-px bg-gold" /> Skills <span className="w-6 h-px bg-gold" />
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-3 text-textMain">
+          <h2
+            className="font-black uppercase leading-none tracking-tight mb-3 text-textMain"
+            style={{ fontSize: "clamp(2.5rem, 9vw, 120px)" }}
+          >
             Skills &amp; <span className="text-primary">Expertise</span>
           </h2>
           <p className="text-textMuted max-w-2xl mx-auto">
-            Technologies and tools I use to bring ideas to life
+            The technologies I use to design, build, and ship
           </p>
         </Reveal>
 

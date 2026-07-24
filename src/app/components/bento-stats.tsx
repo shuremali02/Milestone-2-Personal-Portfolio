@@ -152,11 +152,14 @@ export default function BentoStats() {
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mb-3">
             <span className="w-6 h-px bg-gold" /> Stats <span className="w-6 h-px bg-gold" />
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-3 text-textMain">
+          <h2
+            className="font-black uppercase leading-none tracking-tight mb-3 text-textMain"
+            style={{ fontSize: "clamp(2.5rem, 9vw, 120px)" }}
+          >
             By The <span className="text-primary">Numbers</span>
           </h2>
           <p className="text-textMuted max-w-2xl mx-auto">
-            A quick snapshot of my journey and achievements
+            A quick look at the work and milestones so far
           </p>
         </Reveal>
 

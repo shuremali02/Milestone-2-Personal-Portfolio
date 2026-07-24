@@ -4,15 +4,21 @@ export interface Skill {
   category: string;
 }
 
+export interface GalleryShot {
+  src: string;
+  /** What this screenshot shows, e.g. "agent chat view" — becomes the alt text. */
+  alt: string;
+}
+
 export interface Project {
   img: string;
   /**
    * Up to three screenshots for the sticky stacked card on the home page
    * (two stacked left, one tall right). Fewer than three is fine — the
    * remaining slots cycle back through these with a different crop. Omit it
-   * entirely and `img` fills all three. Local paths must be URL-encoded.
+   * entirely and `img` fills all three.
    */
-  gallery?: string[];
+  gallery?: GalleryShot[];
   title: string;
   description: string;
   route: string;
@@ -37,6 +43,31 @@ export interface Experience {
 }
 
 export const experiences: Experience[] = [
+  {
+    role: "Head of Business Development & AI Engineer",
+    company: "AgentraX",
+    type: "Full-time",
+    start: "Feb 2026",
+    end: "Present",
+    current: true,
+    location: "Remote",
+    description:
+      "Combining strategic business leadership with hands-on AI engineering. I identify business opportunities, define product strategy, and design AI-powered solutions to real-world problems — bridging client needs and technical delivery to grow AgentraX as a forward-thinking AI company.",
+    achievements: [
+      "Design and build intelligent applications with modern AI — LLMs, AI agents, Retrieval-Augmented Generation (RAG), workflow automation, and cloud-based AI services.",
+      "Integrate advanced language models into business applications, building scalable AI systems that improve productivity, customer experience, and operational efficiency.",
+      "Lead business development end-to-end: client discovery sessions, requirement gathering, technical proposals, product demos, and long-term partnerships.",
+      "Work with leadership, clients, and cross-functional teams to turn ideas into impactful, scalable AI products.",
+    ],
+    tech: [
+      "LLMs",
+      "AI Agents",
+      "RAG",
+      "Workflow Automation",
+      "Cloud AI",
+      "Python",
+    ],
+  },
   {
     role: "Full-Stack Developer",
     company: "Elipse Studio",
@@ -71,10 +102,16 @@ export const experiences: Experience[] = [
 
 export const personalData = `
 Name: Syed Shurem Ali
-Role: Full-Stack Developer
+Role: AI Engineer & Full-Stack Developer
 Experience: 2.5+ years
 
-Current Position:
+Current Positions:
+- Head of Business Development (HOBD) & AI Engineer at AgentraX — Feb 2026 to Present.
+  Combines business leadership with AI engineering: designs and builds intelligent
+  applications using LLMs, AI agents, Retrieval-Augmented Generation (RAG), workflow
+  automation, and cloud-based AI services, and integrates advanced language models into
+  scalable business applications. Also leads business development — client discovery,
+  requirement gathering, technical proposals, product demos, and long-term partnerships.
 - Full-Stack Developer (Full-time) at Elipse Studio — May 2026 to Present.
   Building production Next.js + MySQL web apps end-to-end, owning deployment on
   VPS servers (Nginx reverse proxies, NSSM Windows services) and Hostinger hosting
@@ -170,9 +207,12 @@ export const project: Project[] = [
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
     gallery: [
-      "/todos%20dashboard.PNG",
-      "/todos%20agent.PNG",
-      "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
+      { src: "/todos-dashboard.png", alt: "dashboard with AI-powered productivity insights" },
+      { src: "/todos-agent.png", alt: "AI task assistant chat panel" },
+      {
+        src: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
+        alt: "task list and landing view",
+      },
     ],
     title: "AI-Powered Todo App",
     description:
@@ -187,8 +227,14 @@ export const project: Project[] = [
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1766755841/physical_ai_book_dje6hv.png",
     gallery: [
-      "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1766755841/physical_ai_book_dje6hv.png",
-      "/physical_book_content.PNG",
+      {
+        src: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1766755841/physical_ai_book_dje6hv.png",
+        alt: "book landing page",
+      },
+      {
+        src: "/physical-book-content.png",
+        alt: "ROS 2 module chapter with sidebar navigation",
+      },
     ],
     title: "Physical AI & Humanoid Robotics Book",
     description:
@@ -202,7 +248,12 @@ export const project: Project[] = [
   },
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1759697057/roommatcher_qtnhiv.png",
-    gallery: ["/room%20hero.PNG", "/room%20feature.PNG", "/room%20profile.PNG"],
+    // `room-feature` is portrait, so it goes in the tall right-hand panel.
+    gallery: [
+      { src: "/room-hero.png", alt: "landing page with AI roommate matching hero" },
+      { src: "/room-profile.png", alt: "profile upload and AI matching pipeline" },
+      { src: "/room-feature.png", alt: "growth timeline to 10K+ users" },
+    ],
     title: "Room Matcher AI",
     description:
       "Matching people means weighing many soft constraints — a single prompt can't do it reliably or explainably. I built specialized AI agents (profile analysis, compatibility scoring, ranking) coordinated by an orchestrator, with a live trace visualization that streams each agent's reasoning to the screen in real time. Built at the Innovista Indus Hackathon.",

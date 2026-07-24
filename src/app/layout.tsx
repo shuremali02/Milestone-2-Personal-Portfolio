@@ -23,6 +23,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://syed-shurem-ali.vercel.app"),
   title: {
     default: "Syed Shurem Ali - Full-Stack Developer & AI Engineer",
     template: "%s | Syed Shurem Ali Portfolio"
@@ -39,20 +40,13 @@ export const metadata: Metadata = {
     title: "Syed Shurem Ali - Full-Stack Developer & AI Engineer",
     description: "Portfolio of Syed Shurem Ali - Full-Stack Developer & AI Engineer building web & mobile apps with Next.js, TypeScript, Flutter/Dart, MySQL, and Agentic AI.",
     siteName: "Syed Shurem Ali Portfolio",
-    images: [
-      {
-        url: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Syed Shurem Ali Portfolio",
-      },
-    ],
+    // Social image comes from the generated app/opengraph-image.tsx (branded card).
   },
   twitter: {
     card: "summary_large_image",
     title: "Syed Shurem Ali - Full-Stack Developer & AI Engineer",
     description: "Portfolio of Syed Shurem Ali - Full-Stack Developer & AI Engineer building web & mobile apps with Next.js, TypeScript, Flutter/Dart, MySQL, and Agentic AI.",
-    images: ["https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg"],
+    // Social image comes from the generated app/twitter-image.tsx (branded card).
     creator: "@syedshuremali",
   },
   robots: {

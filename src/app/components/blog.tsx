@@ -39,10 +39,13 @@ export default function Blog() {
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mb-3">
             <span className="w-6 h-px bg-gold" /> Writing <span className="w-6 h-px bg-gold" />
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-textMain">
+          <h2
+            className="font-black uppercase leading-none tracking-tight text-textMain"
+            style={{ fontSize: "clamp(2.5rem, 9vw, 120px)" }}
+          >
             Blog &amp; <span className="text-primary">Articles</span>
           </h2>
-          <p className="text-textMuted mt-2">Latest insights about web development and AI</p>
+          <p className="text-textMuted mt-2">Notes on building for web, mobile, and AI</p>
         </div>
 
         {/* Tag Filter */}

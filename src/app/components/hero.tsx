@@ -101,9 +101,10 @@ export default function Hero() {
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              Full-Stack Developer at a software studio. I build production apps with
-              Next.js, TypeScript &amp; Flutter, make them intelligent with agentic AI, and
-              own the whole lifecycle — from MySQL schema to VPS deployment.
+              AI Engineer and Full-Stack Developer. I build production web &amp; mobile
+              apps with Next.js, TypeScript &amp; Flutter, make them intelligent with LLMs
+              and agentic AI, and own the whole lifecycle — from MySQL schema to VPS
+              deployment.
             </p>
 
             <div

@@ -16,7 +16,10 @@ export default function ContactCta() {
         <Reveal>
           <div className="gradient-border rounded-xl">
             <div className="glass rounded-xl px-8 py-14 text-center">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 text-textMain">
+              <h2
+                className="font-black uppercase leading-none tracking-tight mb-4 text-textMain"
+                style={{ fontSize: "clamp(2.5rem, 9vw, 120px)" }}
+              >
                 Let&apos;s Build Something <span className="text-primary">Great</span>
               </h2>
               <p className="text-textMuted max-w-xl mx-auto mb-8 text-lg">

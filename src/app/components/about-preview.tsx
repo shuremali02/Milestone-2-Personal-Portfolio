@@ -37,7 +37,7 @@ export default function AboutPreview() {
                 </p>
                 <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-sm mb-6">
                   <span className="flex items-center gap-2">
-                    <FaBriefcase className="text-primary" /> Full-time Full-Stack Developer
+                    <FaBriefcase className="text-primary" /> AI Engineer &amp; Full-Stack Developer
                   </span>
                   <span className="flex items-center gap-2">
                     <FaGraduationCap className="text-primary" /> Agentic AI — Governor House Initiative

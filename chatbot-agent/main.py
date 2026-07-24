@@ -89,11 +89,14 @@ async def get_info():
     """Get portfolio owner information"""
     return {
         "name": "Syed Shurem Ali",
-        "role": "Front-End Developer",
+        "role": "AI Engineer & Full-Stack Developer",
+        "companies": ["AgentraX", "Elipse Studio"],
         "experience": "2.5+ years",
         "skills": [
+            "LLMs", "AI Agents", "RAG", "Workflow Automation",
             "React.js", "Next.js", "TypeScript", "Python",
-            "OpenAI Agents SDK", "Agentic AI", "HuggingFace", "Docker"
+            "Flutter", "Dart", "MySQL", "Nginx", "VPS Deployment",
+            "OpenAI Agents SDK", "HuggingFace", "Docker"
         ]
     }
 

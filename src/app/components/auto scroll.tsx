@@ -38,7 +38,10 @@ export default function TechStack() {
         <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold mb-3">
           <span className="w-6 h-px bg-gold" /> Tools <span className="w-6 h-px bg-gold" />
         </span>
-        <h2 className="text-4xl md:text-5xl font-bold text-textMain mb-3">
+        <h2
+          className="font-black uppercase leading-none tracking-tight text-textMain mb-3"
+          style={{ fontSize: "clamp(2.5rem, 9vw, 120px)" }}
+        >
           Tech <span className="text-primary">Stack</span>
         </h2>
         <p className="text-textMuted">Technologies I work with</p>

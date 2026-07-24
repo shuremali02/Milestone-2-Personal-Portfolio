@@ -102,7 +102,7 @@ export default function About() {
                   I&apos;m a Full-Stack Developer &amp; AI Engineer who ships complete products — not just front-ends. With <span className="text-primary font-semibold"><ExperienceCounter /> years building</span> across web and mobile, I work end-to-end with React.js, Next.js, TypeScript, and Tailwind CSS, add cross-platform apps with Flutter &amp; Dart, and integrate agentic AI to make products intelligent.
                 </p>
                 <p className="text-textMain leading-relaxed mt-3">
-                  I work <span className="text-primary font-semibold">full-time at a software studio</span>, shipping production client applications and owning their deployment — VPS servers with Nginx and NSSM, plus Hostinger hosting with custom domains, subdomains, and MySQL databases. Alongside this, I&apos;m deepening my agentic AI skills through the Governor House Initiative.
+                  I work <span className="text-primary font-semibold">full-time at a software studio</span>, shipping production client applications and owning their deployment — VPS servers with Nginx and NSSM, plus Hostinger hosting with custom domains, subdomains, and MySQL databases. Alongside that, I serve as <span className="text-primary font-semibold">Head of Business Development &amp; AI Engineer</span> at an AI company, where I design intelligent applications with LLMs, AI agents, and RAG, and bridge business strategy with technical delivery.
                 </p>
 
                 <div className="mt-5 border-l-2 border-gold pl-4">

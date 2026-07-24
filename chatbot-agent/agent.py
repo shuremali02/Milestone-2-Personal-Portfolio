@@ -12,8 +12,26 @@ from pydantic import BaseModel
 # Portfolio data for context
 PORTFOLIO_DATA = """
 Name: Syed Shurem Ali
-Role: Front-End Developer
+Role: AI Engineer & Full-Stack Developer
 Experience: 2.5+ years
+
+Current Positions (two concurrent roles):
+- Head of Business Development (HOBD) & AI Engineer at AgentraX — February 2026 to Present.
+  Combines strategic business leadership with hands-on AI engineering. As an AI Engineer he
+  designs and builds intelligent applications using modern AI: Large Language Models (LLMs),
+  AI agents, Retrieval-Augmented Generation (RAG), workflow automation, and cloud-based AI
+  services — integrating advanced language models into scalable business applications that
+  improve productivity, customer experience, and operational efficiency. As Head of Business
+  Development he leads client discovery sessions, gathers requirements, prepares technical
+  proposals, delivers product demonstrations, and builds long-term partnerships, bridging
+  business strategy with AI innovation to grow AgentraX.
+- Full-Stack Developer (Full-time) at Elipse Studio — May 2026 to Present, On-site.
+  Builds production web applications end-to-end: Next.js/TypeScript front-ends backed by
+  MySQL databases, owning each feature from schema design to release. Owns the deployment
+  pipeline too — configures Nginx reverse proxies on VPS servers, runs Node services under
+  NSSM as auto-restarting Windows services, and provisions production hosting on Hostinger
+  (custom domains, subdomains, MySQL databases) for live client applications. Also contributes
+  to the studio's mobile work with Flutter, Dart, and the Android SDK.
 
 Education:
 - 1-Year Diploma in Information Technology — SZABIST ZABTech, Hyderabad
@@ -21,40 +39,68 @@ Education:
 
 Skills:
 - Frontend: React.js, Next.js, TypeScript, JavaScript (ES6+), Python, Agentic AI
+- Mobile: Android Development, Flutter (Flutter SDK), Dart, Android SDK
 - Styling: Tailwind CSS, Sass, CSS3, HTML5, AOS Animations, Framer Motion
-- API Integration (REST)
+- Backend & Data: API Integration (REST), MySQL
 - State Management: Redux
-- Deployment: Vercel, Netlify, Docker, HuggingFace Spaces
+- Deployment & DevOps: Vercel, Netlify, VPS Deployment, Nginx, NSSM, Hostinger (domains, subdomains, MySQL databases), Docker, HuggingFace Spaces
 - Tools: Git, GitHub, VS Code
-- AI/ML: OpenAI Agents SDK, HuggingFace, Gemini API
+- AI/ML: LLMs, AI Agents, Retrieval-Augmented Generation (RAG), Workflow Automation, Cloud AI Services, OpenAI Agents SDK, Gemini API, HuggingFace
+- Business: Business Development, Client Discovery, Technical Proposals, Product Demos, Partnerships
 
 Projects & Hackathons:
-1. **Physical AI & Humanoid Robotics Book** – A comprehensive Docusaurus-based textbook on Physical AI & Humanoid Robotics with RAG-based chatbot, Urdu translation, personalized content for signed-in users, and interactive learning features. Built during GIAIC Spec-Driven SpecKit+ Hackathon.
+1. **Maryam & Zayn — Kids Learning Platform** (Client Work, Production, Live) – A production
+   EdTech platform built at Elipse Studio for a Pakistani children's education brand. Kids learn
+   six subjects (Urdu, English, Maths, Islamiat, GK, Science) through character-guided, bilingual
+   lessons, with full gamification: XP and levels, daily streaks, Bronze/Silver/Gold leagues,
+   badges, and a guest mode that needs no signup. Live in production with user accounts,
+   dashboards, and progress tracking. Built with Next.js. (https://learning.maryamandzayn.com/)
 
-2. **Room Matcher AI** – AI-powered roommate matcher with multi-agent orchestration and live trace visualization, built during Innovista Indus Hackathon.
+2. **AI-Powered Todo App** – Makes an AI agent the interface: users create, update, and complete
+   tasks in plain language ("add a grocery run for tomorrow"). Every action is written to a full
+   audit trail and gated behind authentication. Built spec-first with SpecKit+ and Claude Code
+   CLI; all 5 hackathon phases shipped on deadline, plus a task dashboard and profile management.
+   Tech: Next.js, Agentic AI, Authentication.
 
-3. **SXN-By-Nash Marketplace** – E-commerce platform featuring perfumes and watches with flash sales, wishlist management, and countdown timer.
+3. **Physical AI & Humanoid Robotics Book** – An interactive Docusaurus textbook with a RAG
+   chatbot that answers grounded in the book's own chapters, full Urdu translation for
+   accessibility, and personalized content for signed-in learners. Built spec-driven during the
+   GIAIC SpecKit+ Hackathon.
 
-4. **NFT Marketplace (OpenSea Clone)** – Front-end NFT marketplace UI developed using Sass.
+4. **Room Matcher AI** – AI-powered roommate matcher using specialized agents (profile analysis,
+   compatibility scoring, ranking) coordinated by an orchestrator, with a live trace
+   visualization that streams each agent's reasoning to the screen in real time. Built at the
+   Innovista Indus Hackathon. Tech: Next.js, Agentic AI.
 
-5. **Simple Chatbot with Auth, Chainlit & Gemini** – AI-powered chatbot using Chainlit and Google's Gemini model with secure authentication.
+5. **Crypto Market Intelligence Agent** – Conversational AI chatbot for real-time crypto insights,
+   built with the OpenAI Agents SDK and the CoinGecko API.
 
-6. **Crypto Market Conversational Chatbot** – Streamlit-based AI chatbot using OpenAI's agents SDK and CoinGecko API for real-time crypto insights.
+6. **SxN by Nash — E-Commerce Platform** – E-commerce frontend for perfumes and watches with flash
+   sales, wishlist management, and countdown timers.
 
-7. **Watch-Hub** – Modern e-commerce frontend for premium watches built with Next.js.
+7. **Watch Hub — Premium Watch Store** – Modern e-commerce frontend for premium watches, built
+   with Next.js.
 
-8. **Dynamic Resume Builder** – Generate and save resume as PDF.
+8. **NFT Marketplace — OpenSea-Style UI** – Front-end NFT marketplace UI developed with Sass.
+
+9. **Dynamic Resume Builder — Live PDF Export** – Generate and save a resume as a PDF.
 
 Contact:
-- Email: Available on portfolio website
+- Email: Available on the portfolio website (contact page)
 - GitHub: github.com/shuremali02
-- LinkedIn: Available on portfolio website
+- LinkedIn: Available on the portfolio website
 - Portfolio: Personal portfolio website
 
 Passion:
-I am passionate about creating modern, responsive, and user-friendly interfaces. I enjoy experimenting with new technologies, building functional prototypes, and solving real-world problems through creative web solutions. Currently learning Agentic AI and Spec-Driven Development (SDD).
+Syed is an AI Engineer and Full-Stack Developer who turns ideas into impactful, scalable products.
+He builds intelligent applications with LLMs, AI agents, and RAG, and ships modern end-to-end web
+and mobile apps — from Flutter mobile work to Next.js web apps — owning the full lifecycle,
+including server deployment on VPS and Hostinger. He also bridges business and engineering,
+leading business development at AgentraX.
 
-Availability: Open to freelance projects and collaborations
+Availability:
+Currently holds two roles — Head of Business Development & AI Engineer at AgentraX and Full-Stack
+Developer at Elipse Studio — and is open to freelance projects and collaborations alongside them.
 """
 
 class ChatMessage(BaseModel):
@@ -104,22 +150,20 @@ PORTFOLIO INFORMATION:
 {PORTFOLIO_DATA}
 
 INSTRUCTIONS:
-1. Be friendly, professional, and helpful
-2. Answer questions about Syed's skills, projects, experience, and background
-3. If asked about something not in the portfolio data, politely say you don't have that information
-4. Keep responses concise but informative
-5. Highlight relevant projects or skills when appropriate
-6. Encourage visitors to explore the portfolio or reach out for collaborations
-7. If asked about hiring or contact, mention that Syed is open to freelance projects and collaborations
-8. Always be positive and showcase Syed's strengths
-9. For technical questions about projects, provide details from the portfolio data
-10. If asked something unrelated to the portfolio, politely redirect the conversation
+1. Be friendly, professional, and helpful.
+2. Answer questions about Syed's skills, projects, experience, and background using ONLY the portfolio information above.
+3. When asked what Syed does or about his role, lead with his two current positions: Head of Business Development & AI Engineer at AgentraX, and Full-Stack Developer at Elipse Studio. Do not describe him as only a front-end developer.
+4. Never invent or infer technologies, employers, projects, dates, or contact details that are not in the portfolio information. If something isn't there, say you don't have that detail and point visitors to the portfolio or contact page.
+5. Keep responses concise but informative, and highlight relevant projects or skills when they fit the question.
+6. For hiring or availability questions: Syed currently holds two roles — Head of Business Development & AI Engineer at AgentraX, and Full-Stack Developer at Elipse Studio — and is open to freelance projects and collaborations alongside them; encourage visitors to reach out via the contact page.
+7. For technical questions about a project, use the details provided for that project; don't embellish its stack.
+8. Always be positive and showcase Syed's real strengths and shipped work.
 
 RESPONSE STYLE:
-- Use a conversational, friendly tone
-- Keep responses under 200 words unless detailed information is requested
-- Use bullet points for listing skills or projects when appropriate
-- Be enthusiastic about Syed's work and achievements
+- Use a conversational, friendly tone.
+- Keep responses under 200 words unless detailed information is requested.
+- Use bullet points when listing skills or projects.
+- Be enthusiastic about Syed's work and achievements.
 """
 
     async def chat(
@@ -138,16 +182,16 @@ RESPONSE STYLE:
             Agent's response string
         """
         try:
-            # Build conversation context
+            # Build conversation context. The frontend sends the full running
+            # history, so cap it and only keep well-formed user/assistant turns.
             conversation = []
-
-            # Add history if provided
             if history:
-                for msg in history:
-                    conversation.append({
-                        "role": msg.role,
-                        "content": msg.content
-                    })
+                for msg in history[-10:]:
+                    if msg.role in ("user", "assistant") and msg.content:
+                        conversation.append({
+                            "role": msg.role,
+                            "content": msg.content,
+                        })
 
             # Add current message
             conversation.append({
@@ -155,10 +199,10 @@ RESPONSE STYLE:
                 "content": message
             })
 
-            # Run the agent
+            # Run the agent with the full conversation so follow-ups have context.
             result = await Runner.run(
                 self.agent,
-                input=message,
+                input=conversation,
                 run_config=self.config
             )
 
