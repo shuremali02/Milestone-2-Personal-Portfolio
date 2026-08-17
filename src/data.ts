@@ -8,6 +8,13 @@ export interface GalleryShot {
   src: string;
   /** What this screenshot shows, e.g. "agent chat view" — becomes the alt text. */
   alt: string;
+  /**
+   * Tailwind object-position class overriding the panel's default
+   * `object-top` crop anchor, e.g. "object-center". Use for marketing
+   * composites/mockups whose subject sits mid-image rather than at the top
+   * (a plain UI screenshot's header usually wants the default top anchor).
+   */
+  focal?: string;
 }
 
 export interface Project {
@@ -152,36 +159,51 @@ export const skills: Skill[] = [
 
 
 export const project: Project[] = [
-  /* Hidden for now — no permission yet from the client/company to showcase this work.
   {
-    // TODO: replace with a Cloudinary screenshot of the live platform (upload like your other project images)
-    img: "https://placehold.co/800x500/00A38C/ffffff/png?text=Maryam+%26+Zayn+Learning",
+    img: "/maryam-zayn-hero.png",
+    gallery: [
+      { src: "/maryam-zayn-quiz-crop.png", alt: "interactive quiz with instant XP feedback", focal: "object-center" },
+      { src: "/maryam-zayn-leaderboard.png", alt: "weekly leaderboard rankings", focal: "object-center" },
+      { src: "/maryam-zayn-landing.png", alt: "landing page with Maryam and Zayn characters", focal: "object-center" },
+    ],
     title: "Maryam & Zayn — Kids Learning Platform",
     description:
-      "A production EdTech platform built at Elipse Studio for a Pakistani children's education brand. Kids learn six subjects (Urdu, English, Maths, Islamiat, GK, Science) through character-guided, bilingual lessons — with full gamification: XP and levels, daily streaks, Bronze/Silver/Gold leagues, badges, and a guest mode that needs no signup. Live in production with user accounts, dashboards, and progress tracking.",
+      "A production EdTech platform built end-to-end at Elipse Studio for a Pakistani children's education brand. Kids learn six subjects (Urdu, English, Maths, Islamiat, GK, Science) through character-guided, bilingual lessons, an AI tutor chat, and full gamification — XP and levels, daily streaks, Bronze/Silver/Gold leagues, badges, and a guest mode that needs no signup. Next.js/TypeScript frontend, FastAPI + PostgreSQL backend, plus a companion Flutter mobile app. Live in production with user accounts, dashboards, and progress tracking.",
     route: "https://learning.maryamandzayn.com/",
-    tags: ["Client Work", "Next.js", "EdTech", "Full-Stack", "Production"],
+    tags: ["Client Work", "Next.js", "FastAPI", "Flutter", "Production"],
     featured: true,
     year: 2026,
     category: "Client Work"
   },
-  */
   {
-    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
+    img: "/mittipay-dashboard.png",
     gallery: [
-      { src: "/todos-dashboard.png", alt: "dashboard with AI-powered productivity insights" },
-      { src: "/todos-agent.png", alt: "AI task assistant chat panel" },
-      {
-        src: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
-        alt: "task list and landing view",
-      },
+      { src: "/mittipay-dashboard.png", alt: "farmer ledger dashboard with expense breakdown" },
+      { src: "/mittipay-guide.png", alt: "AI market guide agent for buying and selling crops" },
     ],
-    title: "AI-Powered Todo App",
+    title: "MittiPay — AgriTech Finance Platform",
     description:
-      "Task apps die from input friction, so I made an AI agent the interface: users create, update, and complete tasks in plain language ('add a grocery run for tomorrow'). Every action is written to a full audit trail and gated behind authentication. Built spec-first with SpecKit+ and Claude Code CLI — all 5 hackathon phases shipped on deadline, plus a task dashboard and profile management.",
-    route: "https://the-evolution-of-todo-mastering-spe.vercel.app/",
-    tags: ["AI/ML", "Agentic AI", "Next.js", "Authentication", "Hackathon"],
-    github: "https://github.com/shuremali02/The-Evolution-of-Todo---Mastering-Spec-Driven-Development---Cloud-Native-AI",
+      "Smallholder farmers track income, expenses, and crop prices on paper, so decisions always lag the market. Built at a team hackathon, MittiPay pairs a farmer ledger with a multi-agent backend — market, weather & soil, prediction, and advisory agents — that turns raw data into a straight 'buy, hold, or sell' call. I led the frontend end-to-end and built the Prediction Agent that forecasts short-term price patterns.",
+    route: "https://ai-powered-financial-app.vercel.app/",
+    tags: ["AI/ML", "Agentic AI", "Next.js", "FinTech", "Hackathon"],
+    featured: true,
+    year: 2025,
+    category: "AI/ML"
+  },
+  {
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1759697057/roommatcher_qtnhiv.png",
+    // `room-feature` is portrait, so it goes in the tall right-hand panel.
+    gallery: [
+      { src: "/room-hero.png", alt: "landing page with AI roommate matching hero" },
+      { src: "/room-profile.png", alt: "profile upload and AI matching pipeline" },
+      { src: "/room-feature.png", alt: "growth timeline to 10K+ users" },
+    ],
+    title: "Room Matcher AI",
+    description:
+      "Matching people means weighing many soft constraints — a single prompt can't do it reliably or explainably. I built specialized AI agents (profile analysis, compatibility scoring, ranking) coordinated by an orchestrator, with a live trace visualization that streams each agent's reasoning to the screen in real time. Built at the Innovista Indus Hackathon.",
+    route: "https://room-matcher-ai-rosy.vercel.app/",
+    tags: ["AI/ML", "Agentic AI", "Next.js", "Hackathon"],
+    github: "https://github.com/shuremali02/Room-Matcher-AI",
     featured: true,
     year: 2025,
     category: "AI/ML"
@@ -209,19 +231,21 @@ export const project: Project[] = [
     category: "AI/ML"
   },
   {
-    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1759697057/roommatcher_qtnhiv.png",
-    // `room-feature` is portrait, so it goes in the tall right-hand panel.
+    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
     gallery: [
-      { src: "/room-hero.png", alt: "landing page with AI roommate matching hero" },
-      { src: "/room-profile.png", alt: "profile upload and AI matching pipeline" },
-      { src: "/room-feature.png", alt: "growth timeline to 10K+ users" },
+      { src: "/todos-dashboard.png", alt: "dashboard with AI-powered productivity insights" },
+      { src: "/todos-agent.png", alt: "AI task assistant chat panel" },
+      {
+        src: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
+        alt: "task list and landing view",
+      },
     ],
-    title: "Room Matcher AI",
+    title: "AI-Powered Todo App",
     description:
-      "Matching people means weighing many soft constraints — a single prompt can't do it reliably or explainably. I built specialized AI agents (profile analysis, compatibility scoring, ranking) coordinated by an orchestrator, with a live trace visualization that streams each agent's reasoning to the screen in real time. Built at the Innovista Indus Hackathon.",
-    route: "https://room-matcher-ai-rosy.vercel.app/",
-    tags: ["AI/ML", "Agentic AI", "Next.js", "Hackathon"],
-    github: "https://github.com/shuremali02/Room-Matcher-AI",
+      "Task apps die from input friction, so I made an AI agent the interface: users create, update, and complete tasks in plain language ('add a grocery run for tomorrow'). Every action is written to a full audit trail and gated behind authentication. Built spec-first with SpecKit+ and Claude Code CLI — all 5 hackathon phases shipped on deadline, plus a task dashboard and profile management.",
+    route: "https://the-evolution-of-todo-mastering-spe.vercel.app/",
+    tags: ["AI/ML", "Agentic AI", "Next.js", "Authentication", "Hackathon"],
+    github: "https://github.com/shuremali02/The-Evolution-of-Todo---Mastering-Spec-Driven-Development---Cloud-Native-AI",
     year: 2025,
     category: "AI/ML"
   },

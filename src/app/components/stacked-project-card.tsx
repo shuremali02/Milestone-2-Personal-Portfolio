@@ -143,7 +143,7 @@ export default function StackedProjectCard({
                 fill
                 cldWidth={500}
                 sizes="(max-width: 640px) 100vw, 400px"
-                className="object-cover object-top"
+                className={`object-cover ${slotA.focal ?? "object-top"}`}
               />
             </div>
             <div className={`${PANEL} aspect-[16/10] sm:aspect-auto sm:min-h-0 sm:flex-[3]`}>
@@ -153,7 +153,7 @@ export default function StackedProjectCard({
                 fill
                 cldWidth={500}
                 sizes="(max-width: 640px) 100vw, 400px"
-                className={`object-cover ${slotB.repeated ? "object-bottom scale-110" : "object-top"}`}
+                className={`object-cover ${slotB.focal ?? (slotB.repeated ? "object-bottom scale-110" : "object-top")}`}
               />
             </div>
           </div>
@@ -165,7 +165,7 @@ export default function StackedProjectCard({
               fill
               cldWidth={800}
               sizes="(max-width: 640px) 100vw, 700px"
-              className={`object-cover ${slotC.repeated ? "object-center scale-105" : "object-top"}`}
+              className={`object-cover ${slotC.focal ?? (slotC.repeated ? "object-center scale-105" : "object-top")}`}
             />
           </div>
         </div>
