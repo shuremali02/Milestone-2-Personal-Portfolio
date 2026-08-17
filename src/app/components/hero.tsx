@@ -5,7 +5,8 @@ import Link from "next/link";
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight, FaCode, FaMobileAlt, FaServer, FaRobot } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import CVModal from "./cv-modal";
+// CV modal temporarily disabled — see cv-modal.tsx
+// import CVModal from "./cv-modal";
 import TiltCard from "./tilt-card";
 import Magnetic from "./magnetic";
 import { cld } from "@/utils/cloudinary";
@@ -30,7 +31,7 @@ export default function Hero() {
   const [currentRole, setCurrentRole] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
+  // const [isCVModalOpen, setIsCVModalOpen] = useState(false);
 
   useEffect(() => {
     AOS.init({ duration: 700, once: true });
@@ -119,6 +120,7 @@ export default function Hero() {
                   </button>
                 </Link>
               </Magnetic>
+              {/* Download CV button temporarily disabled
               <Magnetic strength={6}>
                 <button
                   onClick={() => setIsCVModalOpen(true)}
@@ -127,12 +129,13 @@ export default function Hero() {
                   Download CV
                 </button>
               </Magnetic>
+              */}
               <Link href="/contact">
                 <button className="border border-border text-textMain hover:border-primary py-3 px-5 rounded-lg transition-colors font-medium flex items-center gap-2">
                   <FaEnvelope /> Contact
                 </button>
               </Link>
-              <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
+              {/* <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} /> */}
             </div>
 
             <div className="flex justify-center lg:justify-start gap-3" data-aos="fade-up" data-aos-delay="400">

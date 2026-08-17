@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { FaClock, FaProjectDiagram, FaCode, FaTrophy, FaGithub, FaDownload } from "react-icons/fa";
+import { FaClock, FaProjectDiagram, FaCode, FaTrophy, FaGithub } from "react-icons/fa";
 import { SiLinkedin } from "react-icons/si";
 import ExperienceCounter from "./experience-counter";
-import CVModal from "./cv-modal";
+// CV modal temporarily disabled — see cv-modal.tsx
+// import CVModal from "./cv-modal";
 import TiltCard from "./tilt-card";
 import Reveal from "./reveal";
 
@@ -51,11 +52,11 @@ export default function BentoStats() {
     projects: 15,
     technologies: 14,
     hackathons: 5,
-    stars: 50,
-    followers: 100,
+    followers: 0,
   });
   const [loading, setLoading] = useState(true);
-  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
+  const [statsError, setStatsError] = useState(false);
+  // const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -74,11 +75,12 @@ export default function BentoStats() {
 
         setGithubStats((prev) => ({
           ...prev,
-          projects: data.public_repos || 15,
-          followers: data.followers || 100,
+          projects: data.public_repos ?? prev.projects,
+          followers: data.followers ?? prev.followers,
         }));
       } catch (error) {
         console.error("Error fetching GitHub stats:", error);
+        setStatsError(true);
       } finally {
         setLoading(false);
       }
@@ -197,15 +199,15 @@ export default function BentoStats() {
             <div className="relative z-10 flex gap-4 sm:gap-6">
               <div className="text-center">
                 <p className="text-2xl sm:text-3xl font-bold font-heading text-textMain">
-                  {loading ? "-" : githubStats.projects}+
+                  {loading ? "-" : statsError ? "—" : `${githubStats.projects}+`}
                 </p>
                 <p className="text-textMuted text-xs">Repos</p>
               </div>
               <div className="text-center">
                 <p className="text-2xl sm:text-3xl font-bold font-heading text-textMain">
-                  {loading ? "-" : githubStats.stars}+
+                  {loading ? "-" : statsError ? "—" : githubStats.followers}
                 </p>
-                <p className="text-textMuted text-xs">Stars</p>
+                <p className="text-textMuted text-xs">Followers</p>
               </div>
             </div>
           </div>
@@ -239,7 +241,7 @@ export default function BentoStats() {
             </div>
           </div>
 
-          {/* Resume Download - 2x1 with Sparkles */}
+          {/* Resume Download card temporarily disabled — CV flow commented out
           <div className="lg:col-span-2 rounded-xl bg-primary/[0.07] border border-primary/20 p-4 sm:p-6 flex flex-col justify-center items-center text-center group relative overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-primary/15 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-105 transition-transform">
               <FaDownload className="text-primary text-2xl sm:text-3xl" />
@@ -256,9 +258,10 @@ export default function BentoStats() {
 
             <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
           </div>
+          */}
 
-          {/* Availability - 2x1 with Pulse Effect */}
-          <div className="lg:col-span-2 rounded-xl bg-green-500/[0.07] border border-green-500/20 p-4 sm:p-6 flex items-center gap-4 sm:gap-6 relative overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+          {/* Availability - now spans full width since Resume Download is disabled */}
+          <div className="lg:col-span-4 rounded-xl bg-green-500/[0.07] border border-green-500/20 p-4 sm:p-6 flex items-center gap-4 sm:gap-6 relative overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <div className="relative z-10 flex-shrink-0">
               <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-green-500/15 flex items-center justify-center">
                 {/* Multiple Pulsing Dots */}

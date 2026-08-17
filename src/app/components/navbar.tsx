@@ -8,7 +8,8 @@ import ThemeToggle from "./theme-toggle";
 const navLinks = [
   { href: "/#project", label: "Projects", section: "project" },
   { href: "/#skills", label: "Skills", section: "skills" },
-  { href: "/blog", label: "Blog", section: "blog" },
+  // Blog hidden for now — content isn't ready to show publicly
+  // { href: "/blog", label: "Blog", section: "blog" },
   { href: "/about", label: "About", section: "about" },
   { href: "/contact", label: "Contact", section: "contact" },
 ];
@@ -30,7 +31,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       if (pathname !== "/") return;
-      const sections = ["project", "skills", "blog", "about", "contact"];
+      const sections = ["project", "skills", "about", "contact"];
       const scrollPosition = window.scrollY + 200;
       for (const section of sections) {
         const element = document.getElementById(section);

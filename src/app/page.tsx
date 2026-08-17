@@ -1,10 +1,11 @@
 import Hero from "./components/hero";
-import Auto from "./components/auto scroll";
+import Auto from "./components/auto-scroll";
 import "./globals.css";
 import StackedProjects from "./components/stacked-projects";
 import BentoSkills from "./components/bento-skills";
 import BentoStats from "./components/bento-stats";
-import Blog from "./components/blog";
+// Blog section hidden for now — content isn't ready to show publicly
+// import Blog from "./components/blog";
 import AboutPreview from "./components/about-preview";
 import ContactCta from "./components/contact-cta";
 import { Metadata } from "next";
@@ -42,9 +43,9 @@ export default function Main() {
 
       <Auto />
 
-      <div id="blog">
+      {/* <div id="blog">
         <Blog />
-      </div>
+      </div> */}
 
       <div id="about">
         <AboutPreview />

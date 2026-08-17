@@ -100,46 +100,6 @@ export const experiences: Experience[] = [
   },
 ];
 
-export const personalData = `
-Name: Syed Shurem Ali
-Role: AI Engineer & Full-Stack Developer
-Experience: 2.5+ years
-
-Current Positions:
-- Head of Business Development (HOBD) & AI Engineer at AgentraX — Feb 2026 to Present.
-  Combines business leadership with AI engineering: designs and builds intelligent
-  applications using LLMs, AI agents, Retrieval-Augmented Generation (RAG), workflow
-  automation, and cloud-based AI services, and integrates advanced language models into
-  scalable business applications. Also leads business development — client discovery,
-  requirement gathering, technical proposals, product demos, and long-term partnerships.
-- Full-Stack Developer (Full-time) at Elipse Studio — May 2026 to Present.
-  Building production Next.js + MySQL web apps end-to-end, owning deployment on
-  VPS servers (Nginx reverse proxies, NSSM Windows services) and Hostinger hosting
-  (custom domains, subdomains, MySQL databases) for live client applications.
-  Also contributing to the studio's mobile work with Flutter, Dart & the Android SDK.
-
-Education:
-- 1-Year Diploma in Information Technology — SZABIST ZABTech, Hyderabad
-- Ongoing: Agentic AI Development Course — Governor House Initiative
-
-Skills:
-- Frontend: React.js, Next.js, TypeScript, JavaScript (ES6+), Python, Agentic AI
-- Mobile: Android Development, Flutter (Flutter SDK), Dart, Android SDK
-- Styling: Tailwind CSS, Sass, CSS3, HTML5, AOS Animations, Framer Motion
-- Backend & Data: API Integration (REST), MySQL
-- State Management: Redux
-- Deployment & DevOps: Vercel, Netlify, VPS Deployment, Nginx, NSSM, Hostinger (domains, subdomains, MySQL databases)
-- Tools: Git, GitHub, VS Code
-
-Projects & Hackathons:
-1. **Crypto Market Conversational Chatbot** – Developed using OpenAI SDK, capable of answering real-time crypto queries.
-2. **E-Commerce Frontend** – Built with Next.js and Tailwind CSS, featuring responsive design and smooth UI animations.
-3. **Hackathon Projects** – Participated in multiple coding hackathons, building innovative prototypes within limited timeframes.
-
-Passion:
-I'm a Full-Stack Developer who builds modern, responsive, end-to-end applications across web and mobile. I ship real products — from Flutter mobile work to Next.js web apps — and own the full lifecycle, including server deployment on VPS and Hostinger.
-`;
-
 export const skills: Skill[] = [
   // Frontend
   { name: "React.js", level: 90, category: "Frontend" },
@@ -192,6 +152,7 @@ export const skills: Skill[] = [
 
 
 export const project: Project[] = [
+  /* Hidden for now — no permission yet from the client/company to showcase this work.
   {
     // TODO: replace with a Cloudinary screenshot of the live platform (upload like your other project images)
     img: "https://placehold.co/800x500/00A38C/ffffff/png?text=Maryam+%26+Zayn+Learning",
@@ -204,6 +165,7 @@ export const project: Project[] = [
     year: 2026,
     category: "Client Work"
   },
+  */
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
     gallery: [

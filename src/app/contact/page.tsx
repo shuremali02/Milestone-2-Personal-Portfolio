@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link';
-import { FaEnvelope, FaLinkedin, FaGithub, FaFileAlt, FaMapMarkerAlt, FaArrowRight } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt, FaArrowRight } from "react-icons/fa";
 import ContactForm from "../components/contact-form";
-import CVModal from "../components/cv-modal";
+// CV modal temporarily disabled — see cv-modal.tsx
+// import CVModal from "../components/cv-modal";
 import TiltCard from "../components/tilt-card";
 
 const contactItems = [
@@ -15,7 +16,7 @@ const contactItems = [
 ];
 
 export default function Contact() {
-  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
+  // const [isCVModalOpen, setIsCVModalOpen] = useState(false);
 
   return (
     <section className="bg-background py-16 text-textMuted relative overflow-hidden">
@@ -91,7 +92,7 @@ export default function Contact() {
             </div>
 
             {/* Quick actions */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3">
               <Link href="mailto:shuremsyed41@gmail.com" className="bg-surface border border-border rounded-xl p-4 shadow-sm hover:border-primary hover:-translate-y-0.5 transition-all group">
                 <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
                   <FaEnvelope className="text-primary" />
@@ -99,6 +100,7 @@ export default function Contact() {
                 <p className="text-textMain font-semibold text-sm">Email me</p>
                 <p className="text-textMuted text-xs">Direct inbox</p>
               </Link>
+              {/* Resume quick action temporarily disabled — CV flow commented out
               <button
                 onClick={() => setIsCVModalOpen(true)}
                 className="text-left bg-surface border border-border rounded-xl p-4 shadow-sm hover:border-gold hover:-translate-y-0.5 transition-all group"
@@ -109,6 +111,7 @@ export default function Contact() {
                 <p className="text-textMain font-semibold text-sm">Resume</p>
                 <p className="text-textMuted text-xs">View / download</p>
               </button>
+              */}
             </div>
           </div>
 
@@ -147,7 +150,7 @@ export default function Contact() {
         </div>
       </div>
 
-      <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
+      {/* <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} /> */}
     </section>
   );
 }
