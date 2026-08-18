@@ -4,6 +4,14 @@ export interface Skill {
   category: string;
 }
 
+export interface Service {
+  /** Maps to an icon in the Services section's icon lookup. */
+  icon: "code" | "mobile" | "ai" | "design" | "deploy";
+  title: string;
+  description: string;
+  tags: string[];
+}
+
 export interface GalleryShot {
   src: string;
   /** What this screenshot shows, e.g. "agent chat view" — becomes the alt text. */
@@ -156,7 +164,43 @@ export const skills: Skill[] = [
   { name: "Docker Deployment", level: 65, category: "Deployment" },
 ];
 
-
+export const services: Service[] = [
+  {
+    icon: "code",
+    title: "Full-Stack Web Development",
+    description:
+      "Production web apps end-to-end — Next.js/TypeScript frontends backed by MySQL, shipped from schema to release.",
+    tags: ["Next.js", "React", "TypeScript", "MySQL"],
+  },
+  {
+    icon: "mobile",
+    title: "Mobile App Development",
+    description:
+      "Cross-platform apps built with Flutter, from UI to native Android integration.",
+    tags: ["Flutter", "Dart", "Android SDK"],
+  },
+  {
+    icon: "ai",
+    title: "Agentic AI & LLM Integration",
+    description:
+      "AI agents, RAG pipelines, and workflow automation built on the OpenAI Agents SDK.",
+    tags: ["OpenAI Agents SDK", "Agentic AI", "RAG", "Python"],
+  },
+  {
+    icon: "design",
+    title: "UI/UX & Frontend Engineering",
+    description:
+      "Responsive, animated interfaces with a design-system mindset — from Tailwind layout to motion polish.",
+    tags: ["Tailwind CSS", "Framer Motion", "Responsive Design"],
+  },
+  {
+    icon: "deploy",
+    title: "Deployment & DevOps",
+    description:
+      "Owning the last mile — VPS provisioning, Nginx reverse proxies, Windows services via NSSM, and Hostinger/Docker deploys.",
+    tags: ["VPS", "Nginx", "NSSM", "Hostinger", "Docker"],
+  },
+];
 
 export const project: Project[] = [
   {

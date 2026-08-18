@@ -9,6 +9,7 @@ import { cld } from "@/utils/cloudinary";
 const quickLinks = [
   { href: "/#project", label: "Projects" },
   { href: "/#skills", label: "Skills" },
+  { href: "/#services", label: "Services" },
   // Blog hidden for now — content isn't ready to show publicly
   // { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },

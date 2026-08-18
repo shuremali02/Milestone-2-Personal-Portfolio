@@ -4,6 +4,7 @@ import "./globals.css";
 import StackedProjects from "./components/stacked-projects";
 import BentoSkills from "./components/bento-skills";
 import BentoStats from "./components/bento-stats";
+import Services from "./components/services";
 // Blog section hidden for now — content isn't ready to show publicly
 // import Blog from "./components/blog";
 import AboutPreview from "./components/about-preview";
@@ -39,6 +40,10 @@ export default function Main() {
 
       <div id="skills">
         <BentoSkills />
+      </div>
+
+      <div id="services">
+        <Services />
       </div>
 
       <Auto />
