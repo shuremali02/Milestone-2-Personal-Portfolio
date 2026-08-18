@@ -2,10 +2,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Me - Syed Shurem Ali Portfolio",
-  description: "Learn more about Syed Shurem Ali, a Full-Stack Developer & AI Engineer with 2.5+ years of experience in Next.js, TypeScript, Flutter/Dart, MySQL, and Agentic AI. Discover my journey, experience, skills, and passion for building modern web & mobile applications.",
+  description: "Syed Shurem Ali is a Full-Stack Developer & AI Engineer working in Next.js, TypeScript, Flutter/Dart, MySQL, and Agentic AI — shipping full-stack products end-to-end, from database to live server.",
   openGraph: {
     title: "About Me - Syed Shurem Ali Portfolio",
-    description: "Learn more about Syed Shurem Ali, a Full-Stack Developer & AI Engineer with 2.5+ years of experience in Next.js, TypeScript, Flutter/Dart, MySQL, and Agentic AI. Discover my journey, experience, skills, and passion for building modern web & mobile applications.",
+    description: "Syed Shurem Ali is a Full-Stack Developer & AI Engineer working in Next.js, TypeScript, Flutter/Dart, MySQL, and Agentic AI — shipping full-stack products end-to-end, from database to live server.",
     type: "profile",
     url: "https://syed-shurem-ali.vercel.app/about",
   },

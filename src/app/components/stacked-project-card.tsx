@@ -130,8 +130,13 @@ export default function StackedProjectCard({
           </div>
         </div>
 
-        {/* Gallery: two stacked panels beside one tall panel */}
-        <div className="grid min-h-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-[40%_60%] sm:gap-4 md:gap-5">
+        {/* Gallery: two stacked panels beside one tall panel.
+            `fr` units (not `%`) for the columns — percentage tracks are sized
+            before the gap is subtracted, so `40% 60%` plus a column gap
+            overflows past 100% and the right panel gets clipped by this
+            article's `overflow-hidden`. `fr` divides the space left over
+            after gaps, so it can't overflow. */}
+        <div className="grid min-h-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-[2fr_3fr] sm:gap-4 md:gap-5">
           {/* Left column: panels flex-share the remaining height rather than
               using fixed `vw`-derived heights, which overflowed the `85vh`
               card on short laptop screens. */}

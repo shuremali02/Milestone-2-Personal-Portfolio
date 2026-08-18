@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FaArrowRight, FaBriefcase, FaGraduationCap, FaMapMarkerAlt } from "react-icons/fa";
 import Reveal from "./reveal";
 import TiltCard from "./tilt-card";
-import ExperienceCounter from "./experience-counter";
+import { buildingSince } from "@/data";
 
 /**
  * Compact About teaser for the homepage — the full story lives at /about.
@@ -18,7 +18,7 @@ export default function AboutPreview() {
           <TiltCard max={4} className="rounded-xl">
             <div className="glass rounded-xl p-8 md:p-12 grid grid-cols-1 md:grid-cols-[auto,1fr] gap-8 items-center">
               <Image
-                src="https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg"
+                src="/profile-photo.jpeg"
                 alt="Syed Shurem Ali"
                 width={140}
                 height={140}
@@ -29,8 +29,8 @@ export default function AboutPreview() {
                   About <span className="text-primary">Me</span>
                 </h2>
                 <p className="text-textMain leading-relaxed mb-5 max-w-2xl">
-                  Full-Stack Developer &amp; AI Engineer with{" "}
-                  <span className="text-primary font-semibold"><ExperienceCounter /> years building</span>{" "}
+                  Full-Stack Developer &amp; AI Engineer{" "}
+                  <span className="text-primary font-semibold">building since {buildingSince}</span>{" "}
                   — production web apps with Next.js &amp; TypeScript, mobile with
                   Flutter &amp; Dart, agentic AI features, and the VPS &amp;
                   Hostinger deployments they run on. I ship end-to-end.

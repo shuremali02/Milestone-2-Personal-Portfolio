@@ -4,27 +4,31 @@ import { IoLogoJavascript } from "react-icons/io";
 import { FaHtml5, FaPython, FaReact, FaGitAlt, FaDocker } from "react-icons/fa";
 import { FaCss3Alt } from "react-icons/fa6";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
-import { SiTypescript, SiRedux, SiVercel, SiOpenai, SiHuggingface } from "react-icons/si";
+import { SiTypescript, SiVercel, SiOpenai, SiHuggingface } from "react-icons/si";
 import React, { useEffect } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { skills, buildingSince } from "@/data";
 
 const technologies = [
-  { icon: FaReact, color: "text-cyan-400", name: "React" },
-  { icon: RiNextjsFill, color: "text-white", name: "Next.js" },
-  { icon: SiTypescript, color: "text-blue-500", name: "TypeScript" },
-  { icon: IoLogoJavascript, color: "text-yellow-400", name: "JavaScript" },
-  { icon: FaHtml5, color: "text-orange-500", name: "HTML5" },
-  { icon: FaCss3Alt, color: "text-blue-500", name: "CSS3" },
-  { icon: RiTailwindCssFill, color: "text-cyan-400", name: "Tailwind" },
-  { icon: FaPython, color: "text-yellow-300", name: "Python" },
   { icon: SiOpenai, color: "text-green-400", name: "OpenAI SDK" },
+  { icon: FaPython, color: "text-yellow-300", name: "Python" },
   { icon: SiHuggingface, color: "text-yellow-500", name: "HuggingFace" },
   { icon: FaDocker, color: "text-blue-400", name: "Docker" },
-  { icon: SiRedux, color: "text-purple-500", name: "Redux" },
+  { icon: RiNextjsFill, color: "text-white", name: "Next.js" },
+  { icon: FaReact, color: "text-cyan-400", name: "React" },
+  { icon: SiTypescript, color: "text-blue-500", name: "TypeScript" },
+  { icon: IoLogoJavascript, color: "text-yellow-400", name: "JavaScript" },
+  { icon: RiTailwindCssFill, color: "text-cyan-400", name: "Tailwind" },
+  { icon: FaHtml5, color: "text-orange-500", name: "HTML5" },
+  { icon: FaCss3Alt, color: "text-blue-500", name: "CSS3" },
   { icon: FaGitAlt, color: "text-orange-600", name: "Git" },
   { icon: SiVercel, color: "text-white", name: "Vercel" },
 ];
+
+const technologyCount = skills.length;
+const aiMlToolCount = skills.filter((s) => s.category === "AI/ML").length;
+const deploymentTargetCount = skills.filter((s) => s.category === "Deployment").length;
 
 export default function TechStack() {
   useEffect(() => {
@@ -76,20 +80,20 @@ export default function TechStack() {
       <div className="max-w-4xl mx-auto mt-12 px-4 relative z-10" data-aos="fade-up" data-aos-delay="200">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-surface border border-border rounded-xl p-4 text-center hover:border-primary/50 transition-all hover:shadow-lg card-glow relative overflow-hidden">
-            <p className="text-3xl font-bold text-primary relative z-10">14+</p>
+            <p className="text-3xl font-bold text-primary relative z-10">{technologyCount}+</p>
             <p className="text-textMuted text-sm relative z-10">Technologies</p>
           </div>
           <div className="bg-surface border border-border rounded-xl p-4 text-center hover:border-primary/50 transition-all hover:shadow-lg card-glow relative overflow-hidden">
-            <p className="text-3xl font-bold text-primary relative z-10">3+</p>
+            <p className="text-3xl font-bold text-primary relative z-10">{aiMlToolCount}+</p>
             <p className="text-textMuted text-sm relative z-10">AI/ML Tools</p>
           </div>
           <div className="bg-surface border border-border rounded-xl p-4 text-center hover:border-primary/50 transition-all hover:shadow-lg card-glow relative overflow-hidden">
-            <p className="text-3xl font-bold text-primary relative z-10">5+</p>
-            <p className="text-textMuted text-sm relative z-10">Frameworks</p>
+            <p className="text-3xl font-bold text-primary relative z-10">{deploymentTargetCount}+</p>
+            <p className="text-textMuted text-sm relative z-10">Deployment Targets</p>
           </div>
           <div className="bg-surface border border-border rounded-xl p-4 text-center hover:border-primary/50 transition-all hover:shadow-lg card-glow relative overflow-hidden">
-            <p className="text-3xl font-bold text-primary relative z-10">2.5+</p>
-            <p className="text-textMuted text-sm relative z-10">Years Learning</p>
+            <p className="text-3xl font-bold text-primary relative z-10">{buildingSince}</p>
+            <p className="text-textMuted text-sm relative z-10">Building Since</p>
           </div>
         </div>
       </div>

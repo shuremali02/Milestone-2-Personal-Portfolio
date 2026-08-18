@@ -5,10 +5,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { FaGraduationCap, FaCode, FaRocket, FaCheckCircle, FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
-import ExperienceCounter from "../components/experience-counter";
 import BentoExperience from "../components/bento-experience";
 import TiltCard from "../components/tilt-card";
-import { cld } from "@/utils/cloudinary";
+import { buildingSince } from "@/data";
 
 const whatIDo = [
   "Full-Stack Web Apps with Next.js & MySQL",
@@ -48,7 +47,7 @@ export default function About() {
                 <div className="relative w-fit mx-auto">
                   <div className="absolute -top-2 -right-2 w-full h-full rounded-xl bg-primary/10 border border-primary/20" />
                   <Image
-                    src={cld("https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg", 480)}
+                    src="/profile-photo.jpeg"
                     alt="Syed Shurem Ali"
                     width={220}
                     height={240}
@@ -61,8 +60,7 @@ export default function About() {
                 <p className="text-textMuted mt-1">Full-Stack Developer &amp; AI Engineer</p>
 
                 <div className="inline-flex items-center gap-2 mt-3 bg-gold/10 border border-gold/20 rounded-full px-3 py-1">
-                  <span className="text-gold font-bold"><ExperienceCounter /></span>
-                  <span className="text-textMuted text-sm">Years Building</span>
+                  <span className="text-gold font-bold">Since {buildingSince}</span>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-border space-y-1.5 text-sm">
@@ -99,7 +97,7 @@ export default function About() {
                   Who I Am
                 </h3>
                 <p className="text-textMain leading-relaxed">
-                  I&apos;m a Full-Stack Developer &amp; AI Engineer who ships complete products — not just front-ends. With <span className="text-primary font-semibold"><ExperienceCounter /> years building</span> across web and mobile, I work end-to-end with React.js, Next.js, TypeScript, and Tailwind CSS, add cross-platform apps with Flutter &amp; Dart, and integrate agentic AI to make products intelligent.
+                  I&apos;m a Full-Stack Developer &amp; AI Engineer who ships complete products — not just front-ends. <span className="text-primary font-semibold">Building across web and mobile since {buildingSince}</span>, I work end-to-end with React.js, Next.js, TypeScript, and Tailwind CSS, add cross-platform apps with Flutter &amp; Dart, and integrate agentic AI to make products intelligent.
                 </p>
                 <p className="text-textMain leading-relaxed mt-3">
                   I work <span className="text-primary font-semibold">full-time at a software studio</span>, shipping production client applications and owning their deployment — VPS servers with Nginx and NSSM, plus Hostinger hosting with custom domains, subdomains, and MySQL databases. Alongside that, I serve as <span className="text-primary font-semibold">Head of Business Development &amp; AI Engineer</span> at an AI company, where I design intelligent applications with LLMs, AI agents, and RAG, and bridge business strategy with technical delivery.

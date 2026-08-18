@@ -9,14 +9,22 @@ const allTags = Array.from(
   new Set(project.flatMap((proj) => proj.tags || []))
 );
 
+const perspectives = ["AI Engineer", "Full-Stack"] as const;
+
 export default function FilterableProjects() {
+  const [selectedPerspective, setSelectedPerspective] = useState<string | null>(null);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredProjects, setFilteredProjects] = useState(project);
 
-  // Filter projects based on selected tags and search term
+  // Filter projects based on perspective, selected tags, and search term
   useEffect(() => {
     let result = project;
+
+    // Filter by perspective
+    if (selectedPerspective) {
+      result = result.filter((proj) => proj.perspective === selectedPerspective);
+    }
 
     // Filter by tags
     if (selectedTags.length > 0) {
@@ -38,7 +46,7 @@ export default function FilterableProjects() {
     }
 
     setFilteredProjects(result);
-  }, [selectedTags, searchTerm]);
+  }, [selectedPerspective, selectedTags, searchTerm]);
 
   const toggleTag = (tag: string) => {
     setSelectedTags((prev) =>
@@ -49,6 +57,7 @@ export default function FilterableProjects() {
   };
 
   const clearFilters = () => {
+    setSelectedPerspective(null);
     setSelectedTags([]);
     setSearchTerm("");
   };
@@ -66,6 +75,35 @@ export default function FilterableProjects() {
 
       {/* Search and Filter Controls */}
       <div className="max-w-7xl mx-auto px-6 mb-8">
+        {/* Perspective Toggle */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
+          <button
+            onClick={() => setSelectedPerspective(null)}
+            className={`px-5 py-2 rounded-md border font-medium transition-all duration-300 hover:scale-105 ${
+              selectedPerspective === null
+                ? "bg-primary text-background border-primary shadow-lg shadow-primary/25"
+                : "bg-surface text-textMuted border-border hover:border-primary hover:text-primary"
+            }`}
+          >
+            All
+          </button>
+          {perspectives.map((perspective) => (
+            <button
+              key={perspective}
+              onClick={() =>
+                setSelectedPerspective((prev) => (prev === perspective ? null : perspective))
+              }
+              className={`px-5 py-2 rounded-md border font-medium transition-all duration-300 hover:scale-105 ${
+                selectedPerspective === perspective
+                  ? "bg-primary text-background border-primary shadow-lg shadow-primary/25"
+                  : "bg-surface text-textMuted border-border hover:border-primary hover:text-primary"
+              }`}
+            >
+              {perspective}
+            </button>
+          ))}
+        </div>
+
         {/* Search Input */}
         <div className="mb-6">
           <input

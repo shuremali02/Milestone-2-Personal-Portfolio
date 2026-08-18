@@ -4,6 +4,9 @@ export interface Skill {
   category: string;
 }
 
+/** Real anchor year for "Building since" framing — not derived from GitHub account age. */
+export const buildingSince = 2024;
+
 export interface Service {
   /** Maps to an icon in the Services section's icon lookup. */
   icon: "code" | "mobile" | "ai" | "design" | "deploy";
@@ -42,6 +45,8 @@ export interface Project {
   featured?: boolean;
   year?: number;
   category?: string;
+  /** Which of the two portfolio tracks this project demonstrates. */
+  perspective: "AI Engineer" | "Full-Stack";
 }
 
 export interface Experience {
@@ -116,45 +121,27 @@ export const experiences: Experience[] = [
 ];
 
 export const skills: Skill[] = [
-  // Frontend
-  { name: "React.js", level: 90, category: "Frontend" },
-  { name: "Next.js", level: 85, category: "Frontend" },
-  { name: "TypeScript", level: 80, category: "Frontend" },
-  { name: "JavaScript (ES6+)", level: 85, category: "Frontend" },
-  { name: "HTML5", level: 90, category: "Frontend" },
-  { name: "CSS3", level: 88, category: "Frontend" },
-
-  // Mobile
-  { name: "Android Development", level: 78, category: "Mobile" },
-  { name: "Flutter (SDK)", level: 80, category: "Mobile" },
-  { name: "Dart", level: 78, category: "Mobile" },
-  { name: "Android SDK", level: 74, category: "Mobile" },
-
-  // Styling
-  { name: "Tailwind CSS", level: 90, category: "Styling" },
-  { name: "Sass", level: 75, category: "Styling" },
-  { name: "AOS Animations", level: 70, category: "Styling" },
-  { name: "Framer Motion", level: 65, category: "Styling" },
-
   // AI/ML
-  { name: "OpenAI Agents SDK", level: 80, category: "AI/ML" },
-  { name: "Agentic AI", level: 75, category: "AI/ML" },
-  { name: "HuggingFace", level: 70, category: "AI/ML" },
+  { name: "OpenAI Agents SDK", level: 90, category: "AI/ML" },
+  { name: "Agentic AI", level: 85, category: "AI/ML" },
+  { name: "RAG (Retrieval-Augmented Generation)", level: 82, category: "AI/ML" },
+  { name: "OpenClaw", level: 78, category: "AI/ML" },
+  { name: "HuggingFace", level: 75, category: "AI/ML" },
 
-  // Backend/Other
-  { name: "Python", level: 70, category: "Backend" },
-  { name: "API Integration", level: 80, category: "Backend" },
-  { name: "MySQL", level: 76, category: "Backend" },
-  { name: "Docker", level: 65, category: "Backend" },
+  // Full-Stack
+  { name: "App Development", level: 88, category: "Full-Stack" },
+  { name: "Python", level: 70, category: "Full-Stack" },
+  { name: "API Integration", level: 80, category: "Full-Stack" },
+  { name: "MySQL", level: 76, category: "Full-Stack" },
+  { name: "Docker", level: 65, category: "Full-Stack" },
 
   // Development Practices
   { name: "SDD (Spec-Driven Dev)", level: 75, category: "Practices" },
-  { name: "Redux", level: 70, category: "State Management" },
 
   // Tools & Deployment
+  { name: "Claude Code", level: 85, category: "Tools" },
   { name: "Git", level: 80, category: "Tools" },
   { name: "GitHub", level: 85, category: "Tools" },
-  { name: "VS Code", level: 90, category: "Tools" },
   { name: "Vercel", level: 80, category: "Deployment" },
   { name: "Netlify", level: 75, category: "Deployment" },
   { name: "VPS Deployment", level: 76, category: "Deployment" },
@@ -217,7 +204,8 @@ export const project: Project[] = [
     tags: ["Client Work", "Next.js", "FastAPI", "Flutter", "Production"],
     featured: true,
     year: 2026,
-    category: "Client Work"
+    category: "Client Work",
+    perspective: "Full-Stack"
   },
   {
     img: "/mittipay-dashboard.png",
@@ -232,7 +220,8 @@ export const project: Project[] = [
     tags: ["AI/ML", "Agentic AI", "Next.js", "FinTech", "Hackathon"],
     featured: true,
     year: 2025,
-    category: "AI/ML"
+    category: "AI/ML",
+    perspective: "AI Engineer"
   },
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1759697057/roommatcher_qtnhiv.png",
@@ -250,7 +239,8 @@ export const project: Project[] = [
     github: "https://github.com/shuremali02/Room-Matcher-AI",
     featured: true,
     year: 2025,
-    category: "AI/ML"
+    category: "AI/ML",
+    perspective: "AI Engineer"
   },
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1766755841/physical_ai_book_dje6hv.png",
@@ -272,7 +262,19 @@ export const project: Project[] = [
     github: "https://github.com/shuremali02/AI_Spec-Driven_Online_Hackathon_1",
     featured: true,
     year: 2025,
-    category: "AI/ML"
+    category: "AI/ML",
+    perspective: "AI Engineer"
+  },
+  {
+    img: "/meeting-assistant-discord.png",
+    title: "OpenClaw Meeting Assistant",
+    description:
+      "Meeting summaries and action items shouldn't depend on someone remembering to write them up. I built an agent skill on OpenClaw that pulls new Fathom meeting transcripts, summarizes them, and extracts action items — including a confidence ladder for attributing each item to the right person, so uncertain ones are flagged instead of silently dropped or wrongly assigned. It runs as a polling pipeline (no public webhook needed) with watermark-based deduplication, and delivers straight to Discord. Verified end-to-end against the live Fathom API on a real recorded call.",
+    route: "https://github.com/shuremali02/Q5_class_all_milestones",
+    tags: ["AI/ML", "Agentic AI", "OpenClaw", "Automation"],
+    year: 2026,
+    category: "AI/ML",
+    perspective: "AI Engineer"
   },
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
@@ -291,7 +293,8 @@ export const project: Project[] = [
     tags: ["AI/ML", "Agentic AI", "Next.js", "Authentication", "Hackathon"],
     github: "https://github.com/shuremali02/The-Evolution-of-Todo---Mastering-Spec-Driven-Development---Cloud-Native-AI",
     year: 2025,
-    category: "AI/ML"
+    category: "AI/ML",
+    perspective: "AI Engineer"
   },
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755285617/crypto_fvrzqw.png",
@@ -301,7 +304,8 @@ export const project: Project[] = [
     route: "https://github.com/shuremali02/Crypto_Currency_Agent_Open_Ai_SDK",
     tags: ["AI/ML", "Agentic AI", "Python", "API Integration"],
     github: "https://github.com/shuremali02/Crypto_Currency_Agent_Open_Ai_SDK",
-    category: "AI/ML"
+    category: "AI/ML",
+    perspective: "AI Engineer"
   },
   {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403842/SXN_BY_NASH_neolg6.png",
@@ -311,86 +315,7 @@ export const project: Project[] = [
     route: "https://marketplace-hackathon-03-q2-finale.vercel.app/",
     tags: ["E-commerce", "Next.js", "Tailwind CSS", "Hackathon"],
     github: "https://github.com/shuremali02/marketplace-hackathon-03-q2-finale",
-    category: "E-commerce"
-  },
-  {
-    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403838/Nft_xwfopj.jpg",
-    title: "NFT Marketplace — OpenSea-Style UI",
-    description:
-      "A front-end NFT marketplace UI inspired by OpenSea, built to demonstrate structured, maintainable styling with Sass and a component-driven layout. Features a clean marketplace browsing experience with mock authentication and careful, pixel-level attention to the collection and listing views.",
-    route: "https://opensea-clone-fawn.vercel.app/",
-    tags: ["E-commerce", "Frontend", "Sass", "UI/UX"],
-    github: "https://github.com/shuremali02/opensea-clone",
-    category: "E-commerce"
-  },
-  {
-    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403840/Watchhub_ad0qgk.jpg",
-    title: "Watch Hub — Premium Watch Store",
-    description:
-      "A modern e-commerce front-end for premium watches, built with Next.js. Features a polished product catalog, responsive layout, and a smooth browsing flow — with an emphasis on clean visual hierarchy and fast rendering of an image-heavy storefront.",
-    route: "https://next-js-milestone-3-watch-hub.vercel.app/",
-    tags: ["E-commerce", "Next.js", "Frontend", "Responsive"],
-    github: "https://github.com/shuremali02/next-js-milestone-3-watch-hub",
-    category: "E-commerce"
-  },
-  {
-    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403840/travelBlog_vwnvf0.jpg",
-    title: "Travel Blog — Modern Editorial Site",
-    description:
-      "A modern travel blog built with Next.js, React, and Tailwind CSS. Features a fully responsive editorial layout, reusable dynamic components, and smooth navigation designed for an engaging, magazine-style reading experience.",
-    route: "https://travelblog-assignment.netlify.app/",
-    tags: ["Frontend", "Next.js", "React", "Responsive"],
-    github: "https://github.com/shuremali02/travelblog-assignment",
-    category: "Frontend"
-  },
-  {
-    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403840/Shop.co_lqlrtr.jpg",
-    title: "Shop.co — Hackathon Storefront UI",
-    description:
-      "A sleek, responsive e-commerce interface built under hackathon time pressure. Translated a design brief into a polished storefront UI with precise layout, micro-animations, and modern UI principles — front-end craft delivered against the clock.",
-    route: "https://hackathon-ui-ux-q2-hackathon-3.vercel.app/",
-    tags: ["E-commerce", "Frontend", "UI/UX", "Hackathon"],
-    github: "https://github.com/shuremali02/hackathon-ui-ux-q2-hackathon-3",
-    category: "E-commerce"
-  },
-  {
-    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403837/Capture_zgk6px.png",
-    title: "Dynamic Resume Builder — Live PDF Export",
-    description:
-      "Most resume tools gate basic editing behind accounts. I built one that's fully client-side: edit inline with live preview and export a print-ready PDF in one click — no signup, and your data never leaves the browser. Built with React state-driven editing and client-side PDF generation for pixel-faithful output.",
-    route: "https://editable-resume-builder-milestone-4.netlify.app/",
-    tags: ["Frontend", "React", "PDF Generation"],
-    github: "https://github.com/shuremali02/editable-resume-builder-milestone-4",
-    category: "Frontend"
-  },
-  {
-    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403837/assign_6_pic_xxroee.jpg",
-    title: "Figma-to-Code — Pixel-Perfect Landing Page",
-    description:
-      "A pixel-perfect implementation of a Figma design — the designer-to-developer handoff agencies run daily. Matched spacing, type scale, and components to the design spec across breakpoints, with accessible semantics, using TypeScript, ShadCN UI, and Tailwind CSS.",
-    route: "https://shurem-class-9to12-assignment-6.netlify.app/",
-    tags: ["Frontend", "UI/UX", "TypeScript", "Pixel Perfect"],
-    github: "https://github.com/shuremali02/shurem-class-9to12-assignment-6",
-    category: "Frontend"
-  },
-  {
-    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403836/3_assignment_sgzx6u.jpg",
-    title: "Green Groups — Landing Page",
-    description:
-      "A fully responsive marketing landing page built with clean, semantic HTML and CSS. Focused on strong visual hierarchy, a mobile-first layout, and fast load — a solid demonstration of front-end fundamentals and design-to-code translation.",
-    route: "https://shurem-class-assignment-3.netlify.app/",
-    tags: ["Frontend", "Landing Page", "Responsive", "HTML/CSS"],
-    github: "https://github.com/shuremali02/shurem-class-assignment-3",
-    category: "Frontend"
-  },
-  {
-    img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1746403837/assign_2_pwpsdk.jpg",
-    title: "Brandbuzz — Landing Page",
-    description:
-      "A responsive brand landing page built with HTML and CSS, featuring a bold hero, clear content sections, and a mobile-first layout — a clean demonstration of layout, spacing, and responsive design fundamentals.",
-    route: "https://class-assignment-2-shuremali.netlify.app/",
-    tags: ["Frontend", "Landing Page", "Responsive", "HTML/CSS"],
-    github: "https://github.com/shuremali02/class-assignment-2-shuremali",
-    category: "Frontend"
+    category: "E-commerce",
+    perspective: "Full-Stack"
   },
   ];

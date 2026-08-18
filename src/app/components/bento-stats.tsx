@@ -3,11 +3,14 @@
 import { useState, useEffect, useRef } from "react";
 import { FaClock, FaProjectDiagram, FaCode, FaTrophy, FaGithub } from "react-icons/fa";
 import { SiLinkedin } from "react-icons/si";
-import ExperienceCounter from "./experience-counter";
 // CV modal temporarily disabled — see cv-modal.tsx
 // import CVModal from "./cv-modal";
 import TiltCard from "./tilt-card";
 import Reveal from "./reveal";
+import { skills, project, buildingSince } from "@/data";
+
+const technologyCount = skills.length;
+const hackathonCount = project.filter((p) => p.tags.includes("Hackathon")).length;
 
 interface Stat {
   icon: React.ElementType;
@@ -16,6 +19,8 @@ interface Stat {
   label: string;
   iconBg: string;
   iconText: string;
+  /** Renders as a literal string (e.g. a year) instead of an animated count-up number. */
+  staticValue?: string;
 }
 
 function useCountUp(end: number, duration: number = 2000, start: boolean = false) {
@@ -48,10 +53,7 @@ function useCountUp(end: number, duration: number = 2000, start: boolean = false
 export default function BentoStats() {
   const [isVisible, setIsVisible] = useState(false);
   const [githubStats, setGithubStats] = useState({
-    experience: 2.5,
     projects: 15,
-    technologies: 14,
-    hackathons: 5,
     followers: 0,
   });
   const [loading, setLoading] = useState(true);
@@ -64,14 +66,6 @@ export default function BentoStats() {
       try {
         const response = await fetch("https://api.github.com/users/shuremali02");
         const data = await response.json();
-
-        if (data.created_at) {
-          const createdDate = new Date(data.created_at);
-          const now = new Date();
-          const diffTime = Math.abs(now.getTime() - createdDate.getTime());
-          const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365.25);
-          setGithubStats((prev) => ({ ...prev, experience: parseFloat(diffYears.toFixed(1)) }));
-        }
 
         setGithubStats((prev) => ({
           ...prev,
@@ -110,11 +104,12 @@ export default function BentoStats() {
   const stats: Stat[] = [
     {
       icon: FaClock,
-      value: githubStats.experience,
-      suffix: "+",
-      label: "Years Building",
+      value: buildingSince,
+      suffix: "",
+      label: "Building Since",
       iconBg: "bg-cyan-500/15",
       iconText: "text-cyan-400",
+      staticValue: String(buildingSince),
     },
     {
       icon: FaProjectDiagram,
@@ -126,7 +121,7 @@ export default function BentoStats() {
     },
     {
       icon: FaCode,
-      value: githubStats.technologies,
+      value: technologyCount,
       suffix: "+",
       label: "Technologies",
       iconBg: "bg-emerald-500/15",
@@ -134,7 +129,7 @@ export default function BentoStats() {
     },
     {
       icon: FaTrophy,
-      value: githubStats.hackathons,
+      value: hackathonCount,
       suffix: "+",
       label: "Hackathons",
       iconBg: "bg-amber-500/15",
@@ -202,12 +197,6 @@ export default function BentoStats() {
                   {loading ? "-" : statsError ? "—" : `${githubStats.projects}+`}
                 </p>
                 <p className="text-textMuted text-xs">Repos</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold font-heading text-textMain">
-                  {loading ? "-" : statsError ? "—" : githubStats.followers}
-                </p>
-                <p className="text-textMuted text-xs">Followers</p>
               </div>
             </div>
           </div>
@@ -294,7 +283,7 @@ export default function BentoStats() {
 
 function StatCard({ stat, isVisible, delay, loading }: { stat: Stat; isVisible: boolean; delay: number; loading: boolean }) {
   const [shouldAnimate, setShouldAnimate] = useState(false);
-  const count = useCountUp(stat.value, 2000, shouldAnimate && !loading);
+  const count = useCountUp(stat.value, 2000, shouldAnimate && !loading && stat.staticValue === undefined);
 
   useEffect(() => {
     if (isVisible) {
@@ -312,10 +301,10 @@ function StatCard({ stat, isVisible, delay, loading }: { stat: Stat; isVisible: 
         <Icon className={`${stat.iconText} text-2xl`} />
       </div>
       <div className={`relative text-4xl md:text-5xl font-bold font-heading ${stat.iconText} mb-1`}>
-        {loading ? (
+        {stat.staticValue !== undefined ? (
+          <>{stat.staticValue}</>
+        ) : loading ? (
           <div className="h-12 w-20 bg-border rounded animate-pulse"></div>
-        ) : stat.icon === FaClock ? (
-          <ExperienceCounter />
         ) : stat.value % 1 !== 0 ? (
           <>{count.toFixed(1)}{stat.suffix}</>
         ) : (

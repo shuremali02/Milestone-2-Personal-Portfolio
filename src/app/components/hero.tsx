@@ -2,30 +2,23 @@
 import React, { useEffect, useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight, FaCode, FaMobileAlt, FaServer, FaRobot } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 // CV modal temporarily disabled — see cv-modal.tsx
 // import CVModal from "./cv-modal";
 import TiltCard from "./tilt-card";
 import Magnetic from "./magnetic";
-import { cld } from "@/utils/cloudinary";
+import { buildingSince } from "@/data";
 
 const NAME = "Syed Shurem Ali";
 
 const roles = [
-  "Full-Stack Developer",
   "AI Engineer",
-  "Flutter Developer",
+  "Full-Stack Developer",
 ];
 
-// Floating 3D tech chips orbiting the photo
-const chips = [
-  { icon: FaCode, label: "Next.js", pos: "-top-3 -left-6 lg:-left-12", color: "text-primary", iconBg: "bg-primary/15", delay: "0s", hideSm: false },
-  { icon: FaMobileAlt, label: "Flutter", pos: "top-16 -right-8 lg:-right-16", color: "text-gold", iconBg: "bg-gold/15", delay: "0.8s", hideSm: false },
-  { icon: FaRobot, label: "Agentic AI", pos: "-bottom-2 -left-8 lg:-left-16", color: "text-gold", iconBg: "bg-gold/15", delay: "1.6s", hideSm: true },
-  { icon: FaServer, label: "VPS / Nginx", pos: "bottom-16 -right-6 lg:-right-12", color: "text-primary", iconBg: "bg-primary/15", delay: "2.4s", hideSm: true },
-];
+const stack = ["OpenAI Agents SDK", "RAG", "Python", "Multi-Agent Systems"];
 
 export default function Hero() {
   const [currentRole, setCurrentRole] = useState(0);
@@ -91,22 +84,36 @@ export default function Hero() {
             </p>
 
             <h1 className="text-4xl md:text-6xl font-extrabold leading-[1.1] text-textMain mb-5" data-aos="fade-up" data-aos-delay="100">
-              I&apos;m a{" "}
+              I&apos;m an{" "}
               <br className="hidden sm:block" />
-              <span className="sr-only">Full-Stack Developer, AI Engineer, and Flutter Developer</span>
+              <span className="sr-only">AI Engineer and Full-Stack Developer</span>
               <span aria-hidden="true" className="text-gold typing-cursor">{displayText}</span>
             </h1>
 
             <p
-              className="text-textMuted text-base md:text-lg max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
+              className="text-textMuted text-base md:text-lg max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed"
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              AI Engineer and Full-Stack Developer. I build production web &amp; mobile
-              apps with Next.js, TypeScript &amp; Flutter, make them intelligent with LLMs
-              and agentic AI, and own the whole lifecycle — from MySQL schema to VPS
-              deployment.
+              I build production LLM agents — multi-agent orchestration, RAG, and tool-calling
+              on the OpenAI Agents SDK — and ship them as full-stack products end-to-end, from
+              MySQL schema to VPS deployment.
             </p>
+
+            <div
+              className="flex flex-wrap justify-center lg:justify-start gap-2 mb-8"
+              data-aos="fade-up"
+              data-aos-delay="250"
+            >
+              {stack.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-border px-3 py-1 text-xs text-textMuted"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
 
             <div
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mb-8"
@@ -151,57 +158,26 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* ===== Right column — orbit photo + 3D chips ===== */}
+          {/* ===== Right column — clean framed photo ===== */}
           <div className="order-1 lg:order-2 flex justify-center" data-aos="fade-up" data-aos-delay="150">
-            <TiltCard max={10} glare={false} className="relative">
-              <div className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
-                {/* Orbit rings */}
-                <div className="absolute inset-0 rounded-full border border-dashed border-primary/25 orbit-ring">
-                  <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gold shadow-lg shadow-gold/40" />
-                </div>
-                <div className="absolute -inset-6 rounded-full border border-gold/15 orbit-ring-rev">
-                  <span className="absolute top-1/2 -right-1 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-primary" />
-                </div>
+            <TiltCard max={6} glare={false} className="relative">
+              <div className="relative w-64 h-64 md:w-80 md:h-80">
+                {/* Offset accent panel behind the photo */}
+                <div className="absolute -top-3 -right-3 w-full h-full rounded-2xl bg-primary/10 border border-primary/20" />
 
-                {/* Solid accent disc behind photo */}
-                <div className="absolute w-52 h-52 md:w-64 md:h-64 rounded-full bg-primary/10" />
-
-                {/* Photo */}
                 <Image
-                  src={cld("https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg", 640)}
+                  src="/profile-photo.jpeg"
                   width={320}
                   height={320}
                   alt={NAME}
                   priority
-                  sizes="(max-width: 768px) 192px, 240px"
-                  className="relative rounded-full border-4 border-surface object-cover w-48 h-48 md:w-60 md:h-60 shadow-2xl"
+                  sizes="(max-width: 768px) 256px, 320px"
+                  className="relative rounded-2xl border-4 border-surface object-cover w-full h-full shadow-2xl"
                 />
 
-                {/* Floating name tag on the orbit */}
-                <div className="absolute -top-3 right-2 bg-surface border border-border rounded-full px-3 py-1 text-xs font-medium text-textMain shadow-lg floaty">
-                  {NAME}
-                </div>
-
-                {/* Floating 3D tech chips */}
-                {chips.map((chip) => {
-                  const Icon = chip.icon;
-                  return (
-                    <div
-                      key={chip.label}
-                      className={`absolute ${chip.pos} ${chip.hideSm ? "hidden sm:flex" : "flex"} bg-surface border border-border rounded-xl pl-1.5 pr-3 py-1.5 items-center gap-2 text-xs font-semibold text-textMain shadow-xl hover:-translate-y-0.5 transition-transform floaty whitespace-nowrap`}
-                      style={{ animationDelay: chip.delay }}
-                    >
-                      <span className={`w-6 h-6 rounded-lg ${chip.iconBg} flex items-center justify-center`}>
-                        <Icon className={`${chip.color} text-xs`} />
-                      </span>
-                      {chip.label}
-                    </div>
-                  );
-                })}
-
-                {/* Experience badge */}
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gold on-gold rounded-full px-3 py-1 text-xs font-bold shadow-lg">
-                  2.5+ yrs building
+                {/* Building-since badge */}
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-gold on-gold rounded-full px-4 py-1.5 text-xs font-bold shadow-lg whitespace-nowrap">
+                  Building since {buildingSince}
                 </div>
               </div>
             </TiltCard>
