@@ -275,6 +275,16 @@ export const project: Project[] = [
     category: "AI/ML"
   },
   {
+    img: "/owl-research-agency.png",
+    title: "Owl Research Agency — AI Retrieval Modes Game",
+    description:
+      "Built for the Governor House AI Summer Camp's Faculty Selection Challenge: a game that teaches the three AI retrieval modes — pretrained memory, live search, and deep multi-source research — not through a quiz, but through dispatch decisions. Villagers bring questions; you choose which owl to send, each with a real cost in energy and time, and a wrong dispatch drains the village's trust. Iterated through several redesigns — removing category labels that gave the answer away, adding real resource scarcity, and pacing Research Owl's response so 'slow and expensive' is felt, not just read — to get the mechanic to actually teach the concept instead of testing it.",
+    route: "https://claude.ai/public/artifacts/94c1a379-8b7e-4004-8390-1994d5882004",
+    tags: ["AI/ML", "Education", "Game Design", "Prompt Engineering"],
+    year: 2026,
+    category: "AI/ML"
+  },
+  {
     img: "https://res.cloudinary.com/dd4xvwf8d/image/upload/v1775517408/todos_g5nzyv.png",
     gallery: [
       { src: "/todos-dashboard.png", alt: "dashboard with AI-powered productivity insights" },
