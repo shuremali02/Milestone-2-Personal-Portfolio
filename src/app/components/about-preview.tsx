@@ -18,7 +18,7 @@ export default function AboutPreview() {
           <TiltCard max={4} className="rounded-xl">
             <div className="glass rounded-xl p-8 md:p-12 grid grid-cols-1 md:grid-cols-[auto,1fr] gap-8 items-center">
               <Image
-                src="https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg"
+                src="/profile-pi.jpeg"
                 alt="Syed Shurem Ali"
                 width={140}
                 height={140}

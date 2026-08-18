@@ -48,7 +48,7 @@ export default function About() {
                 <div className="relative w-fit mx-auto">
                   <div className="absolute -top-2 -right-2 w-full h-full rounded-xl bg-primary/10 border border-primary/20" />
                   <Image
-                    src={cld("https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg", 480)}
+                    src="/profile-pi.jpeg"
                     alt="Syed Shurem Ali"
                     width={220}
                     height={240}

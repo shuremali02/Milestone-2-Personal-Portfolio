@@ -62,7 +62,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src={cld("https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg", 100)}
+                src="/profile-pi.jpeg"
                 alt="Syed Shurem Ali"
                 width={48}
                 height={48}

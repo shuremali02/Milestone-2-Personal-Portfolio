@@ -202,6 +202,28 @@ h1, h2, h3, h4, h5, h6 {
   will-change: transform;
 }
 
+/* Custom agentic cursor — a neural-trail: a bright head node at the exact
+   pointer position with fading particles behind it, connected by faint
+   lines like a reasoning/signal trace. Desktop (fine pointer) only; the
+   component only adds this class when that's confirmed and motion isn't
+   reduced, so the native cursor is untouched everywhere else. */
+.custom-cursor-active,
+.custom-cursor-active a,
+.custom-cursor-active button,
+.custom-cursor-active input,
+.custom-cursor-active textarea,
+.custom-cursor-active select,
+.custom-cursor-active [role="button"] {
+  cursor: none;
+}
+
+.custom-cursor-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
 /* Orbit rings around the hero photo */
 @keyframes orbit-spin {
   to { transform: rotate(360deg); }

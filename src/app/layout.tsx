@@ -9,6 +9,7 @@ import ChatBotLoader from "./components/chatbot-loader";
 import ScrollToTop from "./components/scroll-to-top";
 import ScrollProgress from "./components/scroll-progress";
 import CursorGlow from "./components/cursor-glow";
+import CustomCursor from "./components/custom-cursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -72,6 +73,7 @@ export default function RootLayout({
       <body className="font-sans">
         <ScrollProgress />
         <CursorGlow />
+        <CustomCursor />
         <Navbar />
           {children}
         <ChatBotLoader />

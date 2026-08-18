@@ -168,7 +168,7 @@ export default function Hero() {
 
                 {/* Photo */}
                 <Image
-                  src={cld("https://res.cloudinary.com/dd4xvwf8d/image/upload/v1755281625/c9cc0a17-e6c2-44e4-aab5-0a2482786f3f_blwhw3.jpg", 640)}
+                  src="/profile-pi.jpeg"
                   width={320}
                   height={320}
                   alt={NAME}

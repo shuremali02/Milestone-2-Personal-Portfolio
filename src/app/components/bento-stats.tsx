@@ -76,7 +76,7 @@ export default function BentoStats() {
         setGithubStats((prev) => ({
           ...prev,
           projects: data.public_repos ?? prev.projects,
-          followers: data.followers ?? prev.followers,
+         
         }));
       } catch (error) {
         console.error("Error fetching GitHub stats:", error);
@@ -203,12 +203,12 @@ export default function BentoStats() {
                 </p>
                 <p className="text-textMuted text-xs">Repos</p>
               </div>
-              <div className="text-center">
+              {/* <div className="text-center">
                 <p className="text-2xl sm:text-3xl font-bold font-heading text-textMain">
                   {loading ? "-" : statsError ? "—" : githubStats.followers}
                 </p>
-                <p className="text-textMuted text-xs">Followers</p>
-              </div>
+                
+              </div> */}
             </div>
           </div>
 
