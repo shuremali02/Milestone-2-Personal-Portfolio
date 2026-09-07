@@ -4,6 +4,8 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import StructuredData from "./components/structured-data";
+import { buildMetadata, SITE_URL } from "@/utils/metadata";
 
 import ChatBotLoader from "./components/chatbot-loader";
 import ScrollToTop from "./components/scroll-to-top";
@@ -24,43 +26,30 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://syed-shurem-ali.vercel.app"),
+  metadataBase: new URL(SITE_URL),
+  ...buildMetadata({ path: "/", type: "website" }),
   title: {
     default: "Syed Shurem Ali - Full-Stack Developer & AI Engineer",
-    template: "%s | Syed Shurem Ali Portfolio"
+    template: "%s | Syed Shurem Ali Portfolio",
   },
-  description: "Portfolio of Syed Shurem Ali - Full-Stack Developer & AI Engineer building web & mobile apps with Next.js, TypeScript, Flutter/Dart, MySQL, and Agentic AI. Showcasing projects, skills, and expertise in modern web & mobile development.",
-  keywords: ["Full-Stack Developer", "AI Engineer", "React", "Next.js", "TypeScript", "Flutter", "Dart", "Android Development", "MySQL", "Nginx", "VPS Deployment", "Hostinger", "Agentic AI", "Web Development", "Mobile Development", "Portfolio"],
-  authors: [{ name: "Syed Shurem Ali" }],
+  applicationName: "Syed Shurem Ali Portfolio",
+  authors: [{ name: "Syed Shurem Ali", url: SITE_URL }],
   creator: "Syed Shurem Ali",
   publisher: "Syed Shurem Ali",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://syed-shurem-ali.vercel.app",
-    title: "Syed Shurem Ali - Full-Stack Developer & AI Engineer",
-    description: "Portfolio of Syed Shurem Ali - Full-Stack Developer & AI Engineer building web & mobile apps with Next.js, TypeScript, Flutter/Dart, MySQL, and Agentic AI.",
-    siteName: "Syed Shurem Ali Portfolio",
-    // Social image comes from the generated app/opengraph-image.tsx (branded card).
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Syed Shurem Ali - Full-Stack Developer & AI Engineer",
-    description: "Portfolio of Syed Shurem Ali - Full-Stack Developer & AI Engineer building web & mobile apps with Next.js, TypeScript, Flutter/Dart, MySQL, and Agentic AI.",
-    // Social image comes from the generated app/twitter-image.tsx (branded card).
-    creator: "@syedshuremali",
-  },
+  category: "technology",
+  formatDetection: { email: false, address: false, telephone: false },
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
+  // verification: { google: "<add Search Console token>" },
 };
 
 export default function RootLayout({
@@ -71,11 +60,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="font-sans">
+        <StructuredData />
         <ScrollProgress />
         <CursorGlow />
         <CustomCursor />
         <Navbar />
-          {children}
+        <main>{children}</main>
         <ChatBotLoader />
         <ScrollToTop />
         <Footer />
